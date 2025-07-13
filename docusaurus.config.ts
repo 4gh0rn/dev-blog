@@ -9,12 +9,12 @@ dotenvconfig();
 const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
 
 const config: Config = {
-  title: 'DSO Live Demo Docs',
-  tagline: 'Dinosaurs are cool',
+  title: 'Dev Blog',
+  tagline: '4gh0rn',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: process.env.DEPLOYMENT_URL ?? "https://spmse.github.io",
+  url: process.env.DEPLOYMENT_URL ?? "https://4gh0rn.github.io",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: process.env.BASE_URL ?? "/",
@@ -46,7 +46,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/spmse/dev-blog-template',
+            'https://github.com/4gh0rn/dev-blog',
         },
         blog: blogEnabled ? 
           {
@@ -58,7 +58,7 @@ const config: Config = {
             // Please change this to your repo.
             // Remove this to remove the "edit this page" links.
             editUrl:
-              'https://github.com/spmse/dev-blog-template',
+              'https://github.com/4gh0rn/dev-blog',
             // Useful options to enforce blogging best practices
             onInlineTags: 'warn',
             onInlineAuthors: 'warn',
@@ -76,9 +76,9 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'My Site',
+      title: '4gh0rn',
       logo: {
-        alt: 'My Site Logo',
+        alt: '4gh0rn Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -89,7 +89,7 @@ const config: Config = {
           label: 'Docs',
         },
         {
-          href: 'https://github.com/spmse/dev-blog-template',
+          href: 'https://github.com/4gh0rn/dev-blog',
           label: 'Github',
           position: 'right',
         },
@@ -134,7 +134,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Sven Patrick Meier (spmse). Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Uwe Wohlleber (4gh0rn). Built with Docusaurus and 💚.`,
     },
     prism: {
       theme: prismThemes.github,

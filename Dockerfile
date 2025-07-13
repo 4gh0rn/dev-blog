@@ -3,10 +3,10 @@ FROM node:20.16-alpine as builder
 WORKDIR /app
 
 ARG BLOG_ENABLED=false
-ARG DEPLOYMENT_URL="https://spmse.github.io"
+ARG DEPLOYMENT_URL="https://4gh0rn.github.io"
 ARG DEPLOYMENT_BRANCH="main"
-ARG GITHUB_ORG="spmse"
-ARG GITHUB_PROJECT="dev-blog-template"
+ARG GITHUB_ORG="4gh0rn"
+ARG GITHUB_PROJECT="dev-blog"
 
 COPY . $WORKDIR
 
