@@ -12,6 +12,8 @@
   z-index: 1000;
   transition: all var(--portfolio-transition-base) var(--portfolio-transition-timing);
   box-shadow: none;
+  /* Ensure fully opaque */
+  opacity: 1 !important;
 }
 
 .header.scrolled {
@@ -20,11 +22,19 @@
 }
 
 [data-theme='light'] .header {
-  background-color: var(--ifm-background-color);
+  background-color: #ffffff; /* Fully opaque white */
 }
 
 [data-theme='light'] .header.scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: #ffffff; /* Fully opaque white */
+}
+
+[data-theme='dark'] .header {
+  background-color: #1e1e1e; /* Fully opaque dark */
+}
+
+[data-theme='dark'] .header.scrolled {
+  background-color: #1e1e1e; /* Fully opaque dark */
 }
 
 .headerContainer {
@@ -135,7 +145,8 @@
   border: 1px solid var(--ifm-border-color);
   border-radius: var(--portfolio-border-radius);
   cursor: pointer;
-  z-index: 1001;
+  z-index: 1002; /* Highest z-index to always be in front */
+  position: relative; /* Ensure z-index works */
   transition: all var(--portfolio-transition-fast) var(--portfolio-transition-timing);
 }
 
@@ -195,7 +206,7 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: 1000; /* Behind mobileNav but above Docusaurus navbar */
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--portfolio-transition-base) var(--portfolio-transition-timing),
@@ -222,14 +233,20 @@
   background-color: var(--ifm-background-surface-color);
   border-left: 1px solid var(--ifm-border-color);
   box-shadow: var(--portfolio-shadow-lg);
-  z-index: 1000;
+  z-index: 1001; /* Above header and overlay, below menuToggle */
   transition: right var(--portfolio-transition-base) var(--portfolio-transition-timing);
   overflow-y: auto;
   padding-top: 70px;
+  /* Ensure fully opaque */
+  opacity: 1 !important;
 }
 
 [data-theme='light'] .mobileNav {
-  background-color: var(--ifm-background-color);
+  background-color: #ffffff; /* Fully opaque white */
+}
+
+[data-theme='dark'] .mobileNav {
+  background-color: #1e1e1e; /* Fully opaque dark */
 }
 
 .mobileNavOpen {

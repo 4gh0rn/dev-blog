@@ -46,6 +46,12 @@ const config: Config = {
     locales: ['en'],
   },
 
+  markdown: {
+    mermaid: true,
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
   presets: [
     [
       'classic',
@@ -116,34 +122,8 @@ const config: Config = {
             },
           ],
         },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            }
-          ],
-        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Uwe Wohlleber (4gh0rn). Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Uwe Wohlleber (4gh0rn).`,
     },
     prism: {
       theme: prismThemes.github,
@@ -161,6 +141,9 @@ const config: Config = {
           line: 'This will error',
         },
       ],
+    },
+    mermaid: {
+      theme: {light: 'default', dark: 'dark'},
     },
   } satisfies Preset.ThemeConfig,
 };

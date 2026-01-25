@@ -1,11 +1,15 @@
 /* Portfolio Page Styles */
 
 .portfolioLayout {
-  /* Hide Docusaurus navbar on portfolio page */
+  /* Docusaurus navbar visible but behind portfolio header */
 }
 
 .portfolioLayout :global(.navbar) {
-  display: none !important;
+  /* Make Docusaurus navbar visible but behind portfolio header */
+  z-index: 999 !important; /* Lower than portfolio header (1000) */
+  opacity: 0.7 !important; /* Slightly transparent for "washed out" effect */
+  pointer-events: none !important; /* Prevent interaction with Docusaurus navbar */
+  transition: opacity 0.3s ease;
 }
 
 .portfolioMain {
