@@ -52,9 +52,6 @@ graph LR
     E --> E1[Isolated Environment]
     E --> E2[Portable]
     E --> E3[Consistent]
-    
-    style D fill:#90EE90
-    style E fill:#FFE4B5
 ```
 
 ### Core Concepts
@@ -92,8 +89,6 @@ graph TB
     C[Problems] --> C1[Version Conflicts]
     C --> C2[Works on My Machine]
     C --> C3[Hard to Scale]
-    
-    style C fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -118,10 +113,6 @@ graph TB
     B --> B1[Isolated Filesystem]
     B --> B2[Isolated Network]
     B --> B3[Isolated Processes]
-    
-    style B fill:#90EE90
-    style C fill:#FFE4B5
-    style D fill:#87CEEB
 ```
 
 **Benefits:**
@@ -145,9 +136,6 @@ graph TB
     D --> E
     
     F[Traffic] --> A
-    
-    style A fill:#FFE4B5
-    style E fill:#87CEEB
 ```
 
 **Scaling Example:**

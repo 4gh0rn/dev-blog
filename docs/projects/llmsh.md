@@ -62,9 +62,6 @@ graph LR
     F --> F2[Learn Syntax]
     F --> F3[Discover Commands]
     F --> F4[Maintain Control]
-    
-    style B fill:#90EE90
-    style D fill:#FFE4B5
 ```
 
 **Key Concepts:**
@@ -88,8 +85,6 @@ graph TB
     C --> C1[Understands Intent]
     D --> D1[Alternative Approaches]
     E --> E1[Correct Syntax]
-    
-    style A fill:#90EE90
 ```
 
 **Why It Works:**
@@ -111,10 +106,6 @@ graph TB
     B --> E[Ollama API]
     C --> F[Command Selection]
     D --> G[XDG Config]
-    
-    style A fill:#90EE90
-    style B fill:#FFE4B5
-    style C fill:#87CEEB
 ```
 
 **Architecture Components:**
@@ -140,8 +131,6 @@ graph LR
     G[Problems] --> G1[Time-Consuming]
     G --> G2[Breaks Flow]
     G --> G3[Context Switching]
-    
-    style G fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -197,8 +186,6 @@ graph TB
     C --> C1[Full Control]
     D --> D1[Easy Integration]
     E --> E1[No Vendor Lock-in]
-    
-    style A fill:#90EE90
 ```
 
 **Key Benefits:**
@@ -215,8 +202,6 @@ graph LR
     B --> C[Fuzzy Search]
     C --> D[Keyboard Navigation]
     D --> E[Visual Feedback]
-    
-    style B fill:#90EE90
 ```
 
 **Benefits:**
@@ -236,8 +221,6 @@ graph TB
     B --> B1[Not in .zshrc]
     C --> C1[Easy Migration]
     D --> D1[Track Changes]
-    
-    style A fill:#90EE90
 ```
 
 **Benefits:**
@@ -267,8 +250,6 @@ graph TB
     D --> D2[Extract Commands]
     E --> E1[Log Errors]
     E --> E2[User Messages]
-    
-    style A fill:#90EE90
 ```
 
 **Client Features:**
@@ -288,9 +269,6 @@ graph LR
     C --> D[Get Suggestions]
     D --> E[Display in fzf]
     E --> F[Insert Command]
-    
-    style A fill:#90EE90
-    style E fill:#FFE4B5
 ```
 
 **Integration Features:**
@@ -314,9 +292,6 @@ graph TB
     C --> C4[LLMSH_HOTKEY]
     C --> C5[LLMSH_COMMAND_COUNT]
     C --> C6[LLMSH_TIMEOUT]
-    
-    style A fill:#90EE90
-    style B fill:#FFE4B5
 ```
 
 **Configuration Options:**

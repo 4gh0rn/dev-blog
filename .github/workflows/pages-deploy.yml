@@ -44,7 +44,7 @@ jobs:
           BLOG_ENABLED: ${{ secrets.BLOG_ENABLED || 'true' }}
           DEPLOYMENT_URL: ${{ secrets.DEPLOYMENT_URL || 'https://4gh0rn.github.io' }}
           DEPLOYMENT_BRANCH: ${{ secrets.DEPLOYMENT_BRANCH || 'gh-pages' }}
-          BASE_URL: ${{ secrets.BASE_URL || '/' }}
+          BASE_URL: ${{ secrets.BASE_URL || '/dev-blog/' }}
           GITHUB_ORG: ${{ secrets.GITHUB_ORG || '4gh0rn' }}
           GITHUB_PROJECT: ${{ secrets.GITHUB_PROJECT || 'dev-blog' }}
 

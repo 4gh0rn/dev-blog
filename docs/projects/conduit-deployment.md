@@ -56,9 +56,6 @@ graph LR
     C --> D[Push to Registry]
     D --> E[CD Pipeline]
     E --> F[Deploy to Server]
-    
-    style B fill:#90EE90
-    style E fill:#FFE4B5
 ```
 
 **CI Benefits:**
@@ -93,9 +90,6 @@ graph TB
     D --> D1[Automated Deployment]
     D --> D2[Monitoring]
     D --> D3[Incident Response]
-    
-    style A fill:#90EE90
-    style C fill:#FFE4B5
 ```
 
 **Key Principles:**
@@ -123,8 +117,6 @@ graph TB
     F --> F3[Inconsistent]
     F --> F4[Security Risks]
     F --> F5[No Audit Trail]
-    
-    style F fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -157,10 +149,6 @@ flowchart TD
     K --> L{Healthy?}
     L -->|Yes| M[Deployment Success]
     L -->|No| N[Deployment Failed]
-    
-    style E fill:#FFE4B5
-    style F fill:#90EE90
-    style K fill:#87CEEB
 ```
 
 **Pipeline Stages:**
@@ -186,9 +174,6 @@ graph LR
     G --> G2[Faster Deployment]
     G --> G3[Consistent Builds]
     G --> G4[Resource Efficiency]
-    
-    style A fill:#90EE90
-    style D fill:#FFE4B5
 ```
 
 **Benefits:**
@@ -213,9 +198,6 @@ graph TB
     C --> H[Application Config]
     D --> I[Registry Access]
     F --> J[Environment Setup]
-    
-    style A fill:#90EE90
-    style E fill:#FFE4B5
 ```
 
 **Security Benefits:**
@@ -279,9 +261,6 @@ graph TB
     C1 --> C2[Copy Files]
     C2 --> C3[Execute Deploy]
     C3 --> C4[Health Check]
-    
-    style B fill:#90EE90
-    style C fill:#FFE4B5
 ```
 
 **Job Separation:**
@@ -302,9 +281,6 @@ graph LR
     C --> D
     D --> E[Production Server]
     E --> F[Pull by Tag]
-    
-    style D fill:#90EE90
-    style E fill:#FFE4B5
 ```
 
 **Registry Benefits:**
@@ -327,9 +303,6 @@ graph TB
     F[Security] --> F1[SSH Key in Secrets]
     F --> F2[No Passwords in Code]
     F --> F3[Encrypted Connection]
-    
-    style B fill:#90EE90
-    style F fill:#FFE4B5
 ```
 
 **SSH Benefits:**
@@ -354,10 +327,6 @@ graph TB
     H --> I{Secrets Valid?}
     I -->|No| J[Fail Deployment]
     I -->|Yes| K[Deploy Success]
-    
-    style C fill:#FFE4B5
-    style H fill:#FFE4B5
-    style K fill:#90EE90
 ```
 
 **Security Measures:**

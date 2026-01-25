@@ -57,10 +57,6 @@ graph TB
     C --> C1[MariaDB]
     
     B -.->|Database Connection| C
-    
-    style A fill:#90EE90
-    style D fill:#FFE4B5
-    style E fill:#87CEEB
 ```
 
 **Benefits:**
@@ -113,8 +109,6 @@ graph TB
     H --> H2[Error-Prone]
     H --> H3[Hard to Reproduce]
     H --> H4[Version Conflicts]
-    
-    style H fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -139,10 +133,6 @@ graph LR
     D --> E[One Command Deploy]
     
     E --> F[Same Setup Everywhere]
-    
-    style A fill:#90EE90
-    style E fill:#FFE4B5
-    style F fill:#87CEEB
 ```
 
 **Benefits:**
@@ -172,10 +162,6 @@ graph TB
     
     D[wp_net Network] --> B
     D --> C
-    
-    style B fill:#FFE4B5
-    style C fill:#87CEEB
-    style D fill:#90EE90
 ```
 
 **Service Communication:**
@@ -202,9 +188,6 @@ graph LR
     F[db_data Volume] --> F1[Database Files]
     F --> F2[Tables]
     F --> F3[Content]
-    
-    style C fill:#90EE90
-    style D fill:#FFB6C1
 ```
 
 **Volume Benefits:**
@@ -234,8 +217,6 @@ graph TB
     D --> D1[WP_ADMIN_USER]
     D --> D2[WP_ADMIN_PASSWORD]
     D --> D3[WP_ADMIN_EMAIL]
-    
-    style A fill:#90EE90
 ```
 
 **Configuration Benefits:**
@@ -289,10 +270,6 @@ graph TB
     F[External Access] --> E
     
     B -.->|db:3306| C
-    
-    style A fill:#90EE90
-    style B fill:#FFE4B5
-    style C fill:#87CEEB
 ```
 
 **Network Benefits:**
@@ -316,9 +293,6 @@ graph LR
     
     G[wp_data] --> G1[WordPress Content]
     H[db_data] --> H1[Database Files]
-    
-    style E fill:#90EE90
-    style F fill:#FFE4B5
 ```
 
 **Volume Lifecycle:**

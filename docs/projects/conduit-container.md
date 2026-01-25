@@ -63,9 +63,6 @@ graph TB
     C --> C3[Nginx Server]
     
     C -.->|API Calls| B
-    
-    style A fill:#90EE90
-    style D fill:#FFE4B5
 ```
 
 **Key Concepts:**
@@ -88,9 +85,6 @@ graph LR
     
     C --> G[Backend Container]
     F --> H[Frontend Container]
-    
-    style C fill:#90EE90
-    style F fill:#FFE4B5
 ```
 
 **Image Benefits:**
@@ -119,8 +113,6 @@ graph TB
     C --> C2[Network Communication]
     C --> C3[Security Configuration]
     C --> C4[Deployment Coordination]
-    
-    style C fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -148,9 +140,6 @@ graph LR
     B3 --> B4[Non-Root User]
     
     A2 --> B2
-    
-    style A fill:#FFE4B5
-    style B fill:#90EE90
 ```
 
 **Frontend Multi-Stage Build:**
@@ -164,9 +153,6 @@ graph LR
     B2 --> B3[Serve Static Files]
     
     A2 --> B2
-    
-    style A fill:#FFE4B5
-    style B fill:#90EE90
 ```
 
 **Benefits:**
@@ -191,10 +177,6 @@ graph TB
     G --> B
     
     C -.->|backend:8000| B
-    
-    style A fill:#90EE90
-    style B fill:#FFE4B5
-    style C fill:#87CEEB
 ```
 
 **Network Benefits:**
@@ -214,9 +196,6 @@ graph LR
     C --> D{Backend Checks CORS}
     D -->|Allowed Origin| E[Request Succeeds]
     D -->|Blocked Origin| F[Request Fails]
-    
-    style E fill:#90EE90
-    style F fill:#FFB6C1
 ```
 
 **Security Measures:**
@@ -289,9 +268,6 @@ graph LR
     
     D --> H[Service Ready]
     G --> I[Restart Container]
-    
-    style D fill:#90EE90
-    style G fill:#FFB6C1
 ```
 
 **Health Check Benefits:**

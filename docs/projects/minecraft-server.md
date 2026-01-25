@@ -58,9 +58,6 @@ graph LR
     F --> F2[Player Management]
     F --> F3[Network Communication]
     F --> F4[Configuration]
-    
-    style A fill:#90EE90
-    style C fill:#FFE4B5
 ```
 
 **Server Responsibilities:**
@@ -85,10 +82,6 @@ graph TB
     
     E[Players] --> F[Port 8888]
     F --> C
-    
-    style B fill:#90EE90
-    style C fill:#FFE4B5
-    style D fill:#87CEEB
 ```
 
 **Benefits:**
@@ -116,8 +109,6 @@ graph TB
     H --> H2[Version Management]
     H --> H3[Configuration Drift]
     H --> H4[Hard to Reproduce]
-    
-    style H fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -142,9 +133,6 @@ graph LR
     
     F[Environment Variables] --> D
     G[Start Script] --> B
-    
-    style A fill:#90EE90
-    style E fill:#FFE4B5
 ```
 
 **Benefits:**
@@ -167,9 +155,6 @@ graph TB
     E --> E2[server.properties]
     E --> E3[Logs]
     E --> E4[Plugins/Mods]
-    
-    style C fill:#90EE90
-    style D fill:#FFE4B5
 ```
 
 **Volume Benefits:**
@@ -194,9 +179,6 @@ graph TB
     B --> B3[Difficulty]
     B --> B4[Gamemode]
     B --> B5[Online Mode]
-    
-    style A fill:#90EE90
-    style B fill:#FFE4B5
 ```
 
 **Configuration Benefits:**
@@ -248,9 +230,6 @@ graph LR
     C --> F[Server Behavior]
     D --> G[EULA Acceptance]
     E --> H[Memory Settings]
-    
-    style A fill:#90EE90
-    style F fill:#FFE4B5
 ```
 
 **Configuration Flow:**
@@ -275,9 +254,6 @@ graph TB
     G[Server Performance] --> H[Player Count]
     G --> I[World Size]
     G --> J[Plugin Load]
-    
-    style B fill:#90EE90
-    style G fill:#FFE4B5
 ```
 
 **Memory Considerations:**

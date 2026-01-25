@@ -15,8 +15,8 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Automated server configuration with <strong>Ansible</strong> and 
-        cloud infrastructure with <strong>Terraform</strong>. From manual 
-        steps to fully automated infrastructure.
+        Ansible Vault for secure secret management. From manual steps 
+        to fully automated infrastructure.
       </>
     ),
   },
@@ -25,48 +25,48 @@ const FeatureList: FeatureItem[] = [
     emoji: '🐳',
     description: (
       <>
-        Docker containers, Kubernetes clusters, and CI/CD pipelines. 
-        Modern deployment strategies for scalable applications.
+        Docker containers, Docker Compose, and multi-container applications. 
+        Modern deployment strategies for scalable, isolated applications.
       </>
     ),
   },
   {
-    title: 'Security & Hardening',
+    title: 'Security & Penetration Testing',
     emoji: '🔒',
     description: (
       <>
-        Server hardening, firewall configuration, SSH security with 
-        YubiKey and client certificates. Security-first approach in all projects.
+        Web application security, OWASP Top 10, penetration testing with 
+        OWASP Juice Shop. Security-first approach in all projects.
       </>
     ),
   },
   {
-    title: 'Monitoring & Observability',
-    emoji: '📊',
-    description: (
-      <>
-        Complete monitoring and logging stacks. Metrics, logs, and 
-        traces for better visibility in production environments.
-      </>
-    ),
-  },
-  {
-    title: 'Modern Web Development',
-    emoji: '⚛️',
-    description: (
-      <>
-        React, TypeScript, Next.js and modern frontend technologies. 
-        From static sites to interactive AI applications.
-      </>
-    ),
-  },
-  {
-    title: 'DevOps Best Practices',
+    title: 'CI/CD & Deployment',
     emoji: '🚀',
     description: (
       <>
-        CI/CD with GitHub Actions, Git workflows, automated testing 
-        and deployment. Continuous improvement of development processes.
+        CI/CD pipelines with GitHub Actions, automated deployment workflows, 
+        and DevSecOps practices. Container registry integration and SSH deployment.
+      </>
+    ),
+  },
+  {
+    title: 'Backend Development',
+    emoji: '⚙️',
+    description: (
+      <>
+        Django REST APIs, Python backend development, and database integration. 
+        Building scalable, containerized backend services.
+      </>
+    ),
+  },
+  {
+    title: 'AI & Automation Tools',
+    emoji: '🤖',
+    description: (
+      <>
+        LLM integration for terminal productivity, shell scripting, and 
+        automation tooling. Building intelligent tools that enhance workflows.
       </>
     ),
   },

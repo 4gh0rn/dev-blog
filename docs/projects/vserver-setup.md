@@ -137,10 +137,6 @@ flowchart TD
     G --> H[Vault Password]
     H --> I[Decrypt at Runtime]
     I --> J[Use in Playbook]
-    
-    style C fill:#90EE90
-    style D fill:#90EE90
-    style E fill:#90EE90
 ```
 
 **Key Benefits:**
@@ -233,8 +229,6 @@ flowchart TD
     G --> H[Verify State]
     H --> I[Server Configured]
     F --> I
-    
-    style C fill:#FFE4B5
 ```
 
 ### Ansible Vault Architecture
@@ -258,10 +252,6 @@ graph TB
     L --> N[Decrypt String]
     M --> E
     N --> O[View Plain Text]
-    
-    style F fill:#90EE90
-    style G fill:#90EE90
-    style I fill:#FFE4B5
 ```
 
 ## Ansible Vault Deep Dive
@@ -373,9 +363,6 @@ flowchart TD
     
     I[Vault Password] --> E
     I --> G
-    
-    style F fill:#90EE90
-    style H fill:#FFE4B5
 ```
 
 ### Best Practices for Ansible Vault
@@ -468,9 +455,6 @@ graph TB
     J --> L[Decrypt]
     K --> C
     L --> M[Plain Text]
-    
-    style C fill:#90EE90
-    style G fill:#FFE4B5
 ```
 
 **Pattern Benefits:**

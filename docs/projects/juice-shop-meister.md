@@ -52,9 +52,6 @@ graph LR
     B --> C[Security Training]
     C --> D[Learn to Exploit]
     D --> E[Learn to Defend]
-    
-    style A fill:#90EE90
-    style C fill:#FFE4B5
 ```
 
 **Purpose:**
@@ -73,10 +70,6 @@ graph TB
     B --> C[Exploit Vulnerability]
     C --> D[Document Process]
     D --> E[Learn Mitigation]
-    
-    style A fill:#90EE90
-    style C fill:#FFE4B5
-    style E fill:#87CEEB
 ```
 
 **Learning Cycle:**
@@ -108,8 +101,6 @@ graph TB
     
     D --> D1[Stored XSS]
     D --> D2[Reflected XSS]
-    
-    style A fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -195,8 +186,6 @@ graph TB
     E --> E2[IDOR]
     F --> F1[Metadata Exposure]
     G --> G1[Privilege Escalation]
-    
-    style A fill:#90EE90
 ```
 
 ## Key Learning Outcomes

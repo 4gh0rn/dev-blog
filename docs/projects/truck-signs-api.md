@@ -53,9 +53,6 @@ graph LR
     E --> E1[Reproducible]
     E --> E2[Isolated]
     E --> E3[Secure]
-    
-    style D fill:#90EE90
-    style E fill:#FFE4B5
 ```
 
 ### Core Concepts
@@ -97,8 +94,6 @@ graph TB
     C --> C2[Database Connection Issues]
     C --> C3[Secret Management]
     C --> C4[Hard to Reproduce]
-    
-    style C fill:#FFB6C1
 ```
 
 **Common Issues:**
@@ -123,8 +118,6 @@ graph TB
     B --> B1[Same Application]
     C --> C1[Same Application]
     D --> D1[Same Application]
-    
-    style A fill:#90EE90
 ```
 
 **Benefits:**
@@ -148,10 +141,6 @@ graph TB
     B -.->|Hostname: db| C
     
     D[Host System] --> A
-    
-    style A fill:#90EE90
-    style B fill:#FFE4B5
-    style C fill:#87CEEB
 ```
 
 **Network Benefits:**
@@ -185,9 +174,6 @@ graph LR
     
     E[.env File] --> B
     F[Docker Run -e] --> B
-    
-    style B fill:#90EE90
-    style D fill:#FFE4B5
 ```
 
 **Security Benefits:**
