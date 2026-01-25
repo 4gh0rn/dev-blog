@@ -40,8 +40,8 @@
 }
 
 .profileImage {
-  width: 280px;
-  height: 280px;
+  width: 350px;
+  height: 350px;
   border-radius: var(--portfolio-border-radius-lg);
   object-fit: cover;
   border: 3px solid var(--ifm-color-primary);
@@ -80,6 +80,51 @@
   line-height: var(--portfolio-line-height);
   color: var(--ifm-color-content-secondary);
   max-width: 580px;
+}
+
+.heroDescription p {
+  margin-bottom: 1rem;
+}
+
+.heroDescription p:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
+.focusAreas {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-border-color);
+}
+
+.focusAreasTitle {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.focusAreasList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.5rem;
+}
+
+.focusAreasList li {
+  font-size: 0.9rem;
+  padding-left: 1.25rem;
+  position: relative;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.5;
+}
+
+.focusAreasList li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary);
 }
 
 .contactButton {
@@ -147,6 +192,11 @@
   .heroContent {
     text-align: center;
   }
+
+  .focusAreasList {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
 }
 
 @media (max-width: 768px) {
@@ -175,6 +225,10 @@
   .contactButton {
     width: 100%;
     max-width: 320px;
+  }
+
+  .focusAreasList {
+    grid-template-columns: 1fr;
   }
 }
 

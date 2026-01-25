@@ -1,6 +1,6 @@
 # Conduit Container
 
-Container deployment and management solution with complete Docker and CI/CD pipeline.
+Package both a backend and frontend application into appropriate container images and configure them for joint operation in the cloud. Consolidate your knowledge of containers, network technology, and network security.
 
 import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
 
@@ -9,278 +9,402 @@ import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
     title="GitHub Repository" 
     type="tip"
 >
-View the complete containerization setup on GitHub
+View the complete containerization setup and Docker Compose configuration on GitHub
 </GithubLinkAdmonition>
+
+## Project Goal
+
+**Package backend and frontend applications into container images** and configure them for **joint operation in the cloud**:
+- **Container Images**: Create optimized images for both backend and frontend
+- **Multi-Container Setup**: Configure backend and frontend to work together
+- **Network Configuration**: Set up secure container communication
+- **Network Security**: Implement CORS, ALLOWED_HOSTS, and security best practices
+
+Consolidate knowledge of **containers**, **network technology**, and **network security**.
+
+## Prerequisites
+
+### Required Knowledge
+- Basic understanding of web applications (frontend and backend)
+- Familiarity with Docker and Docker Compose
+- Basic knowledge of REST APIs
+- Understanding of network concepts (helpful but not required)
+
+### Required Software
+- **Docker**: Containerization platform (version 20.10 or higher)
+- **Docker Compose**: Container orchestration (version 2.0 or higher)
+- **Git**: Version control
+
+### System Requirements
+- Operating system with Docker support
+- Minimum 4GB RAM (for both containers)
+- Ports 8000 and 8282 available
+- Internet connection for downloading images
 
 ## Conceptual Overview
 
-This project demonstrates **containerization** and **CI/CD pipeline** concepts, showing how to build, test, and deploy applications consistently across environments using Docker and automated workflows.
+### Multi-Container Architecture
 
-### Containerization Concepts
-
-**Containers** package applications with their dependencies, providing:
-- **Isolation**: Each container runs in its own isolated environment
-- **Portability**: "Build once, run anywhere" - works on any system with Docker
-- **Consistency**: Same container runs identically in dev, staging, and production
-- **Resource Efficiency**: Containers share the host OS kernel, using less resources than VMs
-
-### CI/CD Pipeline Concepts
-
-**Continuous Integration (CI)** automatically builds and tests code changes:
-- **Automated Testing**: Run tests on every code change
-- **Early Detection**: Catch bugs before they reach production
-- **Quality Gates**: Prevent broken code from being deployed
-
-**Continuous Deployment (CD)** automatically deploys tested code:
-- **Automated Deployment**: Deploy to environments automatically
-- **Consistent Process**: Same deployment process every time
-- **Fast Feedback**: Quick iteration cycles
-
-## The Problem
-
-### Environment Inconsistency
-
-Deploying applications across different environments faces challenges:
+The project demonstrates **packaging separate applications** into containers and orchestrating them:
 
 ```mermaid
 graph TB
-    A[Development] --> A1[Python 3.9]
-    A --> A2[Local Database]
+    A[Docker Compose] --> B[Backend Container]
+    A --> C[Frontend Container]
+    A --> D[Shared Network]
+    A --> E[Persistent Volumes]
     
-    B[Staging] --> B1[Python 3.10]
-    B --> B2[Shared Database]
+    B --> B1[Django REST API]
+    B --> B2[Port 8000]
+    B --> B3[SQLite Database]
     
-    C[Production] --> C1[Python 3.8]
-    C --> C2[Production DB]
+    C --> C1[Angular App]
+    C --> C2[Port 8282]
+    C --> C3[Nginx Server]
     
-    A1 -.->|Different| B1
-    B1 -.->|Different| C1
-    A2 -.->|Different| B2
-    B2 -.->|Different| C2
+    C -.->|API Calls| B
+    
+    style A fill:#90EE90
+    style D fill:#FFE4B5
 ```
 
-**Problems:**
-- **Environment Differences**: Different versions, configurations
-- **Dependency Hell**: "Works on my machine" syndrome
-- **Configuration Drift**: Environments diverge over time
-- **Manual Processes**: Error-prone human deployments
-- **Slow Feedback**: Long time between code change and deployment
+**Key Concepts:**
+- **Separate Containers**: Backend and frontend in different containers
+- **Service Communication**: Frontend communicates with backend via network
+- **Independent Scaling**: Each service can be scaled independently
+- **Technology Isolation**: Different tech stacks in separate containers
 
-## The Solution
+### Container Image Creation
 
-### Containerization Benefits
-
-Containerization with Docker solves these problems:
+Each application is packaged into its own **container image**:
 
 ```mermaid
 graph LR
-    A[Same Container] --> B[Development]
-    A --> C[Staging]
-    A --> D[Production]
+    A[Backend Source] --> B[Backend Dockerfile]
+    B --> C[Backend Image]
     
-    B --> E[Consistent Environment]
-    C --> E
-    D --> E
+    D[Frontend Source] --> E[Frontend Dockerfile]
+    E --> F[Frontend Image]
+    
+    C --> G[Backend Container]
+    F --> H[Frontend Container]
+    
+    style C fill:#90EE90
+    style F fill:#FFE4B5
 ```
 
-- **Consistency**: Same container runs identically everywhere
-- **Isolation**: Applications don't interfere with each other
-- **Portability**: Run anywhere Docker is available
-- **Automation**: CI/CD pipelines handle deployments
-- **Scalability**: Easy to scale horizontally
+**Image Benefits:**
+- **Optimized Builds**: Multi-stage builds reduce image size
+- **Reproducible**: Same image runs identically everywhere
+- **Version Control**: Images can be tagged and versioned
+- **Portable**: Images can be shared via container registry
 
-## Key Features
+## The Challenge
 
-### Container Orchestration
-- Docker Compose for multi-container setups
-- Health checks and restart policies
-- Network configuration
-- Volume management
+### Multi-Application Deployment
 
-### CI/CD Pipeline
-- GitHub Actions for automation
-- Automated testing
-- Build and push to registry
-- Automated deployment
-- Environment-specific configurations
+Deploying separate frontend and backend applications faces challenges:
 
-### Best Practices
-- Multi-stage builds for optimization
-- Security scanning
-- Dependency management
-- Configuration management
-- Monitoring and logging
+```mermaid
+graph TB
+    A[Frontend App] --> A1[Angular Build]
+    A --> A2[Static Files]
+    A --> A3[API Configuration]
+    
+    B[Backend App] --> B1[Django API]
+    B --> B2[Database]
+    B --> B3[CORS Configuration]
+    
+    C[Problems] --> C1[Different Tech Stacks]
+    C --> C2[Network Communication]
+    C --> C3[Security Configuration]
+    C --> C4[Deployment Coordination]
+    
+    style C fill:#FFB6C1
+```
 
-## Technologies Used
+**Common Issues:**
+- **Different Technologies**: Frontend (Node.js/Angular) and backend (Python/Django) need different environments
+- **Network Communication**: Frontend must connect to backend API
+- **Security Configuration**: CORS, ALLOWED_HOSTS, and network security
+- **Deployment Coordination**: Both applications must be deployed together
+- **Configuration Management**: API URLs, environment variables, secrets
 
-- **Docker**: Containerization platform
-- **Docker Compose**: Multi-container orchestration
-- **GitHub Actions**: CI/CD automation
-- **Container Registry**: Image storage and distribution
-- **DevOps**: Deployment automation
+## The Solution: Container Orchestration
+
+### Multi-Stage Builds
+
+Both applications use **multi-stage builds** for optimized images:
+
+**Backend Multi-Stage Build:**
+```mermaid
+graph LR
+    A[Build Stage] --> A1[Install Dependencies]
+    A1 --> A2[Python Packages]
+    
+    B[Runtime Stage] --> B1[Minimal Base Image]
+    B1 --> B2[Copy Dependencies]
+    B2 --> B3[Copy Application]
+    B3 --> B4[Non-Root User]
+    
+    A2 --> B2
+    
+    style A fill:#FFE4B5
+    style B fill:#90EE90
+```
+
+**Frontend Multi-Stage Build:**
+```mermaid
+graph LR
+    A[Build Stage] --> A1[Install Node Dependencies]
+    A1 --> A2[Build Angular App]
+    
+    B[Runtime Stage] --> B1[Nginx Base Image]
+    B1 --> B2[Copy Built Files]
+    B2 --> B3[Serve Static Files]
+    
+    A2 --> B2
+    
+    style A fill:#FFE4B5
+    style B fill:#90EE90
+```
+
+**Benefits:**
+- **Smaller Images**: Only runtime dependencies in final image
+- **Faster Deployments**: Less data to transfer
+- **Better Security**: Fewer attack surfaces
+- **Optimized Builds**: Build tools not in production image
+
+### Network Architecture
+
+Containers communicate through **Docker bridge network**:
+
+```mermaid
+graph TB
+    A[conduit-network] --> B[Backend Container]
+    A --> C[Frontend Container]
+    
+    D[External Access] --> E[Port 8282]
+    E --> C
+    
+    F[External API Access] --> G[Port 8000]
+    G --> B
+    
+    C -.->|backend:8000| B
+    
+    style A fill:#90EE90
+    style B fill:#FFE4B5
+    style C fill:#87CEEB
+```
+
+**Network Benefits:**
+- **Service Discovery**: Containers find each other by service name
+- **Isolation**: Network isolated from host and other applications
+- **Security**: Database and internal services not exposed externally
+- **Flexibility**: Easy to add more services
+
+### Network Security
+
+**CORS (Cross-Origin Resource Sharing)** configuration:
+
+```mermaid
+graph LR
+    A[Frontend] --> B[Browser]
+    B --> C[Backend API Request]
+    C --> D{Backend Checks CORS}
+    D -->|Allowed Origin| E[Request Succeeds]
+    D -->|Blocked Origin| F[Request Fails]
+    
+    style E fill:#90EE90
+    style F fill:#FFB6C1
+```
+
+**Security Measures:**
+- **CORS_ALLOW_ORIGINS**: Only allow specific frontend origins
+- **ALLOWED_HOSTS**: Restrict which hosts can access backend
+- **DEBUG Mode**: Disabled in production
+- **SECRET_KEY**: Managed via environment variables
+
+### Service Dependencies
+
+Docker Compose manages **service startup order**:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Compose
+    participant Backend
+    participant Frontend
+    
+    User->>Compose: docker compose up -d
+    Compose->>Backend: Start backend service
+    Backend->>Backend: Health check running
+    Backend-->>Compose: Healthy
+    Compose->>Frontend: Start frontend (depends_on: backend healthy)
+    Frontend->>Backend: Connect to API
+    Backend-->>Frontend: Connection established
+    Frontend-->>Compose: Ready
+    Compose-->>User: All services running
+```
+
+**Dependency Management:**
+- `depends_on` with `condition: service_healthy` ensures backend is ready
+- Frontend waits for backend health check to pass
+- Automatic retry on connection failure
+- Health checks ensure services are actually ready, not just started
 
 ## Architecture Concepts
 
-### Container Architecture
-
-The project uses a **multi-stage build pattern** for optimized containers:
-
-```mermaid
-graph TB
-    subgraph "Build Stage"
-        A[Source Code] --> B[Dependencies]
-        B --> C[Build Application]
-    end
-    
-    subgraph "Runtime Stage"
-        C --> D[Minimal Base Image]
-        D --> E[Application Binary]
-        E --> F[Final Container]
-    end
-    
-    F --> G[Small Image Size]
-    F --> H[Fast Startup]
-    F --> I[Security Benefits]
-```
-
-### CI/CD Pipeline Architecture
-
-The CI/CD pipeline implements a **quality gate pattern**:
-
-```mermaid
-flowchart LR
-    A[Code Push] --> B[GitHub Actions]
-    B --> C[Build Image]
-    C --> D[Run Tests]
-    D --> E{Tests Pass?}
-    E -->|No| F[Fail Build]
-    E -->|Yes| G[Security Scan]
-    G --> H{Scan Pass?}
-    H -->|No| F
-    H -->|Yes| I[Push to Registry]
-    I --> J[Deploy to Environment]
-    J --> K[Health Check]
-    K --> L{Healthy?}
-    L -->|No| M[Rollback]
-    L -->|Yes| N[Deployment Success]
-```
-
-### Deployment Strategies
-
-The project demonstrates different **deployment strategies**:
-
-#### Blue-Green Deployment
-
-```mermaid
-graph LR
-    A[Traffic] --> B[Blue Environment]
-    C[Green Environment] --> D[New Version]
-    B --> E[Switch Traffic]
-    E --> C
-    C --> F[Monitor]
-    F -->|Success| G[Remove Blue]
-    F -->|Failure| H[Switch Back]
-    H --> B
-```
-
-**Benefits:**
-- Zero-downtime deployments
-- Instant rollback capability
-- Easy to test new version before switching
-
-#### Canary Deployment
-
-```mermaid
-graph TB
-    A[New Version] --> B[10% Traffic]
-    A --> C[90% Old Version]
-    B --> D{Monitor Metrics}
-    D -->|Success| E[Increase to 50%]
-    E --> F{Monitor Metrics}
-    F -->|Success| G[100% New Version]
-    F -->|Failure| H[Rollback]
-    D -->|Failure| H
-```
-
-**Benefits:**
-- Gradual rollout reduces risk
-- Real-world testing with production traffic
-- Easy to abort if issues detected
-
-## Design Patterns
-
 ### Multi-Stage Build Pattern
 
-Reduces final image size by separating build and runtime:
+**Backend Build Stages:**
 
-```dockerfile
-# Build stage
-FROM node:18 AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
+1. **Builder Stage**: Install build dependencies and Python packages
+2. **Runtime Stage**: Copy only necessary files, use minimal base image
 
-# Runtime stage
-FROM node:18-alpine
-WORKDIR /app
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/node_modules ./node_modules
-CMD ["node", "dist/index.js"]
-```
+**Frontend Build Stages:**
+
+1. **Builder Stage**: Install Node.js dependencies and build Angular app
+2. **Runtime Stage**: Use Nginx to serve static files
 
 **Benefits:**
-- Smaller final images (only runtime dependencies)
-- Faster deployments (less data to transfer)
-- Better security (fewer attack surfaces)
+- **Reduced Image Size**: Final images contain only runtime dependencies
+- **Faster Builds**: Build dependencies cached separately
+- **Security**: Build tools not in production images
+- **Optimization**: Different base images for build vs. runtime
 
 ### Health Check Pattern
 
-Containers implement health checks for reliability:
+Both containers implement **health checks**:
 
-```yaml
-healthcheck:
-  test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
-  interval: 30s
-  timeout: 10s
-  retries: 3
-  start_period: 40s
+```mermaid
+graph LR
+    A[Container Start] --> B[Health Check Interval]
+    B --> C{Health Check Pass?}
+    C -->|Yes| D[Container Healthy]
+    C -->|No| E[Retry]
+    E --> F{Retries Exceeded?}
+    F -->|No| C
+    F -->|Yes| G[Container Unhealthy]
+    
+    D --> H[Service Ready]
+    G --> I[Restart Container]
+    
+    style D fill:#90EE90
+    style G fill:#FFB6C1
 ```
 
-**Benefits:**
-- Automatic restart of unhealthy containers
-- Load balancer can route away from unhealthy instances
-- Monitoring systems can track container health
+**Health Check Benefits:**
+- **Service Readiness**: Ensures service is actually ready, not just started
+- **Dependency Management**: Other services wait for healthy status
+- **Automatic Recovery**: Unhealthy containers can be restarted
+- **Monitoring**: Health status visible in `docker compose ps`
+
+### Network Security Configuration
+
+**CORS Configuration:**
+- Frontend origin must be explicitly allowed
+- Prevents unauthorized cross-origin requests
+- Configured via `CORS_ALLOW_ORIGINS` environment variable
+
+**ALLOWED_HOSTS:**
+- Restricts which hosts can access Django backend
+- Prevents host header attacks
+- Configured via `ALLOWED_HOSTS` environment variable
+
+**Network Isolation:**
+- Containers communicate only through defined network
+- Database not exposed externally
+- Port mapping controls external access
 
 ## Learning Outcomes
 
-### Containerization Concepts
-- **Image Layers**: Understanding Docker image layers and caching
+### Container Image Creation
 - **Multi-Stage Builds**: Optimizing image size and build time
-- **Container Isolation**: Process and filesystem isolation
-- **Volume Management**: Persistent data in containers
+- **Technology-Specific Images**: Different base images for different stacks
+- **Build Arguments**: Configuring images at build time
+- **Image Optimization**: Reducing final image size
 
-### CI/CD Concepts
-- **Pipeline as Code**: Defining pipelines in version control
-- **Quality Gates**: Automated checks before deployment
-- **Environment Promotion**: Moving code through dev → staging → production
-- **Automated Testing**: Running tests in CI pipeline
+### Multi-Container Orchestration
+- **Service Dependencies**: Managing startup order and dependencies
+- **Health Checks**: Ensuring service readiness
+- **Network Configuration**: Setting up container communication
+- **Volume Management**: Persistent data storage
 
-### Deployment Concepts
-- **Blue-Green Deployment**: Zero-downtime deployment strategy
-- **Canary Releases**: Gradual rollout strategy
-- **Rollback Strategies**: Quickly reverting failed deployments
-- **Health Checks**: Monitoring container and application health
+### Network Technology
+- **Docker Networks**: Bridge networks for container communication
+- **Service Discovery**: Containers finding each other by name
+- **Port Mapping**: Exposing services to external access
+- **Network Isolation**: Securing container communication
+
+### Network Security
+- **CORS Configuration**: Controlling cross-origin requests
+- **ALLOWED_HOSTS**: Restricting host access
+- **Environment-Based Security**: Different configs for dev/prod
+- **Secret Management**: Secure handling of sensitive data
 
 ### Best Practices
-- **Security Scanning**: Automated vulnerability detection
-- **Dependency Management**: Keeping dependencies up to date
-- **Configuration Management**: Environment-specific configs
-- **Monitoring Integration**: Observability in containerized applications
+- **Non-Root Containers**: Running containers as non-root users
+- **Health Checks**: Monitoring container and application health
+- **Restart Policies**: Automatic container recovery
+- **Configuration Management**: Environment variables for all configs
 
-## Further Reading
+## Best Practices
 
-- [Docker Documentation](https://docs.docker.com/)
-- [GitHub Actions](https://docs.github.com/en/actions)
-- [Container Best Practices](https://docs.docker.com/develop/dev-best-practices/)
+### Container Security
+- **Non-Root Users**: Containers run as non-root users
+- **Minimal Base Images**: Use slim/alpine images when possible
+- **Secret Management**: All secrets via environment variables
+- **Regular Updates**: Keep base images and dependencies updated
+
+### Network Security
+- **CORS Configuration**: Explicitly allow only necessary origins
+- **ALLOWED_HOSTS**: Restrict backend access to known hosts
+- **DEBUG Mode**: Always disabled in production
+- **Network Isolation**: Use Docker networks for service communication
+
+### Image Optimization
+- **Multi-Stage Builds**: Separate build and runtime stages
+- **.dockerignore**: Exclude unnecessary files from builds
+- **Layer Caching**: Optimize Dockerfile for better caching
+- **Image Size**: Monitor and minimize final image sizes
+
+### Configuration Management
+- **Environment Variables**: All configuration via `.env`
+- **Default Values**: Use `${VAR:-default}` syntax for safe defaults
+- **Build Arguments**: Use ARG for build-time configuration
+- **Documentation**: Document all configuration options
+
+## Troubleshooting
+
+### Container Communication Issues
+- Verify containers are in same network: `docker network inspect conduit-network`
+- Check service names match in compose file
+- Verify backend health check is passing
+- Check backend logs for connection errors
+
+### CORS Errors
+- Verify `CORS_ALLOW_ORIGINS` includes frontend URL
+- Check frontend is using correct API URL
+- Ensure backend is accessible from frontend origin
+- Review browser console for CORS error details
+
+### Health Check Failures
+- Check container logs: `docker compose logs backend`
+- Verify health check endpoint is accessible
+- Ensure service is actually ready (not just started)
+- Check health check configuration in Dockerfile
+
+### Build Issues
+- Verify build arguments are set correctly
+- Check `.dockerignore` isn't excluding necessary files
+- Ensure build context includes all required files
+- Review build logs for specific errors
+
+## Further References
+
+- [Docker Multi-Stage Builds](https://docs.docker.com/build/building/multi-stage/)
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
+- [Docker Networking](https://docs.docker.com/network/)
+- [CORS Configuration](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
+- [Django Security](https://docs.djangoproject.com/en/stable/topics/security/)

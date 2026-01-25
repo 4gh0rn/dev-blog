@@ -33,7 +33,7 @@ const skills: Skill[] = [
     name: "Git",
     description: "Version control system for tracking changes in code and collaborative development.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
-    usedIn: ["V-Server Setup"]
+    usedIn: ["V-Server Setup", "Baby Tools Shop", "Truck Signs API", "Juice Shop Meister", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment"]
   },
   {
     name: "NGINX",
@@ -51,13 +51,13 @@ const skills: Skill[] = [
     name: "Database",
     description: "Designing and managing databases for storing and retrieving application data.",
     learnedFrom: "DevSecOps Course - Baby Tools Shop Project",
-    usedIn: ["Baby Tools Shop", "Truck Signs API"]
+    usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container"]
   },
   {
     name: "Backend Development (REST APIs)",
     description: "Server-side development for handling business logic, data processing, and creating RESTful APIs for application communication.",
     learnedFrom: "DevSecOps Course - Truck Signs API Project",
-    usedIn: ["Truck Signs API"]
+    usedIn: ["Baby Tools Shop", "Truck Signs API", "Conduit Container"]
   },
   {
     name: "Web Security (OWASP, Penetration Testing)",
@@ -75,7 +75,7 @@ const skills: Skill[] = [
     name: "Docker",
     description: "Containerization platform for packaging and deploying applications in isolated environments.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
-    usedIn: ["Conduit Container", "Minecraft-Server"]
+    usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment"]
   },
   {
     name: "CI/CD & Deployment",
@@ -87,7 +87,7 @@ const skills: Skill[] = [
     name: "Container Orchestration",
     description: "Managing and coordinating multiple containers for scalable application deployment.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
-    usedIn: ["Conduit Container"]
+    usedIn: ["Baby Tools Shop", "WordPress", "Conduit Container"]
   },
   {
     name: "DevOps",
@@ -99,13 +99,31 @@ const skills: Skill[] = [
     name: "GitHub Actions",
     description: "Automated workflow platform for CI/CD pipelines and development automation.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
-    usedIn: ["Conduit Container"]
+    usedIn: ["Conduit Container", "Conduit Deployment"]
   },
   {
     name: "Server Management",
     description: "Administration and maintenance of server infrastructure and services, including game server setup and management.",
     learnedFrom: "DevSecOps Course - Minecraft-Server Project",
     usedIn: ["Minecraft-Server"]
+  },
+  {
+    name: "Python",
+    description: "Python programming for backend development, automation, API clients, and tooling. Building CLI tools, web applications, and system automation scripts.",
+    learnedFrom: "DevSecOps Course - Baby Tools Shop Project",
+    usedIn: ["Baby Tools Shop", "Truck Signs API", "Conduit Container", "llmsh"]
+  },
+  {
+    name: "Shell Scripting",
+    description: "Writing shell scripts for automation, system administration, and tooling. Creating zsh plugins, automation workflows, and command-line tools.",
+    learnedFrom: "Personal Project - llmsh",
+    usedIn: ["llmsh"]
+  },
+  {
+    name: "LLM Integration & AI Tools",
+    description: "Integrating Large Language Models into workflows and tools. Building AI-powered applications, natural language interfaces, and intelligent automation.",
+    learnedFrom: "Personal Project - llmsh",
+    usedIn: ["llmsh"]
   }
 ];
 

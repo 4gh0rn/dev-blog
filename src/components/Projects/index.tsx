@@ -24,53 +24,67 @@ const projects: Project[] = [
   },
   {
     title: "Baby Tools Shop",
-    description: "E-commerce platform for baby tools and accessories. Modern web application with shopping cart functionality, product management, and secure payment processing.",
+    description: "Containerized e-commerce platform for baby products. Demonstrates containerization, isolation, and horizontal scaling with Docker. Django application packaged for consistent deployment across environments.",
     docLink: "/docs/projects/baby-tools-shop",
-    skills: ["Web Development", "Database"],
+    githubLink: "https://github.com/4gh0rn/baby-tools-shop",
+    skills: ["Docker", "Containerization", "Django", "Python", "Docker Compose", "Gunicorn"],
     imageUrl: "/img/projects/baby-tools-shop.png"
   },
   {
     title: "Truck Signs API",
-    description: "RESTful API for managing truck signs and vehicle customization services. Provides endpoints for sign design, ordering, and inventory management.",
+    description: "Containerized Django REST API for managing truck signs and designs. Demonstrates reproducible, isolated, and secure container operation with PostgreSQL database and Docker networking.",
     docLink: "/docs/projects/truck-signs-api",
-    skills: ["Backend Development (REST APIs)", "Database"],
+    githubLink: "https://github.com/4gh0rn/truck_signs_api",
+    skills: ["Docker", "REST API", "Django", "PostgreSQL", "Container Networking", "Python"],
     imageUrl: "/img/projects/truck-signs-api.png"
   },
   {
     title: "Juice Shop Meister",
-    description: "Security-focused web application project based on OWASP Juice Shop. Learning platform for web application security vulnerabilities and penetration testing.",
+    description: "Security training project using OWASP Juice Shop to learn web application vulnerabilities, penetration testing techniques, and security best practices. Hands-on practice with ethical hacking.",
     docLink: "/docs/projects/juice-shop-meister",
-    skills: ["Web Security (OWASP, Penetration Testing)"],
+    githubLink: "https://github.com/4gh0rn/juice-shop-challange",
+    skills: ["Web Security", "OWASP Top 10", "Penetration Testing", "SQL Injection", "XSS", "Burp Suite", "Security Documentation"],
     imageUrl: "/img/projects/juice-shop-meister.png"
   },
   {
     title: "WordPress",
-    description: "WordPress website development and customization project. Content management system setup, theme development, and plugin integration.",
+    description: "Containerized WordPress blog setup using Docker Compose. Learn to configure and operate a blog application quickly, securely, and simply without manual installation. Reproducible setup with minimal adjustments.",
     docLink: "/docs/projects/wordpress",
-    skills: ["WordPress", "Web Development"],
+    githubLink: "https://github.com/4gh0rn/wp-blog",
+    skills: ["Docker Compose", "WordPress", "MariaDB", "Container Orchestration", "Multi-Container Setup", "Volume Management"],
     imageUrl: "/img/projects/wordpress.png"
   },
   {
     title: "Conduit Container",
-    description: "Container deployment and management solution. Complete Docker and CI/CD pipeline for automated container orchestration and deployment.",
+    description: "Multi-container application packaging backend and frontend into container images. Configure joint operation in the cloud with network security, multi-stage builds, and service orchestration.",
     docLink: "/docs/projects/conduit-container",
     githubLink: "https://github.com/4gh0rn/conduit-container",
-    skills: ["Docker", "CI/CD & Deployment", "Container Orchestration", "DevOps", "GitHub Actions"],
+    skills: ["Docker", "Multi-Stage Builds", "Docker Compose", "Network Security", "CORS", "Health Checks", "Container Orchestration"],
     imageUrl: "/img/projects/conduit-container.png"
   },
   {
     title: "Minecraft-Server",
-    description: "Minecraft server setup and management project. Automated server deployment, configuration management, and plugin administration using DevOps practices.",
+    description: "Learn to host and operate your own game server using Minecraft. Understand server hosting tasks and responsibilities. Configure server and world settings with containerized deployment.",
     docLink: "/docs/projects/minecraft-server",
-    skills: ["Server Management", "Docker"],
+    githubLink: "https://github.com/4gh0rn/mc-server",
+    skills: ["Game Server Hosting", "Docker", "Server Configuration", "Containerization", "Java", "Volume Management"],
     imageUrl: "/img/projects/minecraft-server.png"
   },
   {
     title: "Conduit Deployment",
-    description: "Deployment automation and infrastructure management for Conduit applications. CI/CD pipelines, environment configuration, and deployment strategies.",
+    description: "Design and implement automated application rollout workflow following DevSecOps principles. CI/CD pipeline with GitHub Actions, container registry, and SSH deployment to cloud VM.",
     docLink: "/docs/projects/conduit-deployment",
-    skills: ["CI/CD & Deployment", "DevOps"],
+    githubLink: "https://github.com/4gh0rn/conduit-container",
+    skills: ["CI/CD", "GitHub Actions", "DevSecOps", "SSH Deployment", "Container Registry", "Automated Deployment", "Secret Management"],
     imageUrl: "/img/projects/conduit-deployment.png"
+  },
+  {
+    title: "llmsh",
+    description: "A zsh plugin that transforms natural language descriptions into ready-to-run shell commands using LLMs. Integrates seamlessly with terminal workflows using Ollama-compatible APIs and fzf for command selection.",
+    docLink: "/docs/projects/llmsh",
+    githubLink: "https://github.com/brsksh/llmsh",
+    skills: ["Python", "Shell Scripting", "zsh", "LLM Integration", "Ollama", "fzf", "API Design", "Terminal Tools"],
+    imageUrl: "/img/projects/llmsh.png"
   }
 ];
 

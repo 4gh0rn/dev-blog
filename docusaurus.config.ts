@@ -19,7 +19,7 @@ const hasBlogPosts = fs.existsSync(blogDir) &&
 const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true') && hasBlogPosts;
 
 const config: Config = {
-  title: 'Dev Blog',
+  title: 'Dev Sec Ops Blog',
   tagline: '4gh0rn',
   favicon: 'img/favicon.ico',
 
@@ -119,6 +119,19 @@ const config: Config = {
             {
               label: 'Tutorial',
               to: '/docs/projects/overview',
+            },
+          ],
+        },
+        {
+          title: 'Links',
+          items: [
+            {
+              label: 'My Blog',
+              href: 'https://brsk.sh',
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/4gh0rn',
             },
           ],
         },
