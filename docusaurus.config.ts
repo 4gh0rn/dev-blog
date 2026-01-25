@@ -2,11 +2,21 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import {config as dotenvconfig}  from "dotenv";
+import * as fs from 'fs';
+import * as path from 'path';
 
 dotenvconfig();
 
-/* TODO: change to read configuration from environment */
-const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
+// Check if blog posts exist (files other than authors.yml and tags.yml)
+const blogDir = path.join(__dirname, 'blog');
+const hasBlogPosts = fs.existsSync(blogDir) && 
+  fs.readdirSync(blogDir).some(file => 
+    (file.endsWith('.md') || file.endsWith('.mdx') || fs.statSync(path.join(blogDir, file)).isDirectory()) &&
+    !['authors.yml', 'tags.yml'].includes(file)
+  );
+
+// Blog is only enabled if BLOG_ENABLED is true AND blog posts exist
+const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true') && hasBlogPosts;
 
 const config: Config = {
   title: 'Dev Blog',
