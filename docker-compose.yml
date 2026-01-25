@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  docusaurus-blog:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BLOG_ENABLED: ${BLOG_ENABLED:-false}
+        DEPLOYMENT_URL: ${DEPLOYMENT_URL:-https://4gh0rn.github.io}
+        DEPLOYMENT_BRANCH: ${DEPLOYMENT_BRANCH:-main}
+        GITHUB_ORG: ${GITHUB_ORG:-4gh0rn}
+        GITHUB_PROJECT: ${GITHUB_PROJECT:-dev-blog}
+    container_name: docusaurus-blog
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    networks:
+      - docusaurus-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health || exit 1"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  # Development service with hot-reload (use with --profile dev)
+  docusaurus-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: docusaurus-dev
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.docusaurus
+    environment:
+      - BLOG_ENABLED=${BLOG_ENABLED:-false}
+      - DEPLOYMENT_URL=${DEPLOYMENT_URL:-https://4gh0rn.github.io}
+      - DEPLOYMENT_BRANCH=${DEPLOYMENT_BRANCH:-main}
+      - GITHUB_ORG=${GITHUB_ORG:-4gh0rn}
+      - GITHUB_PROJECT=${GITHUB_PROJECT:-dev-blog}
+      - BASE_URL=${BASE_URL:-/}
+    command: npm start -- --host 0.0.0.0
+    networks:
+      - docusaurus-network
+    profiles:
+      - dev
+
+networks:
+  docusaurus-network:
+    driver: bridge

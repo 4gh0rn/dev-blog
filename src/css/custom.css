@@ -1,30 +1,115 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Portfolio Design Variables
+ * Only portfolio-specific CSS variables - all other styles use Docusaurus defaults
  */
 
-/* You can override the default Infima variables here. */
+/* ============================================
+   PORTFOLIO DESIGN VARIABLES
+   ============================================ */
+
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Spacing */
+  --portfolio-section-padding: 6rem;
+  --portfolio-card-padding: 2.5rem;
+  --portfolio-gap: 2.5rem;
+
+  /* Border radius */
+  --portfolio-border-radius: 8px;
+  --portfolio-border-radius-lg: 12px;
+  --portfolio-border-radius-round: 50%;
+
+  /* Shadows */
+  --portfolio-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --portfolio-shadow-md: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  --portfolio-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  --portfolio-shadow-xl: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+  /* Transitions */
+  --portfolio-transition-fast: 150ms;
+  --portfolio-transition-base: 250ms;
+  --portfolio-transition-slow: 400ms;
+  --portfolio-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography */
+  --portfolio-h1-size: 3rem;
+  --portfolio-h2-size: 2.25rem;
+  --portfolio-h3-size: 1.75rem;
+  --portfolio-h4-size: 1.375rem;
+  --portfolio-body-size: 1rem;
+  --portfolio-line-height: 1.6;
+  --portfolio-letter-spacing: -0.01em;
+
+  /* Gradients */
+  --portfolio-gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --portfolio-gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  --portfolio-gradient-hero: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
+
+  /* Text on gradients */
+  --portfolio-text-on-gradient: #FFFFFF;
+  --portfolio-text-on-gradient-secondary: rgba(255, 255, 255, 0.95);
+
+  /* Hero overlays */
+  --hero-overlay-primary: rgba(37, 99, 235, 0.08);
+  --hero-overlay-secondary: rgba(16, 185, 129, 0.08);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --portfolio-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --portfolio-shadow-md: 0 3px 6px rgba(0, 0, 0, 0.4), 0 3px 6px rgba(0, 0, 0, 0.5);
+  --portfolio-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.6);
+  --portfolio-shadow-xl: 0 14px 28px rgba(0, 0, 0, 0.6), 0 10px 10px rgba(0, 0, 0, 0.7);
+  
+  --portfolio-gradient-primary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  --portfolio-gradient-success: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+  --portfolio-gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+  
+  --hero-overlay-primary: rgba(59, 130, 246, 0.1);
+  --hero-overlay-secondary: rgba(52, 211, 153, 0.1);
+}
+
+[data-theme='light'] {
+  --portfolio-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.12);
+  --portfolio-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --portfolio-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --portfolio-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.25);
+
+  --portfolio-gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --portfolio-gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  --portfolio-gradient-hero: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
+
+  --hero-overlay-primary: rgba(37, 99, 235, 0.03);
+  --hero-overlay-secondary: rgba(16, 185, 129, 0.03);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 996px) {
+  :root {
+    --portfolio-section-padding: 4rem;
+    --portfolio-card-padding: 2rem;
+    --portfolio-gap: 2rem;
+    --portfolio-h1-size: 2.5rem;
+    --portfolio-h2-size: 2rem;
+    --portfolio-h3-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --portfolio-section-padding: 3rem;
+    --portfolio-card-padding: 1.25rem;
+    --portfolio-gap: 1.25rem;
+    --portfolio-h1-size: 2.25rem;
+    --portfolio-h2-size: 1.875rem;
+    --portfolio-h3-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --portfolio-section-padding: 2rem;
+    --portfolio-card-padding: 1rem;
+    --portfolio-gap: 1rem;
+    --portfolio-h1-size: 1.875rem;
+    --portfolio-h2-size: 1.5rem;
+  }
 }

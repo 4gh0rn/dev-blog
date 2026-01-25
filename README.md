@@ -1,99 +1,300 @@
-# My Developer Blog
+# Docusaurus Portfolio
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+A personal portfolio website built with Docusaurus, React, and TypeScript. This portfolio showcases projects, skills, and documentation as part of the DevSecOps course. The portfolio is integrated with the Docusaurus blog framework, allowing for seamless integration of project documentations.
 
 ## Repository Description
 
-This repository hosts a developer blog built with Docusaurus. It includes tools and scripts for creating, managing, and deploying static web content. The software supports rapid local development, customizable theming, and seamless deployment to platforms like GitHub Pages or NGINX.
+This repository contains a React-based portfolio website that displays various sections including skills, projects, and contact information. Each section is implemented as a modular React component using CSS Modules for styling. The portfolio is fully responsive, supports both light and dark themes, and is designed to be hosted on GitHub Pages.
 
 ## Table of Contents
 
-- [My Developer Blog](#my-developer-blog)
+- [Docusaurus Portfolio](#docusaurus-portfolio)
   - [Repository Description](#repository-description)
   - [Table of Contents](#table-of-contents)
   - [Quickstart](#quickstart)
     - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Local Development](#local-development)
+    - [Understanding Portfolio Components](#understanding-portfolio-components)
+  - [Usage](#usage)
+    - [Configuring Portfolio Components](#configuring-portfolio-components)
+    - [Adding Your Own Projects](#adding-your-own-projects)
+    - [Adding Your Own Skills](#adding-your-own-skills)
+    - [Customizing the Header](#customizing-the-header)
+    - [Deploying to GitHub Pages](#deploying-to-github-pages)
+  - [Component Overview](#component-overview)
   - [Repository Structure](#repository-structure)
-  - [Deployment](#deployment)
-    - [Deploy to Github Pages](#deploy-to-github-pages)
-    - [Deploying using NGINX](#deploying-using-nginx)
-    - [Contributing](#contributing)
+  - [Technologies Used](#technologies-used)
 
 ## Quickstart
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v16 or later recommended)
-- [pnpm](https://pnpm.io/) (package manager for faster and more efficient dependency handling)
-- [Docker](https://www.docker.com/products/docker-desktop) (only required if [deploying using NGINX](#deploying-using-nginx))
+- [Node.js](https://nodejs.org/) (v20 or later)
+- [pnpm](https://pnpm.io/) (package manager) or npm
+- [Git](https://git-scm.com/) (for version control)
 
-1. Installation
+### Installation
 
-   ```
-   $ pnpm install
-   ```
+1. Clone the repository:
 
-2. Local Development
-
-   ```
-   $ pnpm start
+   ```bash
+   git clone https://github.com/4gh0rn/dev-blog.git
+   cd dev-blog
    ```
 
-   This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+2. Install dependencies:
 
-3. Build
-
-   ```
-   $ pnpm build
+   ```bash
+   pnpm install
    ```
 
-   This command generates static content into the `build` directory and can be served using any static contents hosting service.
+   Or using npm:
 
-4. Deployment
-
-   In order to deploy onto Github Pages, ensure that your `docusaurus.config.ts` conforms with the [documentation guidelines](https://docusaurus.io/docs/deployment#deploying-to-github-pages). After that is ensured run the following command to deploy:
-
-   ```
-   $ USE_SSH=true pnpm deploy
+   ```bash
+   npm install
    ```
 
-For detailed information about deploying this Docusaurus project, refer to the [Deployment](#deployment) section below.
+### Local Development
+
+1. Start the development server:
+
+   ```bash
+   pnpm start
+   ```
+
+   Or using npm:
+
+   ```bash
+   npm start
+   ```
+
+2. Open your browser and navigate to `http://localhost:3000/portfolio` to view the portfolio page.
+
+   The development server supports hot-reload, so most changes are reflected immediately without restarting the server.
+
+3. Build for production:
+
+   ```bash
+   pnpm build
+   ```
+
+   This generates static content in the `build` directory ready for deployment.
+
+### Understanding Portfolio Components
+
+The portfolio consists of the following React components, each located in `src/components/`:
+
+- **Header**: Fixed navigation header with smooth scrolling to sections
+- **Hero**: Introduction section with profile image and call-to-action
+- **MySkills**: Interactive skill cards with flip animations
+- **Projects**: Project showcase with images, descriptions, and links
+- **Contact**: Contact information section with social links
+- **ScrollToTop**: Utility button to scroll back to top
+
+Each component is self-contained with its own TypeScript interface and CSS Module styles.
+
+## Usage
+
+### Configuring Portfolio Components
+
+#### Hero Component
+
+Edit `src/components/Hero/index.tsx` to customize:
+
+- Name, title, and description
+- Profile image URL
+- Contact button text and behavior
+
+```typescript
+<Hero
+  name="Your Name"
+  title="Your Title"
+  description="Your description"
+  imageUrl="/img/your-profile.jpg"
+/>
+```
+
+#### MySkills Component
+
+Edit `src/components/MySkills/index.tsx` to add or modify skills:
+
+```typescript
+const skills: Skill[] = [
+  {
+    name: "React",
+    description: "Your skill description",
+    learnedFrom: "Where you learned it",
+    usedIn: ["Project 1", "Project 2"]
+  },
+  // Add more skills...
+];
+```
+
+#### Projects Component
+
+Edit `src/components/Projects/index.tsx` to add or modify projects:
+
+```typescript
+const projects: Project[] = [
+  {
+    title: "Project Title",
+    description: "Project description",
+    docLink: "/docs/projects/your-project",
+    githubLink: "https://github.com/yourusername/project",
+    skills: ["React", "TypeScript"],
+    imageUrl: "/img/projects/project-image.jpg"
+  },
+  // Add more projects...
+];
+```
+
+#### Contact Component
+
+Edit `src/components/Contact/index.tsx` to update contact information:
+
+```typescript
+<Contact
+  email="your.email@example.com"
+  github="https://github.com/yourusername"
+  linkedin="https://linkedin.com/in/yourprofile"
+  message="Your contact message"
+/>
+```
+
+### Adding Your Own Projects
+
+1. Add project images to `static/img/projects/`
+2. Add project documentation to `docs/projects/`
+3. Update the `projects` array in `src/components/Projects/index.tsx`
+4. Ensure project images are optimized (recommended: max 1200px width, WebP or JPG format)
+
+### Adding Your Own Skills
+
+1. Edit the `skills` array in `src/components/MySkills/index.tsx`
+2. Each skill should include:
+   - `name`: Skill name
+   - `description`: Brief description
+   - `learnedFrom`: Where/how you learned it
+   - `usedIn`: Array of project names where you used this skill
+
+### Customizing the Header
+
+The Header component can be customized in `src/components/Header/index.tsx`:
+
+```typescript
+<Header
+  logo="/img/logo.svg"
+  logoAlt="Your Logo"
+  navItems={[
+    { label: 'Home', href: '#about-me', anchor: true },
+    { label: 'Skills', href: '#my-skills', anchor: true },
+    // Add more navigation items...
+  ]}
+/>
+```
+
+### Deploying to GitHub Pages
+
+1. Ensure your `docusaurus.config.ts` is configured for GitHub Pages:
+
+   ```typescript
+   url: 'https://yourusername.github.io',
+   baseUrl: '/repository-name/',
+   organizationName: 'yourusername',
+   projectName: 'repository-name',
+   ```
+
+2. Build the site:
+
+   ```bash
+   pnpm build
+   ```
+
+3. Deploy to GitHub Pages:
+
+   ```bash
+   USE_SSH=true pnpm deploy
+   ```
+
+   Or without SSH:
+
+   ```bash
+   GIT_USER=yourusername pnpm deploy
+   ```
+
+4. The portfolio will be available at `https://yourusername.github.io/repository-name/portfolio`
+
+## Component Overview
+
+### Header Component (`src/components/Header/`)
+
+- **Purpose**: Fixed navigation header with smooth scrolling
+- **Features**: Responsive mobile menu, theme support, scroll effects
+- **Props**: `logo`, `logoAlt`, `navItems`
+
+### Hero Component (`src/components/Hero/`)
+
+- **Purpose**: Introduction section with profile and call-to-action
+- **Features**: Responsive layout, gradient background, smooth scroll to contact
+- **Props**: `name`, `title`, `description`, `imageUrl`
+
+### MySkills Component (`src/components/MySkills/`)
+
+- **Purpose**: Display skills with interactive flip cards
+- **Features**: Hover/touch animations, detailed information on back
+- **Data**: Array of `Skill` objects with name, description, learnedFrom, usedIn
+
+### Projects Component (`src/components/Projects/`)
+
+- **Purpose**: Showcase projects with images and links
+- **Features**: Responsive grid, skill tags, documentation and GitHub links
+- **Data**: Array of `Project` objects with title, description, links, skills, image
+
+### Contact Component (`src/components/Contact/`)
+
+- **Purpose**: Contact information and social links
+- **Features**: Gradient background, responsive button layout
+- **Props**: `email`, `github`, `linkedin`, `message`
+
+### ScrollToTop Component (`src/components/ScrollToTop/`)
+
+- **Purpose**: Utility button to scroll back to top
+- **Features**: Appears on scroll, smooth animation
 
 ## Repository Structure
 
-The repository is organized as follows:
-
-- `blog/`: Contains markdown files for blog posts. Blog-related metadata is automatically picked up by the Docusaurus configuration.
-- `docs/`: Contains markdown files for documentation. These files are referenced in `sidebars.ts` to define the sidebar structure.
-- `src/`: Contains custom React components, CSS, and JavaScript for additional functionality or theming.
-- `static/`: Stores static assets (e.g., images, icons) served directly without processing.
-- `sidebars.ts`: Configures the structure of sidebars in the documentation section.
-- `docusaurus.config.ts`: Main configuration file for customizing and managing Docusaurus behavior.
-- `build/`: Generated after running the `pnpm build` command. Contains the static website files ready for deployment.
-
-New content can be added as follows:
-
-- Add new documentation files to the `docs/` folder.
-- Add new blog posts to the `blog/` folder. No additional configuration is required.
-
-## Deployment
-
-### Deploy to Github Pages
-
-To deploy using SSH:
-
 ```
-$ USE_SSH=true pnpm deploy
+dev-blog/
+├── src/
+│   ├── components/          # React components
+│   │   ├── Header/          # Navigation header
+│   │   ├── Hero/            # Hero section
+│   │   ├── MySkills/        # Skills section
+│   │   ├── Projects/        # Projects section
+│   │   ├── Contact/         # Contact section
+│   │   └── ScrollToTop/     # Scroll to top button
+│   ├── css/
+│   │   └── custom.css       # Global styles and theme
+│   └── pages/
+│       └── portfolio.tsx    # Portfolio page
+├── docs/                    # Documentation files
+├── static/                  # Static assets (images, etc.)
+├── docusaurus.config.ts     # Docusaurus configuration
+└── package.json             # Dependencies
 ```
 
-To deploy without using SSH, run:
+## Technologies Used
 
-```
-$ GIT_USER=<Your GitHub username> pnpm deploy
-```
+- **React**: UI framework for building components
+- **TypeScript**: Type-safe development
+- **Docusaurus**: Static site generator and framework
+- **CSS Modules**: Scoped component styling
+- **GitHub Pages**: Hosting platform
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+## Additional Resources
 
-### Deploying using NGINX
-
-To deploy the site using NGINX and Docker, follow this [guide](./docs/guides/deploy-docusaurus-with-docker-and-nginx.md)
+- [Docusaurus Documentation](https://docusaurus.io/docs)
+- [React Documentation](https://react.dev)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)
+- [Project FAQ](https://developer-akademie-devsecopskurs.github.io/dso-faq-site/docs/projects/docusaurus-portfolio/description)

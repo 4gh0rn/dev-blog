@@ -10,7 +10,7 @@ const blogEnabled = Boolean(process.env.BLOG_ENABLED === 'true')
 
 const config: Config = {
   title: 'Dev Blog',
-  tagline: '4gh0rn',
+  tagline: 'Uwe Wohlleber',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -21,10 +21,12 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: process.env.GITHUB_ORG, // Usually your GitHub org/user name.
-  projectName: process.env.GITHUB_PROJECT, // Usually your repo name.
+  organizationName: process.env.ORGANIZATION_NAME ?? '4gh0rn', // Usually your GitHub org/user name.
+  projectName: process.env.PROJECT_NAME ?? 'dev-blog', // Usually your repo name.
 
-  deploymentBranch: process.env.DEPLOYMENT_BRANCH,
+  deploymentBranch: process.env.DEPLOYMENT_BRANCH ?? 'gh-pages',
+  
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -35,6 +37,12 @@ const config: Config = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
+  },
+
+  themes: ['@docusaurus/theme-mermaid'],
+
+  markdown: {
+    mermaid: true,
   },
 
   presets: [
@@ -75,10 +83,15 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: false,
+    },
     navbar: {
-      title: '4gh0rn',
+      title: 'Uwe Wohlleber',
       logo: {
-        alt: '4gh0rn Logo',
+        alt: 'Uwe Wohlleber Logo',
         src: 'img/logo.svg',
       },
       items: [
@@ -87,6 +100,11 @@ const config: Config = {
           sidebarId: 'tutorialSidebar',
           position: 'left',
           label: 'Docs',
+        },
+        {
+          to: '/portfolio',
+          label: 'Portfolio',
+          position: 'left',
         },
         {
           href: 'https://github.com/4gh0rn/dev-blog',
@@ -99,42 +117,66 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Navigation',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Home',
+              to: '/',
+            },
+            {
+              label: 'Portfolio',
+              to: '/portfolio',
+            },
+            {
+              label: 'Projects',
+              to: '/docs/projects/overview',
+            },
+            {
+              label: 'Documentation',
               to: '/docs/guides/intro',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Projects',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'V-Server Setup',
+              href: 'https://github.com/4gh0rn/v-server-setup',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'AI Chatbot Starter',
+              href: 'https://github.com/4gh0rn/ai-chatbot-starter',
             },
             {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              label: 'Conduit Container',
+              href: 'https://github.com/4gh0rn/conduit-container',
+            },
+            {
+              label: 'Docusaurus Portfolio',
+              href: 'https://github.com/4gh0rn/dev-blog',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Connect',
           items: [
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            }
+              label: 'GitHub Profile',
+              href: 'https://github.com/4gh0rn',
+            },
+            {
+              label: 'Repository',
+              href: 'https://github.com/4gh0rn/dev-blog',
+            },
+            {
+              label: 'brsk.sh',
+              href: 'https://brsk.sh',
+            },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Uwe Wohlleber (4gh0rn). Built with Docusaurus and 💚.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Uwe Wohlleber. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
@@ -152,6 +194,9 @@ const config: Config = {
           line: 'This will error',
         },
       ],
+    },
+    mermaid: {
+      theme: {light: 'default', dark: 'dark'},
     },
   } satisfies Preset.ThemeConfig,
 };

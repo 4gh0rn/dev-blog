@@ -1,0 +1,148 @@
+.contactSection {
+  padding: var(--portfolio-section-padding) 0;
+  background: var(--portfolio-gradient-primary);
+  color: var(--portfolio-text-on-gradient);
+  position: relative;
+  overflow: hidden;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.contactSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: var(--portfolio-h2-size);
+  margin-bottom: 3rem;
+  color: var(--portfolio-text-on-gradient);
+  font-weight: 700;
+  letter-spacing: var(--portfolio-letter-spacing);
+  position: relative;
+  z-index: 1;
+}
+
+.contactContent {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.contactMessage {
+  font-size: var(--portfolio-body-size);
+  line-height: var(--portfolio-line-height);
+  margin-bottom: 2.5rem;
+  color: var(--portfolio-text-on-gradient-secondary);
+}
+
+.contactLinks {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.contactButton {
+  min-width: 160px;
+  min-height: 48px;
+  padding: 0.875rem 2rem;
+  font-weight: 600;
+  box-shadow: var(--portfolio-shadow-sm);
+  touch-action: manipulation;
+  border-radius: var(--portfolio-border-radius);
+}
+
+/* Contact buttons on blue gradient - force white background */
+.contactButton.button--primary {
+  background-color: white !important;
+  background: white !important;
+  color: var(--ifm-color-primary) !important;
+  border: 2px solid white !important;
+}
+
+.contactButton.button--primary:hover {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--ifm-color-primary-dark) !important;
+  border-color: white !important;
+  transform: translateY(-1px);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+.contactButton.button--secondary {
+  background-color: white !important;
+  background: white !important;
+  color: var(--ifm-color-primary) !important;
+  border: 2px solid white !important;
+}
+
+.contactButton.button--secondary:hover {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--ifm-color-primary-dark) !important;
+  border-color: white !important;
+  transform: translateY(-1px);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+.contactButton:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .contactMessage {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .contactLinks {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contactButton {
+    min-width: 140px;
+    flex: 0 1 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 3rem 0;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .contactMessage {
+    font-size: 0.95rem;
+  }
+
+  .contactLinks {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .contactButton {
+    width: 100%;
+    min-height: 48px;
+  }
+}

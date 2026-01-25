@@ -4,3 +4,17 @@ node_modules/
 .pnpm-store/
 .docusaurus/
 .devcontainer/
+build/
+.env
+*.log
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+# Exclude markdown files in root, but allow docs/ and blog/
+*.md
+!README.md
+!docs/**/*.md
+!blog/**/*.md
