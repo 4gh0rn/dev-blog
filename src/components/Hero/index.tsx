@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
 interface HeroProps {
@@ -15,6 +16,7 @@ export default function Hero({
   description = "I am a passionate developer focused on DevSecOps, cloud infrastructure, and modern web technologies. Specialized in Infrastructure as Code, container orchestration, and automated deployment pipelines. In this portfolio, I showcase my projects and skills from the Developer Akademie DevSecOps course.",
   imageUrl = "/img/docusaurus.png"
 }: HeroProps): JSX.Element {
+  const profileImage = useBaseUrl(imageUrl);
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     contactSection?.scrollIntoView({ behavior: 'smooth' });
@@ -26,7 +28,7 @@ export default function Hero({
         <div className={clsx('row', styles.heroRow)}>
           <div className={clsx('col col--6', styles.heroImage)}>
             <img 
-              src={imageUrl} 
+              src={profileImage} 
               alt={name}
               className={styles.profileImage}
             />

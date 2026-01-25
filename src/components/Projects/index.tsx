@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -73,6 +74,71 @@ const projects: Project[] = [
   }
 ];
 
+function ProjectCard({ project }: { project: Project }): JSX.Element {
+  const imageUrl = useBaseUrl(project.imageUrl || '/img/docusaurus.png');
+  const fallbackUrl = useBaseUrl('/img/docusaurus.png');
+
+  return (
+    <div className={styles.projectCard}>
+      {project.imageUrl && (
+        <div className={styles.projectImageContainer}>
+          <img 
+            src={imageUrl} 
+            alt={project.title}
+            className={styles.projectImage}
+            loading="lazy"
+            onError={(e) => {
+              // Fallback to placeholder if image fails to load
+              const target = e.target as HTMLImageElement;
+              target.src = fallbackUrl;
+            }}
+          />
+        </div>
+      )}
+      <div className={styles.projectCardContent}>
+        <h3 className={styles.projectTitle}>{project.title}</h3>
+        <p className={styles.projectDescription}>{project.description}</p>
+        <div className={styles.projectSkills}>
+          {project.skills.map((skill, idx) => (
+            <span key={idx} className={styles.skillTag}>
+              {skill}
+            </span>
+          ))}
+        </div>
+        <div className={styles.projectLinks}>
+        {project.docLink.startsWith('http') ? (
+          <Link
+            href={project.docLink}
+            className={clsx('button button--outline button--primary', styles.projectLink)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Docs
+          </Link>
+        ) : (
+          <Link
+            to={project.docLink}
+            className={clsx('button button--outline button--primary', styles.projectLink)}
+          >
+            Docs
+          </Link>
+        )}
+        {project.githubLink && (
+          <Link
+            href={project.githubLink}
+            className={clsx('button button--outline button--secondary', styles.projectLink)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </Link>
+        )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Projects(): JSX.Element {
   return (
     <section id="projects" className={styles.projectsSection}>
@@ -80,63 +146,7 @@ export default function Projects(): JSX.Element {
         <h2 className={styles.sectionTitle}>Projects</h2>
         <div className={styles.projectsGrid}>
           {projects.map((project, index) => (
-            <div key={index} className={styles.projectCard}>
-              {project.imageUrl && (
-                <div className={styles.projectImageContainer}>
-                  <img 
-                    src={project.imageUrl} 
-                    alt={project.title}
-                    className={styles.projectImage}
-                    loading="lazy"
-                    onError={(e) => {
-                      // Fallback to placeholder if image fails to load
-                      const target = e.target as HTMLImageElement;
-                      target.src = '/img/docusaurus.png';
-                    }}
-                  />
-                </div>
-              )}
-              <div className={styles.projectCardContent}>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
-                <p className={styles.projectDescription}>{project.description}</p>
-                <div className={styles.projectSkills}>
-                  {project.skills.map((skill, idx) => (
-                    <span key={idx} className={styles.skillTag}>
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-                <div className={styles.projectLinks}>
-                {project.docLink.startsWith('http') ? (
-                  <Link
-                    href={project.docLink}
-                    className={clsx('button button--outline button--primary', styles.projectLink)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Docs
-                  </Link>
-                ) : (
-                  <Link
-                    to={project.docLink}
-                    className={clsx('button button--outline button--primary', styles.projectLink)}
-                  >
-                    Docs
-                  </Link>
-                )}
-                {project.githubLink && (
-                  <Link
-                    href={project.githubLink}
-                    className={clsx('button button--outline button--secondary', styles.projectLink)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </Link>
-                )}
-                </div>
-              </div>
-            </div>
+            <ProjectCard key={index} project={project} />
           ))}
         </div>
       </div>
