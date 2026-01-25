@@ -1,0 +1,19 @@
+FROM node:20.16-alpine
+
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy environment file
+COPY example.env .env
+
+# Copy source files
+COPY . .
+
+# Expose port for development server
+EXPOSE 3000
+
+# Start development server with host binding for Docker
+CMD ["npm", "start", "--", "--host", "0.0.0.0"]

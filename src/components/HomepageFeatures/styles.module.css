@@ -1,11 +1,47 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 100%;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.sectionDescription {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featureCard {
+  margin-bottom: 2rem;
+}
+
+.featureEmoji {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: inline-block;
 }
 
 .featureSvg {
   height: 200px;
   width: 200px;
+}
+
+@media screen and (max-width: 996px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .features {
+    padding: 2rem 0;
+  }
 }

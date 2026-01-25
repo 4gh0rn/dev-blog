@@ -1,0 +1,74 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build Docusaurus
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Create .env config file
+        run: |
+          echo "BLOG_ENABLED=${BLOG_ENABLED:-true}" >> .env
+          echo "DEPLOYMENT_URL=${DEPLOYMENT_URL:-https://4gh0rn.github.io}" >> .env
+          echo "DEPLOYMENT_BRANCH=${DEPLOYMENT_BRANCH:-gh-pages}" >> .env
+          echo "BASE_URL=${BASE_URL:-/}" >> .env
+          echo "ORGANIZATION_NAME=${ORGANIZATION_NAME:-4gh0rn}" >> .env
+          echo "PROJECT_NAME=${PROJECT_NAME:-dev-blog}" >> .env
+        env:
+          BLOG_ENABLED: ${{ secrets.BLOG_ENABLED || 'true' }}
+          DEPLOYMENT_URL: ${{ secrets.DEPLOYMENT_URL || 'https://4gh0rn.github.io' }}
+          DEPLOYMENT_BRANCH: ${{ secrets.DEPLOYMENT_BRANCH || 'gh-pages' }}
+          BASE_URL: ${{ secrets.BASE_URL || '/' }}
+          ORGANIZATION_NAME: ${{ secrets.ORGANIZATION_NAME || '4gh0rn' }}
+          PROJECT_NAME: ${{ secrets.PROJECT_NAME || 'dev-blog' }}
+
+      - name: Build website
+        run: npm run build
+
+      - name: Upload Build Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
