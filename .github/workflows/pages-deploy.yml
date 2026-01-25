@@ -45,8 +45,8 @@ jobs:
           DEPLOYMENT_URL: ${{ secrets.DEPLOYMENT_URL || 'https://4gh0rn.github.io' }}
           DEPLOYMENT_BRANCH: ${{ secrets.DEPLOYMENT_BRANCH || 'gh-pages' }}
           BASE_URL: ${{ secrets.BASE_URL || '/' }}
-          ORGANIZATION_NAME: ${{ secrets.ORGANIZATION_NAME || '4gh0rn' }}
-          PROJECT_NAME: ${{ secrets.PROJECT_NAME || 'dev-blog' }}
+          GITHUB_ORG: ${{ secrets.GITHUB_ORG || '4gh0rn' }}
+          GITHUB_PROJECT: ${{ secrets.GITHUB_PROJECT || 'dev-blog' }}
 
       - name: Upload Build Artifact
         if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
