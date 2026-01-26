@@ -188,6 +188,9 @@ graph TB
     G --> G1[Privilege Escalation]
 ```
 
+> [!NOTE]
+> **Complete Challenge List**: This project includes documentation for **9 security challenges** covering various OWASP Top 10 categories. For a complete list of all challenges with detailed documentation, see the [Challenges Overview](https://github.com/4gh0rn/juice-shop-challange#challenges-overview) in the repository.
+
 ## Key Learning Outcomes
 
 ### Technical Skills
