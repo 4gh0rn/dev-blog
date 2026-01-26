@@ -348,7 +348,6 @@ Meta Geo Stalking - Extracting location data from image metadata.
 
 **Documentation:**
 - Step-by-step reproduction
-- Video demonstrations
 - Mitigation strategies
 - Impact assessment
 
@@ -364,7 +363,6 @@ Meta Geo Stalking - Extracting location data from image metadata.
 - **Reproducible Steps**: Clear, step-by-step instructions
 - **Impact Assessment**: Document business and technical impact
 - **Mitigation Strategies**: Provide defensive recommendations
-- **Video Demonstrations**: Visual proof of exploitation
 
 ### Learning Approach
 - **Understand Before Exploiting**: Learn how vulnerabilities work
