@@ -85,6 +85,20 @@ const projects: Project[] = [
     githubLink: "https://github.com/brsksh/llmsh",
     skills: ["Python", "Shell Scripting", "zsh", "LLM Integration", "Ollama", "fzf", "API Design", "Terminal Tools"],
     imageUrl: "/img/projects/llmsh.png"
+  },
+  {
+    title: "Security Exploits Research",
+    description: "Security research and proof-of-concept development for CVE vulnerabilities. Analysis and exploitation of CVE-2023-32784 (KeePass Master Password Leakage) with memory dump analysis and intelligent brute-force techniques.",
+    docLink: "/docs/projects/exploits-research",
+    skills: ["Security Research", "CVE Analysis", "Exploit Development", "Memory Analysis", "Python", "Penetration Testing", "Brute-Force", "Security Tools"],
+    imageUrl: "/img/projects/exploits-research.png"
+  },
+  {
+    title: "Security Tools Suite",
+    description: "Collection of Python security tools for hash cracking (HashBreaker), SSH brute-forcing (ForcePass), and PDF metadata management (FakeMetadata). Practical tools for authorized penetration testing and privacy protection.",
+    docLink: "/docs/projects/security-tools",
+    skills: ["Python", "Hash Cracking", "SSH Testing", "PDF Metadata", "Security Tools", "Penetration Testing", "Privacy Protection", "CLI Tools"],
+    imageUrl: "/img/projects/security-tools.png"
   }
 ];
 
