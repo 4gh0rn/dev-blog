@@ -151,6 +151,7 @@ graph LR
     B[Runtime Stage] --> B1[Nginx Base Image]
     B1 --> B2[Copy Built Files]
     B2 --> B3[Serve Static Files]
+    B3 --> B4[Note: nginx:alpine runs as root by default]
     
     A2 --> B2
 ```
@@ -319,16 +320,10 @@ graph LR
 - **Environment-Based Security**: Different configs for dev/prod
 - **Secret Management**: Secure handling of sensitive data
 
-### Best Practices
-- **Non-Root Containers**: Running containers as non-root users
-- **Health Checks**: Monitoring container and application health
-- **Restart Policies**: Automatic container recovery
-- **Configuration Management**: Environment variables for all configs
-
 ## Best Practices
 
 ### Container Security
-- **Non-Root Users**: Containers run as non-root users
+- **Non-Root Users**: Backend container runs as non-root user (`conduit`). Frontend uses `nginx:alpine` which runs as root by default (consider using `nginxinc/nginx-unprivileged` for production)
 - **Minimal Base Images**: Use slim/alpine images when possible
 - **Secret Management**: All secrets via environment variables
 - **Regular Updates**: Keep base images and dependencies updated
