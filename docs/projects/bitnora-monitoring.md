@@ -204,13 +204,6 @@ graph TB
     H --> L[Webhooks]
 ```
 
-**Service Components:**
-- **Frontend**: React SPA on port 3000
-- **Backend API**: Go REST API on port 8080
-- **Worker Service**: Background jobs on port 8081
-- **Database**: PostgreSQL with admin on port 8090
-- **Email Testing**: MailHog on port 8025
-
 ### Multi-Tenant Security
 
 **Row-Level Security (RLS):**
