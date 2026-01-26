@@ -1,6 +1,6 @@
 # Minecraft Server
 
-Learn how to host and operate your own game server. Understand the associated tasks and responsibilities using the popular game classic "Minecraft" as an example. Configure your server and world exactly as you like, with or without mods.
+Learn how to host and operate your own game server. Understand the associated tasks and responsibilities using the popular game classic "Minecraft" as an example. Configure your server and world exactly as you like. Mods can be added manually to the volume, but are not automatically managed by this setup.
 
 import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
 
@@ -19,8 +19,9 @@ View the complete Minecraft server setup and Docker configuration on GitHub
 - **Configuration Management**: Configure server and world settings
 - **Containerization**: Package server in container for easy deployment
 - **Operations**: Learn server management, monitoring, and maintenance
+- **Automated Deployment**: Optional GitHub Actions workflow for self-hosted runner deployment
 
-Configure your server and world exactly as you like, with or without mods.
+Configure your server and world exactly as you like. Mods can be added manually to the volume, but are not automatically managed by this setup.
 
 ## Prerequisites
 
@@ -33,6 +34,7 @@ Configure your server and world exactly as you like, with or without mods.
 - **Docker**: Containerization platform
 - **Docker Compose**: Container orchestration tool
 - **Minecraft Java Edition**: For connecting to server (optional, for testing)
+- **Java 21**: Server runs on Java 21 (eclipse-temurin:21-jdk) - included in container
 
 ### System Requirements
 - Operating system with Docker support
@@ -154,7 +156,7 @@ graph TB
     E[minecraft-data Volume] --> E1[World Files]
     E --> E2[server.properties]
     E --> E3[Logs]
-    E --> E4[Plugins/Mods]
+    E --> E4[Plugins/Mods (manual)]
 ```
 
 **Volume Benefits:**
@@ -261,7 +263,7 @@ graph TB
 - **MEMORY_MAX**: Maximum heap size (e.g., 2G)
 - **Player Count**: More players need more memory
 - **World Size**: Larger worlds require more memory
-- **Plugins/Mods**: Additional memory for mods
+- **Plugins/Mods**: Additional memory needed if manually added mods/plugins
 
 ## Learning Outcomes
 
@@ -296,6 +298,7 @@ graph TB
 - **Online Mode**: Enable for production (requires Mojang authentication)
 - **Backup Strategy**: Regular backups of world data volume
 - **Version Management**: Keep server version updated
+- **Deployment**: Optional GitHub Actions workflow available for self-hosted runner deployment
 
 ### Security
 - **Online Mode**: Enable `ONLINE_MODE=true` for authentication
@@ -320,7 +323,7 @@ graph TB
 ### Server Won't Start
 - Check logs: `docker compose logs mc-server`
 - Verify EULA is accepted: `EULA=true` in environment
-- Check Java version compatibility
+- Check Java version compatibility (server uses Java 21)
 - Ensure sufficient memory allocated
 
 ### Connection Issues
@@ -328,6 +331,7 @@ graph TB
 - Check firewall rules
 - Verify `ONLINE_MODE` setting matches authentication needs
 - Check server logs for connection errors
+- Use `mcstatus` tool to check server status: `mcstatus <host>:<port> status`
 
 ### Performance Issues
 - Increase `MEMORY_MAX` if server is slow
@@ -347,3 +351,4 @@ graph TB
 - [Docker Documentation](https://docs.docker.com/)
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
 - [Minecraft Server Properties](https://minecraft.fandom.com/wiki/Server.properties)
+- [mcstatus Tool](https://github.com/py-mine/mcstatus) - Check server status programmatically
