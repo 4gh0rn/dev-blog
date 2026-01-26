@@ -18,8 +18,8 @@ Learn to build **enterprise-grade monitoring systems** with modern technologies 
 ### Required Knowledge
 - Understanding of monitoring and observability concepts
 - Basic knowledge of Go and React
-- Familiarity with PostgreSQL and Redis
-- Understanding of REST APIs and JWT authentication
+- Familiarity with PostgreSQL
+- Understanding of REST APIs and authentication
 - Basic knowledge of Docker and Docker Compose
 
 ### Required Software
@@ -171,11 +171,9 @@ graph TB
 **Backend:**
 - **Go**: High-performance backend with Fiber framework
 - **PostgreSQL**: Database with Row-Level Security
-- **Redis**: Session management and rate limiting
 
 **Frontend:**
 - **React**: Modern UI with React Router
-- **TypeScript**: Type-safe development
 - **SPA Mode**: Single-page application architecture
 
 **Worker Service:**
@@ -194,17 +192,16 @@ graph TB
 graph TB
     A[Frontend] --> B[Backend API]
     B --> C[PostgreSQL]
-    B --> D[Redis]
-    B --> E[Worker Service]
+    B --> D[Worker Service]
     
-    E --> F[Monitoring Checks]
-    E --> G[Security Scans]
-    E --> H[Ollama AI]
+    D --> E[Monitoring Checks]
+    D --> F[Security Scans]
+    D --> G[Ollama AI]
     
-    I[Alert System] --> J[Email]
-    I --> K[Slack]
-    I --> L[Telegram]
-    I --> M[Webhooks]
+    H[Alert System] --> I[Email]
+    H --> J[Slack]
+    H --> K[Telegram]
+    H --> L[Webhooks]
 ```
 
 **Service Components:**
@@ -223,10 +220,9 @@ graph TB
 - Secure by default
 
 **Authentication:**
-- JWT-based authentication
+- Token-based authentication
 - Token refresh mechanism
 - 2FA support
-- Rate limiting
 
 ## Learning Outcomes
 

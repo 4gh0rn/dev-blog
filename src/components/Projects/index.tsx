@@ -104,7 +104,7 @@ const projects: Project[] = [
     title: "Monitoring Platform",
     description: "Modern multi-tenant monitoring platform for comprehensive infrastructure monitoring, security scanning, and alerting. Built with Go, React, and PostgreSQL with real-time dashboards, multi-channel alerts, and AI-powered security analysis.",
     docLink: "/docs/projects/bitnora-monitoring",
-    skills: ["Go", "React", "PostgreSQL", "Redis", "Docker", "Multi-Tenant", "Security Scanning", "Monitoring", "Alerting", "Row-Level Security"],
+    skills: ["Go", "React", "PostgreSQL", "Docker", "Multi-Tenant", "Security Scanning", "Monitoring", "Alerting", "2FA", "CI/CD", "REST API", "Background Jobs", "Row-Level Security"],
     imageUrl: "/img/projects/monitoring-platform.png"
   }
 ];

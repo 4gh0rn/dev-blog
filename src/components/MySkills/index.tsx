@@ -33,7 +33,7 @@ const skills: Skill[] = [
     name: "Git",
     description: "Version control system for tracking changes in code and collaborative development.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
-    usedIn: ["V-Server Setup", "Baby Tools Shop", "Truck Signs API", "Juice Shop Meister", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment"]
+    usedIn: ["V-Server Setup", "Baby Tools Shop", "Truck Signs API", "Juice Shop Meister", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "NGINX",
@@ -45,19 +45,19 @@ const skills: Skill[] = [
     name: "Web Development",
     description: "Building modern web applications with frontend and backend technologies.",
     learnedFrom: "DevSecOps Course - Baby Tools Shop Project",
-    usedIn: ["Baby Tools Shop", "WordPress"]
+    usedIn: ["Baby Tools Shop", "WordPress", "Monitoring Platform"]
   },
   {
     name: "Database",
     description: "Designing and managing databases for storing and retrieving application data.",
     learnedFrom: "DevSecOps Course - Baby Tools Shop Project",
-    usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container"]
+    usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container", "Monitoring Platform"]
   },
   {
     name: "Backend Development (REST APIs)",
     description: "Server-side development for handling business logic, data processing, and creating RESTful APIs for application communication.",
     learnedFrom: "DevSecOps Course - Truck Signs API Project",
-    usedIn: ["Baby Tools Shop", "Truck Signs API", "Conduit Container"]
+    usedIn: ["Baby Tools Shop", "Truck Signs API", "Conduit Container", "Monitoring Platform"]
   },
   {
     name: "Web Security (OWASP, Penetration Testing)",
@@ -75,25 +75,25 @@ const skills: Skill[] = [
     name: "Docker",
     description: "Containerization platform for packaging and deploying applications in isolated environments.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
-    usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment"]
+    usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "CI/CD & Deployment",
     description: "Continuous Integration and Continuous Deployment pipelines for automated software delivery and production deployment strategies.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
-    usedIn: ["Conduit Container", "Conduit Deployment"]
+    usedIn: ["Conduit Container", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "Container Orchestration",
     description: "Managing and coordinating multiple containers for scalable application deployment.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
-    usedIn: ["Baby Tools Shop", "WordPress", "Conduit Container"]
+    usedIn: ["Baby Tools Shop", "WordPress", "Conduit Container", "Monitoring Platform"]
   },
   {
     name: "DevOps",
     description: "Practices combining software development and IT operations for faster delivery.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
-    usedIn: ["Conduit Container", "Conduit Deployment"]
+    usedIn: ["Conduit Container", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "GitHub Actions",
@@ -124,6 +124,54 @@ const skills: Skill[] = [
     description: "Integrating Large Language Models into workflows and tools. Building AI-powered applications, natural language interfaces, and intelligent automation.",
     learnedFrom: "Personal Project - llmsh",
     usedIn: ["llmsh"]
+  },
+  {
+    name: "Go",
+    description: "Go programming language for building high-performance backend services, REST APIs, and concurrent applications. Using Fiber framework for web development.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
+  },
+  {
+    name: "React",
+    description: "React framework for building modern, interactive user interfaces with component-based architecture and real-time updates.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
+  },
+  {
+    name: "PostgreSQL",
+    description: "PostgreSQL database administration with advanced features including Row-Level Security for multi-tenant applications.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
+  },
+  {
+    name: "Multi-Tenant Architecture",
+    description: "Designing and implementing multi-tenant systems with complete data isolation using Row-Level Security and tenant-aware application logic.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
+  },
+  {
+    name: "Infrastructure Monitoring",
+    description: "Building comprehensive monitoring solutions for infrastructure, services, and applications with real-time dashboards and alerting.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
+  },
+  {
+    name: "Security Scanning & Assessment",
+    description: "Implementing automated security scanning for SSL/TLS, security headers, secrets detection, and vulnerability assessment.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
+  },
+  {
+    name: "Two-Factor Authentication (2FA)",
+    description: "Implementing two-factor authentication using TOTP for enhanced security in web applications.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
+  },
+  {
+    name: "Background Job Processing",
+    description: "Designing and implementing background job processing systems for asynchronous task execution and queue management.",
+    learnedFrom: "Personal Project - Monitoring Platform",
+    usedIn: ["Monitoring Platform"]
   }
 ];
 
