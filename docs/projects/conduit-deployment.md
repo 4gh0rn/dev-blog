@@ -84,8 +84,8 @@ graph TB
     B --> B2[Automated Testing]
     
     C --> C1[Secret Management]
-    C --> C2[Security Scanning]
-    C --> C3[Access Control]
+    C --> C2[Access Control]
+    C --> C3[Configuration Validation]
     
     D --> D1[Automated Deployment]
     D --> D2[Monitoring]
@@ -138,25 +138,26 @@ flowchart TD
     A[Code Push] --> B[GitHub Actions Trigger]
     B --> C[Build Backend Image]
     B --> D[Build Frontend Image]
-    C --> E[Security Scan]
+    C --> E[Push to GHCR]
     D --> E
-    E --> F[Push to GHCR]
-    F --> G[Deploy Job]
-    G --> H[SSH to Server]
-    H --> I[Pull Images]
-    I --> J[Start Containers]
-    J --> K[Health Check]
-    K --> L{Healthy?}
-    L -->|Yes| M[Deployment Success]
-    L -->|No| N[Deployment Failed]
+    E --> F[Deploy Job]
+    F --> G[SSH to Server]
+    G --> H[Pull Images]
+    H --> I[Start Containers]
+    I --> J[Health Check]
+    J --> K{Healthy?}
+    K -->|Yes| L[Deployment Success]
+    K -->|No| M[Deployment Failed]
 ```
 
 **Pipeline Stages:**
 1. **Build**: Create container images in CI environment
-2. **Security**: Scan images for vulnerabilities
-3. **Push**: Upload images to container registry
-4. **Deploy**: Pull and deploy on production server
-5. **Verify**: Health checks ensure deployment success
+2. **Push**: Upload images to container registry
+3. **Deploy**: Pull and deploy on production server
+4. **Verify**: Health checks ensure deployment success
+
+> [!NOTE]
+> **Security Scanning**: While security scanning is a DevSecOps best practice, it is not currently implemented in this workflow. Consider adding tools like Trivy, Snyk, or Docker Scout for vulnerability scanning.
 
 ### Build in CI, Not on Server
 
@@ -318,14 +319,14 @@ graph TB
 ```mermaid
 graph TB
     A[Code Push] --> B[Build]
-    B --> C[Security Scan]
-    C --> D{Scan Pass?}
-    D -->|No| E[Fail Build]
-    D -->|Yes| F[Push to Registry]
-    F --> G[Deploy]
-    G --> H[Secret Validation]
-    H --> I{Secrets Valid?}
-    I -->|No| J[Fail Deployment]
+    B --> C[Push to Registry]
+    C --> D[Deploy]
+    D --> E[Secret Validation]
+    E --> F{Secrets Valid?}
+    F -->|No| G[Fail Deployment]
+    F -->|Yes| H[Health Check]
+    H --> I{Healthy?}
+    I -->|No| J[Deployment Failed]
     I -->|Yes| K[Deploy Success]
 ```
 
@@ -334,6 +335,7 @@ graph TB
 - **Environment Variables**: All config via secure variables
 - **Access Control**: GitHub Environments for deployment protection
 - **Audit Trail**: GitHub tracks all deployment actions
+- **Note**: Security scanning (e.g., Trivy, Snyk) is recommended but not currently implemented
 
 ## Learning Outcomes
 
@@ -345,21 +347,15 @@ graph TB
 
 ### DevSecOps Principles
 - **Secret Management**: Secure handling of sensitive data
-- **Security Scanning**: Automated vulnerability detection
 - **Access Control**: Least privilege, environment protection
-- **Security as Code**: Security checks in pipeline
+- **Security as Code**: Security checks in pipeline (secret validation, health checks)
+- **Note**: Automated vulnerability scanning (e.g., Trivy, Snyk) is recommended but not currently implemented
 
 ### Deployment Automation
 - **SSH Deployment**: Remote server deployment via SSH
 - **Container Registry**: Image storage and distribution
 - **Health Checks**: Automated deployment verification
 - **Error Handling**: Fail-fast on deployment errors
-
-### Best Practices
-- **Build in CI**: Don't build on production server
-- **Image Tagging**: Version control for container images
-- **Secret Rotation**: Easy secret updates without code changes
-- **Deployment Verification**: Health checks ensure success
 
 ## Best Practices
 
