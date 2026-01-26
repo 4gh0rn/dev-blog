@@ -99,6 +99,13 @@ const projects: Project[] = [
     docLink: "/docs/projects/security-tools",
     skills: ["Python", "Hash Cracking", "SSH Testing", "PDF Metadata", "Security Tools", "Penetration Testing", "Privacy Protection", "CLI Tools"],
     imageUrl: "/img/projects/security-tools.png"
+  },
+  {
+    title: "Monitoring Platform",
+    description: "Modern multi-tenant monitoring platform for comprehensive infrastructure monitoring, security scanning, and alerting. Built with Go, React, and PostgreSQL with real-time dashboards, multi-channel alerts, and AI-powered security analysis.",
+    docLink: "/docs/projects/bitnora-monitoring",
+    skills: ["Go", "React", "PostgreSQL", "Redis", "Docker", "Multi-Tenant", "Security Scanning", "Monitoring", "Alerting", "Row-Level Security"],
+    imageUrl: "/img/projects/monitoring-platform.png"
   }
 ];
 
