@@ -2,7 +2,7 @@
 
 Operate your first own blog website. Learn how to configure and operate your blog application quickly, securely, and simply, without lengthy manual installation. Reproduce the setup as often as needed with minimal adjustments.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/wp-blog"

@@ -2,7 +2,7 @@
 
 Containerize an e-commerce application for baby products. Discover how systems can be operated in isolated environments and understand the advantages this provides for scaling and operating systems.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/baby-tools-shop"

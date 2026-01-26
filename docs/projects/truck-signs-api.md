@@ -2,7 +2,7 @@
 
 Containerize a REST API and ensure the application can be operated reproducibly, isolated, and securely. Learn to apply container fundamentals and configure them properly.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/truck_signs_api"

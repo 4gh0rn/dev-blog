@@ -2,7 +2,7 @@
 
 Design and implement a workflow for automatic application rollout of the Conduit application. The workflow should be implemented following DevSecOps principles.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/conduit-container"

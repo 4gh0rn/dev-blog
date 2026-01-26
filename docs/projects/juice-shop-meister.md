@@ -2,7 +2,7 @@
 
 Security-focused learning project using OWASP Juice Shop to understand web application vulnerabilities, penetration testing techniques, and security best practices.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/juice-shop-challange"

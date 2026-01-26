@@ -2,7 +2,7 @@
 
 Complete Ubuntu server configuration - from manual steps to Infrastructure as Code with Ansible, including secure secret management with Ansible Vault.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/v-server-setup"

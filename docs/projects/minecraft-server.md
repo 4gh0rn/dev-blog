@@ -2,7 +2,7 @@
 
 Learn how to host and operate your own game server. Understand the associated tasks and responsibilities using the popular game classic "Minecraft" as an example. Configure your server and world exactly as you like. Mods can be added manually to the volume, but are not automatically managed by this setup.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/mc-server"

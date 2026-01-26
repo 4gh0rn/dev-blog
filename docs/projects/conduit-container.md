@@ -2,7 +2,7 @@
 
 Package both a backend and frontend application into appropriate container images and configure them for joint operation in the cloud. Consolidate your knowledge of containers, network technology, and network security.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/4gh0rn/conduit-container"

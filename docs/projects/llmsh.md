@@ -2,7 +2,7 @@
 
 Build a zsh plugin that transforms natural language descriptions into ready-to-run shell commands using LLMs. Learn to integrate AI capabilities into terminal workflows, design clean plugin architectures, and create tools that enhance productivity without replacing user control.
 
-import GithubLinkAdmonition from '@site/src/components/GithubLinkAdmonition';
+import GithubLinkAdmonition from '@site/src/components/github-link-admonition';
 
 <GithubLinkAdmonition 
     link="https://github.com/brsksh/llmsh"
