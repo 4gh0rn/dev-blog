@@ -153,16 +153,24 @@ graph TB
     B --> B1[Port 8080 Exposed]
     B --> B2[WordPress Files Volume]
     B --> B3[Environment Config]
+    B --> B4[wordpress:6.5-apache]
     
     C --> C1[Internal Port 3306]
     C --> C2[Database Volume]
     C --> C3[Database Credentials]
+    C --> C4[mariadb:10.6]
     
     B -.->|Hostname: db| C
     
     D[wp_net Network] --> B
     D --> C
 ```
+
+**Container Details:**
+- **WordPress**: Official WordPress image (6.5-apache) running as `wp_blog_app`
+- **Database**: MariaDB 10.6 running as `wp_blog_db`
+- **Volumes**: `wp_data` for WordPress files, `db_data` for database
+- **Network**: `wp_net` bridge network for service communication
 
 **Service Communication:**
 - WordPress connects to database using hostname `db`
@@ -253,7 +261,6 @@ sequenceDiagram
 - `depends_on` ensures database starts before WordPress
 - WordPress waits for database to be ready
 - Automatic retry on connection failure
-- Health checks ensure services are ready
 
 ### Network Architecture
 
@@ -320,12 +327,6 @@ graph LR
 - **Database Management**: MariaDB container configuration
 - **Data Persistence**: Understanding volume-based storage
 - **Backup Strategies**: Volume backup and restore
-
-### Best Practices
-- **Secret Management**: Environment variables for sensitive data
-- **Service Isolation**: Network isolation for security
-- **Restart Policies**: Automatic container recovery
-- **Configuration Management**: Centralized configuration via `.env`
 
 ## Best Practices
 
