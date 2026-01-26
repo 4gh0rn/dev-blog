@@ -14,7 +14,8 @@ export default function Portfolio(): JSX.Element {
     <Layout
       title="Portfolio"
       description="My Portfolio - Projects and skills from the DevSecOps course"
-      wrapperClassName={styles.portfolioLayout}>
+      wrapperClassName={styles.portfolioLayout}
+      noFooter={true}>
       <Header />
       <main className={styles.portfolioMain}>
         <Hero />
