@@ -189,7 +189,7 @@ graph TB
 ```
 
 > [!NOTE]
-> **Complete Challenge List**: This project includes documentation for **9 security challenges** covering various OWASP Top 10 categories. For a complete list of all challenges with detailed documentation, see the [Challenges Overview](https://github.com/4gh0rn/juice-shop-challange#challenges-overview) in the repository.
+> **Complete Challenge List**: This project includes **9 security challenges**. See the [Challenges Overview](https://github.com/4gh0rn/juice-shop-challange#challenges-overview) in the repository for details.
 
 ## Key Learning Outcomes
 

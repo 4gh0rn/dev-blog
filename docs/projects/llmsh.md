@@ -57,11 +57,6 @@ graph LR
     B --> C[Command Suggestions]
     C --> D[User Review]
     D --> E[Execute Command]
-    
-    F[Benefits] --> F1[Faster Workflow]
-    F --> F2[Learn Syntax]
-    F --> F3[Discover Commands]
-    F --> F4[Maintain Control]
 ```
 
 **Key Concepts:**
@@ -69,29 +64,6 @@ graph LR
 - **Code Generation**: LLMs excel at generating syntactically correct code
 - **User Review**: Always review suggestions before execution
 - **Workflow Integration**: Seamless integration with existing terminal tools
-
-### Why LLMs for Command Generation?
-
-Large Language Models are well-suited for command generation:
-
-```mermaid
-graph TB
-    A[LLM Advantages] --> B[Code Training]
-    A --> C[Context Understanding]
-    A --> D[Multiple Suggestions]
-    A --> E[Syntax Knowledge]
-    
-    B --> B1[Trained on Code]
-    C --> C1[Understands Intent]
-    D --> D1[Alternative Approaches]
-    E --> E1[Correct Syntax]
-```
-
-**Why It Works:**
-- **Vast Training Data**: LLMs trained on millions of code examples
-- **Context Awareness**: Understands file operations, system administration, etc.
-- **Multiple Alternatives**: Can suggest different approaches to the same task
-- **Syntax Knowledge**: Knows correct syntax for various commands and flags
 
 ### Plugin Architecture
 
@@ -110,7 +82,7 @@ graph TB
 
 **Architecture Components:**
 - **zsh Plugin**: Shell integration and keybinding
-- **Python Client**: Handles LLM API communication
+- **Python Client**: Handles LLM API communication with bearer token support (including token-based access control via reverse proxies like Nginx)
 - **fzf Integration**: Fuzzy selection of command suggestions
 - **Configuration**: XDG-based config system
 
@@ -119,21 +91,6 @@ graph TB
 ### Terminal Workflow Friction
 
 Working in the terminal often involves friction when constructing commands:
-
-```mermaid
-graph LR
-    A[Need Command] --> B[Remember Syntax?]
-    B -->|No| C[Search History]
-    C -->|Fail| D[Search Online]
-    D -->|Find| E[Construct Command]
-    E --> F[Test & Refine]
-    
-    G[Problems] --> G1[Time-Consuming]
-    G --> G2[Breaks Flow]
-    G --> G3[Context Switching]
-```
-
-**Common Issues:**
 - **Time-Consuming**: Searching for command syntax takes time
 - **Breaks Flow**: Interrupts workflow to look up commands
 - **Context Switching**: Need to leave terminal to search online
@@ -174,56 +131,19 @@ sequenceDiagram
 ### Design Decisions
 
 **Ollama Compatibility** - Why Ollama-compatible APIs?
-
-```mermaid
-graph TB
-    A[Ollama Benefits] --> B[Local Execution]
-    A --> C[Data Sovereignty]
-    A --> D[Simple API]
-    A --> E[Open Source]
-    
-    B --> B1[Fast Responses]
-    C --> C1[Full Control]
-    D --> D1[Easy Integration]
-    E --> E1[No Vendor Lock-in]
-```
-
-**Key Benefits:**
 - **Local Execution**: Run models locally for privacy and speed
 - **Data Sovereignty**: Full control over data, no external services
 - **Simple API**: Easy to integrate, well-documented
 - **Open Source**: No vendor lock-in, customizable
+- **Token Authentication**: Bearer token authentication is supported, including token-based access control via reverse proxies (e.g., Nginx) before the Ollama endpoint
 
 **fzf Integration** - Why fuzzy finder?
-
-```mermaid
-graph LR
-    A[Command Suggestions] --> B[fzf Display]
-    B --> C[Fuzzy Search]
-    C --> D[Keyboard Navigation]
-    D --> E[Visual Feedback]
-```
-
-**Benefits:**
 - **Fuzzy Search**: Quickly find the right command
 - **Keyboard Navigation**: No mouse needed
 - **Visual Feedback**: Clear interface for selection
 - **Familiar**: Terminal users already know fzf
 
 **XDG Config** - Why XDG directory standard?
-
-```mermaid
-graph TB
-    A[XDG Config] --> B[Clean Separation]
-    A --> C[Portable]
-    A --> D[Version Control]
-    
-    B --> B1[Not in .zshrc]
-    C --> C1[Easy Migration]
-    D --> D1[Track Changes]
-```
-
-**Benefits:**
 - **Clean Separation**: Config separate from shell files
 - **Portable**: Easy to share and migrate
 - **Version Control**: Can track config changes
@@ -233,27 +153,8 @@ graph TB
 
 ### API Client Design
 
-The Python API client handles LLM communication:
-
-```mermaid
-graph TB
-    A[Python Client] --> B[Request Builder]
-    A --> C[HTTP Client]
-    A --> D[Response Parser]
-    A --> E[Error Handler]
-    
-    B --> B1[Natural Language]
-    B --> B2[Model Config]
-    C --> C1[Bearer Token]
-    C --> C2[Timeout]
-    D --> D1[JSON Parse]
-    D --> D2[Extract Commands]
-    E --> E1[Log Errors]
-    E --> E2[User Messages]
-```
-
-**Client Features:**
-- **Bearer Token Support**: Secure authentication for remote instances
+The Python API client handles LLM communication with:
+- **Bearer Token Support**: Secure authentication for remote instances, including token-based access control via reverse proxies (e.g., Nginx) before the Ollama endpoint
 - **Configurable Timeouts**: Handle slow API responses
 - **Error Handling**: Comprehensive error messages
 - **Multiple Suggestions**: Request multiple command alternatives
@@ -261,17 +162,6 @@ graph TB
 ### Shell Integration
 
 The zsh plugin provides seamless shell integration:
-
-```mermaid
-graph LR
-    A[Keybinding] --> B[Capture Buffer]
-    B --> C[Call Python]
-    C --> D[Get Suggestions]
-    D --> E[Display in fzf]
-    E --> F[Insert Command]
-```
-
-**Integration Features:**
 - **Keybinding**: Customizable hotkey (default Ctrl+O)
 - **Buffer Capture**: Captures current command line
 - **Non-Blocking**: Doesn't block shell during API call
@@ -279,22 +169,7 @@ graph LR
 
 ### Configuration System
 
-Configuration uses XDG directory standard:
-
-```mermaid
-graph TB
-    A[XDG Config] --> B[config.zsh]
-    B --> C[Environment Variables]
-    
-    C --> C1[LLMSH_URL]
-    C --> C2[LLMSH_MODEL]
-    C --> C3[LLMSH_TOKEN]
-    C --> C4[LLMSH_HOTKEY]
-    C --> C5[LLMSH_COMMAND_COUNT]
-    C --> C6[LLMSH_TIMEOUT]
-```
-
-**Configuration Options:**
+Configuration uses XDG directory standard with environment variables:
 - **LLMSH_URL**: Ollama endpoint URL
 - **LLMSH_MODEL**: Model name (e.g., llama3)
 - **LLMSH_TOKEN**: Optional bearer token
@@ -304,62 +179,24 @@ graph TB
 
 ## Learning Outcomes
 
-### LLM Integration
-- **API Design**: Design clean APIs for LLM communication
-- **Error Handling**: Handle API errors gracefully
-- **Authentication**: Implement bearer token authentication
-- **Response Processing**: Parse and extract useful information from LLM responses
-
-### Terminal Tool Development
-- **Plugin Architecture**: Build modular, maintainable plugins
-- **Shell Integration**: Integrate tools seamlessly into shell workflows
-- **User Experience**: Design intuitive terminal interfaces
-- **Tool Composition**: Combine existing tools (fzf, zsh) effectively
-
-### Python Development
-- **CLI Tools**: Build command-line tools in Python
-- **HTTP Clients**: Make API requests with proper error handling
-- **Configuration Management**: Handle configuration files and environment variables
-- **Logging**: Implement comprehensive logging for debugging
+### Technical Skills
+- **LLM Integration**: Design clean APIs for LLM communication, implement bearer token authentication
+- **Terminal Tool Development**: Build modular plugins, integrate tools seamlessly into shell workflows
+- **Python Development**: Build CLI tools, make API requests with proper error handling
+- **Configuration Management**: Handle configuration files and environment variables using XDG standards
 
 ### Best Practices
 - **User Control**: Always allow user review before execution
-- **Configuration**: Use standard configuration locations (XDG)
-- **Documentation**: Provide clear installation and usage instructions
-- **Error Messages**: Provide helpful, actionable error messages
-
-## Best Practices
-
-### Security
-- **Review Commands**: Always review generated commands before execution
-- **Token Security**: Store tokens securely, not in shell history
-- **Local Models**: Use local models for sensitive operations
-- **Input Validation**: Validate user input before sending to API
-
-### User Experience
-- **Visual Feedback**: Show spinner during API calls
-- **Error Messages**: Provide clear, actionable error messages
-- **Configuration**: Make configuration easy and intuitive
-- **Documentation**: Provide comprehensive documentation
-
-### Code Quality
-- **Modular Design**: Separate concerns (API client, shell integration, config)
-- **Error Handling**: Comprehensive error handling throughout
-- **Logging**: Detailed logging for debugging
-- **Testing**: Test API client independently
-
-### Integration
-- **Tool Composition**: Leverage existing tools (fzf, zsh)
-- **Standards**: Follow XDG directory standards
-- **Compatibility**: Support Ollama-compatible APIs for flexibility
-- **Portability**: Make configuration portable across systems
+- **Security**: Review commands before execution, store tokens securely, use local models for sensitive operations
+- **Error Handling**: Provide helpful, actionable error messages
+- **Tool Composition**: Leverage existing tools (fzf, zsh) effectively
 
 ## Troubleshooting
 
 ### API Connection Issues
 - Verify Ollama endpoint URL is correct
 - Check network connectivity
-- Verify bearer token if using authenticated instance
+- Verify bearer token if using authenticated instance (including token-based access via reverse proxies)
 - Check API timeout settings
 
 ### Command Quality Issues
@@ -367,12 +204,6 @@ graph TB
 - Provide more context in description
 - Request multiple suggestions and compare
 - Review commands carefully before execution
-
-### Performance Issues
-- Use local Ollama instance for faster responses
-- Reduce number of suggestions requested
-- Increase timeout for slow connections
-- Consider caching common queries
 
 ### Integration Issues
 - Verify Oh-My-Zsh is installed
