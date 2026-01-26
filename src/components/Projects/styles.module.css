@@ -1,49 +1,79 @@
 .projectsSection {
   padding: var(--portfolio-section-padding) 0;
-  background-color: var(--ifm-background-surface-color); /* Same as MySkills - Slate 800 */
+  background: #2563EB; /* Blue background like Figma */
   margin-bottom: 0;
 }
 
+[data-theme='dark'] .projectsSection {
+  background: #1E40AF; /* Darker blue for dark mode */
+}
+
 .sectionTitle {
-  text-align: center;
+  text-align: left;
   font-size: var(--portfolio-h2-size);
   margin-bottom: 3rem;
-  color: var(--ifm-color-primary);
+  color: #FFFFFF;
   font-weight: 700;
   letter-spacing: var(--portfolio-letter-spacing);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
 }
 
 .projectsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: var(--portfolio-gap);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.featuredProjectContainer {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 .projectCard {
-  background-color: var(--ifm-card-background-color);
-  border: 1px solid var(--ifm-border-color);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--portfolio-border-radius-lg);
   padding: 0;
-  box-shadow: var(--portfolio-shadow-sm);
+  box-shadow: var(--portfolio-shadow-lg);
   transition: all var(--portfolio-transition-base) var(--portfolio-transition-timing);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  cursor: pointer;
 }
 
-/* Light mode: Cards are lighter than background */
-[data-theme='light'] .projectCard {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--portfolio-shadow-xl);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Dark mode: Cards are lighter than background */
-[data-theme='dark'] .projectCard {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.featuredCard {
+  max-width: 100%;
+}
+
+.featuredCard .projectImageContainer {
+  height: 300px;
+}
+
+.featuredCard .projectCardContent {
+  padding: 2.5rem;
+}
+
+.featuredCard .projectTitle {
+  font-size: 1.5rem;
+}
+
+.featuredCard .projectDescription {
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 .projectCard:hover {
@@ -79,18 +109,19 @@
 }
 
 .projectTitle {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin-bottom: 0.75rem;
-  color: var(--ifm-color-primary);
+  color: #FFFFFF;
   font-weight: 600;
 }
 
 .projectDescription {
-  color: var(--ifm-color-content-secondary);
-  line-height: 1.4;
+  color: #FFFFFF;
+  line-height: 1.6;
   margin-bottom: 1rem;
   flex-grow: 1;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 .projectSkills {
@@ -101,8 +132,8 @@
 }
 
 .skillTag {
-  background: var(--portfolio-gradient-primary);
-  color: var(--portfolio-text-on-gradient);
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
   padding: 0.375rem 0.875rem;
   border-radius: 16px;
   font-size: 0.75rem;
@@ -127,8 +158,39 @@
   transition: all var(--portfolio-transition-fast) var(--portfolio-transition-timing);
 }
 
-/* Project link buttons inherit from global button styles */
-/* No overrides needed - using global button system */
+/* Documentation button - white background, blue text (high contrast, good visibility) */
+.projectLink:global(.button--outline.button--primary),
+.projectLink:global(.button.button--outline.button--primary) {
+  background: #FFFFFF !important;
+  color: #2563EB !important;
+  border: 2px solid #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.projectLink:global(.button--outline.button--primary):hover,
+.projectLink:global(.button.button--outline.button--primary):hover {
+  background: #F0F4F8 !important;
+  color: #1D4ED8 !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+/* GitHub button - darker blue background, white text (different style, also high contrast) */
+.projectLink:global(.button--outline.button--secondary),
+.projectLink:global(.button.button--outline.button--secondary) {
+  background: #1E40AF !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+.projectLink:global(.button--outline.button--secondary):hover,
+.projectLink:global(.button.button--outline.button--secondary):hover {
+  background: #1E3A8A !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-1px);
+}
 
 .projectLink:hover {
   transform: translateY(-1px);
@@ -138,6 +200,7 @@
 @media (max-width: 996px) {
   .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
   }
 
   .sectionTitle {
@@ -151,6 +214,14 @@
   .projectCardContent {
     padding: 1.5rem;
   }
+
+  .featuredCard .projectImageContainer {
+    height: 250px;
+  }
+
+  .featuredCard .projectCardContent {
+    padding: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -160,6 +231,8 @@
 
   .projectsGrid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
   }
 
   .projectImageContainer {
@@ -175,8 +248,8 @@
   }
 
   .projectDescription {
-    font-size: 0.8rem;
-    line-height: 1.4;
+    font-size: 0.85rem;
+    line-height: 1.5;
   }
 
   .projectLinks {
@@ -187,6 +260,22 @@
   .projectLink {
     width: 100%;
     min-height: 48px;
+  }
+
+  .featuredCard .projectImageContainer {
+    height: 200px;
+  }
+
+  .featuredCard .projectCardContent {
+    padding: 1.5rem;
+  }
+
+  .featuredCard .projectTitle {
+    font-size: 1.25rem;
+  }
+
+  .featuredCard .projectDescription {
+    font-size: 0.95rem;
   }
 
   .skillTag {

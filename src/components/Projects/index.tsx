@@ -109,12 +109,39 @@ const projects: Project[] = [
   }
 ];
 
-function ProjectCard({ project }: { project: Project }): JSX.Element {
+function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }): JSX.Element {
   const imageUrl = useBaseUrl(project.imageUrl || '/img/docusaurus.png');
   const fallbackUrl = useBaseUrl('/img/docusaurus.png');
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    // Don't navigate if clicking on buttons
+    const target = e.target as HTMLElement;
+    if (target.closest('a') || target.closest('button')) {
+      return;
+    }
+    
+    // Navigate to documentation
+    if (project.docLink.startsWith('http')) {
+      window.open(project.docLink, '_blank');
+    } else {
+      window.location.href = project.docLink;
+    }
+  };
+
   return (
-    <div className={styles.projectCard}>
+    <div 
+      className={clsx(styles.projectCard, { [styles.featuredCard]: featured })}
+      onClick={handleCardClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleCardClick(e as any);
+        }
+      }}
+      aria-label={`View ${project.title} project`}
+    >
       {project.imageUrl && (
         <div className={styles.projectImageContainer}>
           <img 
@@ -134,13 +161,16 @@ function ProjectCard({ project }: { project: Project }): JSX.Element {
         <h3 className={styles.projectTitle}>{project.title}</h3>
         <p className={styles.projectDescription}>{project.description}</p>
         <div className={styles.projectSkills}>
-          {project.skills.map((skill, idx) => (
+          {project.skills.slice(0, 4).map((skill, idx) => (
             <span key={idx} className={styles.skillTag}>
               {skill}
             </span>
           ))}
+          {project.skills.length > 4 && (
+            <span className={styles.skillTag}>+{project.skills.length - 4}</span>
+          )}
         </div>
-        <div className={styles.projectLinks}>
+        <div className={styles.projectLinks} onClick={(e) => e.stopPropagation()}>
         {project.docLink.startsWith('http') ? (
           <Link
             href={project.docLink}
@@ -148,14 +178,14 @@ function ProjectCard({ project }: { project: Project }): JSX.Element {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Docs
+            Documentation
           </Link>
         ) : (
           <Link
             to={project.docLink}
             className={clsx('button button--outline button--primary', styles.projectLink)}
           >
-            Docs
+            Documentation
           </Link>
         )}
         {project.githubLink && (
@@ -178,7 +208,9 @@ export default function Projects(): JSX.Element {
   return (
     <section id="projects" className={styles.projectsSection}>
       <div className="container">
-        <h2 className={styles.sectionTitle}>Projects</h2>
+        <h2 className={styles.sectionTitle}>My Project Highlights</h2>
+        
+        {/* Grid with all projects */}
         <div className={styles.projectsGrid}>
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} />

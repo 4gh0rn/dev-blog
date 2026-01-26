@@ -21,38 +21,39 @@ export default function Contact({
   return (
     <section id="contact" className={styles.contactSection}>
       <div className="container">
-        <h2 className={styles.sectionTitle}>Contact</h2>
-        <div className={styles.contactContent}>
-          <div className={styles.contactMessage}>
-            {messageParagraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+        <div className={styles.contactLayout}>
+          <div className={styles.contactLeft}>
+            <h2 className={styles.sectionTitle}>Contact Me</h2>
+            <div className={styles.contactMessage}>
+              {messageParagraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
           </div>
-          <div className={styles.contactLinks}>
-            <a 
-              href={`mailto:${email}`}
-              className={clsx('button button--primary button--lg', styles.contactButton)}
-            >
-              Send Email
-            </a>
-            <a 
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={clsx('button button--secondary button--lg', styles.contactButton)}
-            >
-              GitHub
-            </a>
-            {linkedin && (
+          <div className={styles.contactRight}>
+            <p className={styles.contactGreeting}>Looking forward to hearing from you!</p>
+            <div className={styles.contactInfo}>
               <a 
-                href={linkedin}
+                href={`mailto:${email}`}
+                className={styles.contactLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={clsx('button button--secondary button--lg', styles.contactButton)}
               >
-                LinkedIn
+                <span className={styles.contactIcon}>✉</span>
+                <span>{email}</span>
               </a>
-            )}
+              {linkedin && (
+                <a 
+                  href={linkedin}
+                  className={styles.contactLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className={styles.contactIcon}>🔗</span>
+                  <span>Profile Page</span>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>

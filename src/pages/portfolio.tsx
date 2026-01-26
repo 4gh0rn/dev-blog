@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
 import Header from '@site/src/components/Header';
 import Hero from '@site/src/components/Hero';
@@ -10,6 +10,18 @@ import ScrollToTop from '@site/src/components/scroll-to-top';
 import styles from './portfolio.module.css';
 
 export default function Portfolio(): JSX.Element {
+  useEffect(() => {
+    // Set body background to dark on portfolio page
+    document.body.style.backgroundColor = '#1E293B';
+    document.documentElement.style.backgroundColor = '#1E293B';
+    
+    return () => {
+      // Reset on unmount
+      document.body.style.backgroundColor = '';
+      document.documentElement.style.backgroundColor = '';
+    };
+  }, []);
+
   return (
     <Layout
       title="Portfolio"

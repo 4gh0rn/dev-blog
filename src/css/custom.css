@@ -150,6 +150,37 @@
   }
 }
 
+/* Project Link Buttons - Different styles for Documentation and GitHub buttons */
+.projectsSection .projectLink.button--outline.button--primary,
+.projectsSection .projectLink.button.button--outline.button--primary {
+  background: #FFFFFF !important;
+  color: #2563EB !important;
+  border: 2px solid #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.projectsSection .projectLink.button--outline.button--primary:hover,
+.projectsSection .projectLink.button.button--outline.button--primary:hover {
+  background: #F0F4F8 !important;
+  color: #1D4ED8 !important;
+  border-color: #FFFFFF !important;
+}
+
+.projectsSection .projectLink.button--outline.button--secondary,
+.projectsSection .projectLink.button.button--outline.button--secondary {
+  background: #1E40AF !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+.projectsSection .projectLink.button--outline.button--secondary:hover,
+.projectsSection .projectLink.button.button--outline.button--secondary:hover {
+  background: #1E3A8A !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
 /* ============================================
    MERMAID DIAGRAM STYLING
    ============================================ */

@@ -1,24 +1,54 @@
 /* Portfolio Page Styles */
 
 .portfolioLayout {
-  /* Docusaurus navbar visible but behind portfolio header */
+  /* Remove any padding/margin from Docusaurus layout */
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: #1E293B !important;
+  min-height: 100vh;
 }
 
 .portfolioLayout :global(.navbar) {
-  /* Make Docusaurus navbar visible but behind portfolio header */
-  z-index: 999 !important; /* Lower than portfolio header (1000) */
-  opacity: 0.7 !important; /* Slightly transparent for "washed out" effect */
-  pointer-events: none !important; /* Prevent interaction with Docusaurus navbar */
-  transition: opacity 0.3s ease;
+  /* Hide Docusaurus navbar completely on portfolio page */
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.portfolioLayout :global(.main-wrapper) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: transparent !important;
+}
+
+.portfolioLayout :global(.main-wrapper > main) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: transparent !important;
+}
+
+/* Remove any white space at the top */
+.portfolioLayout :global(> *) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .portfolioMain {
-  /* Add padding-top to account for fixed header */
-  padding-top: 70px;
+  /* No padding-top - header is at the very top */
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Hero section should start right after header */
+.portfolioMain :global(#about-me) {
+  margin-top: 0;
+  padding-top: 90px; /* Space for fixed header + some breathing room */
 }
 
 @media (max-width: 480px) {
-  .portfolioMain {
-    padding-top: 64px;
+  .portfolioMain :global(#about-me) {
+    padding-top: 80px;
   }
 }

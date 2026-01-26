@@ -13,163 +13,190 @@ interface Skill {
 const skills: Skill[] = [
   {
     name: "Linux",
-    description: "Linux server administration and command line tools for managing Unix-based systems.",
+    icon: "🐧",
+    description: "Server administration and command line tools.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
     usedIn: ["V-Server Setup"]
   },
   {
     name: "Infrastructure as Code (Ansible)",
-    description: "Managing and provisioning infrastructure through machine-readable definition files using Ansible for automated server configuration and management.",
+    icon: "⚙️",
+    description: "Automated infrastructure provisioning and configuration.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
     usedIn: ["V-Server Setup"]
   },
   {
     name: "SSH",
-    description: "Secure Shell protocol for remote server access and secure communication.",
+    icon: "🔐",
+    description: "Secure remote server access and communication.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
     usedIn: ["V-Server Setup"]
   },
   {
     name: "Git",
-    description: "Version control system for tracking changes in code and collaborative development.",
+    icon: "📦",
+    description: "Version control and collaborative development.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
     usedIn: ["V-Server Setup", "Baby Tools Shop", "Truck Signs API", "Juice Shop Meister", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "NGINX",
-    description: "High-performance web server and reverse proxy for serving web applications.",
+    icon: "🌐",
+    description: "High-performance web server and reverse proxy.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
     usedIn: ["V-Server Setup"]
   },
   {
     name: "Web Development",
-    description: "Building modern web applications with frontend and backend technologies.",
+    icon: "💻",
+    description: "Building modern web applications.",
     learnedFrom: "DevSecOps Course - Baby Tools Shop Project",
     usedIn: ["Baby Tools Shop", "WordPress", "Monitoring Platform"]
   },
   {
     name: "Database",
-    description: "Designing and managing databases for storing and retrieving application data.",
+    icon: "🗄️",
+    description: "Database design and management.",
     learnedFrom: "DevSecOps Course - Baby Tools Shop Project",
     usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container", "Monitoring Platform"]
   },
   {
     name: "Backend Development (REST APIs)",
-    description: "Server-side development for handling business logic, data processing, and creating RESTful APIs for application communication.",
+    icon: "⚡",
+    description: "Server-side development and RESTful APIs.",
     learnedFrom: "DevSecOps Course - Truck Signs API Project",
     usedIn: ["Baby Tools Shop", "Truck Signs API", "Conduit Container", "Monitoring Platform"]
   },
   {
     name: "Web Security (OWASP, Penetration Testing)",
-    description: "Implementing security best practices, OWASP standards, and penetration testing methodologies to protect web applications from vulnerabilities.",
+    icon: "🛡️",
+    description: "Security best practices and penetration testing.",
     learnedFrom: "DevSecOps Course - Juice Shop Meister Project",
     usedIn: ["Juice Shop Meister"]
   },
   {
     name: "WordPress",
-    description: "Content management system for building and customizing websites and blogs.",
+    icon: "📝",
+    description: "Content management system for websites.",
     learnedFrom: "DevSecOps Course - WordPress Project",
     usedIn: ["WordPress"]
   },
   {
     name: "Docker",
-    description: "Containerization platform for packaging and deploying applications in isolated environments.",
+    icon: "🐳",
+    description: "Containerization and application packaging.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
     usedIn: ["Baby Tools Shop", "Truck Signs API", "WordPress", "Conduit Container", "Minecraft-Server", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "CI/CD & Deployment",
-    description: "Continuous Integration and Continuous Deployment pipelines for automated software delivery and production deployment strategies.",
+    icon: "🔄",
+    description: "Automated pipelines and deployment strategies.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
     usedIn: ["Conduit Container", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "Container Orchestration",
-    description: "Managing and coordinating multiple containers for scalable application deployment.",
+    icon: "📦",
+    description: "Managing multiple containers at scale.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
     usedIn: ["Baby Tools Shop", "WordPress", "Conduit Container", "Monitoring Platform"]
   },
   {
     name: "DevOps",
-    description: "Practices combining software development and IT operations for faster delivery.",
+    icon: "🚀",
+    description: "Development and operations practices.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
     usedIn: ["Conduit Container", "Conduit Deployment", "Monitoring Platform"]
   },
   {
     name: "GitHub Actions",
-    description: "Automated workflow platform for CI/CD pipelines and development automation.",
+    icon: "⚙️",
+    description: "CI/CD workflows and automation.",
     learnedFrom: "DevSecOps Course - Conduit Container Project",
     usedIn: ["Conduit Container", "Conduit Deployment"]
   },
   {
     name: "Server Management",
-    description: "Administration and maintenance of server infrastructure and services, including game server setup and management.",
+    icon: "🖥️",
+    description: "Server administration and maintenance.",
     learnedFrom: "DevSecOps Course - Minecraft-Server Project",
     usedIn: ["Minecraft-Server"]
   },
   {
     name: "Python",
-    description: "Python programming for backend development, automation, API clients, and tooling. Building CLI tools, web applications, and system automation scripts.",
+    icon: "🐍",
+    description: "Backend development and automation.",
     learnedFrom: "DevSecOps Course - Baby Tools Shop Project",
     usedIn: ["Baby Tools Shop", "Truck Signs API", "Conduit Container", "llmsh"]
   },
   {
     name: "Shell Scripting",
-    description: "Writing shell scripts for automation, system administration, and tooling. Creating zsh plugins, automation workflows, and command-line tools.",
+    icon: "💻",
+    description: "Automation and command-line tools.",
     learnedFrom: "Personal Project - llmsh",
     usedIn: ["llmsh"]
   },
   {
     name: "LLM Integration & AI Tools",
-    description: "Integrating Large Language Models into workflows and tools. Building AI-powered applications, natural language interfaces, and intelligent automation.",
+    icon: "🤖",
+    description: "AI-powered applications and automation.",
     learnedFrom: "Personal Project - llmsh",
     usedIn: ["llmsh"]
   },
   {
     name: "Go",
-    description: "Go programming language for building high-performance backend services, REST APIs, and concurrent applications. Using Fiber framework for web development.",
+    icon: "⚡",
+    description: "High-performance backend services and APIs.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   },
   {
     name: "React",
-    description: "React framework for building modern, interactive user interfaces with component-based architecture and real-time updates.",
+    icon: "⚛️",
+    description: "Modern interactive user interfaces.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   },
   {
     name: "PostgreSQL",
-    description: "PostgreSQL database administration with advanced features including Row-Level Security for multi-tenant applications.",
+    icon: "🐘",
+    description: "Advanced database administration.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   },
   {
     name: "Multi-Tenant Architecture",
-    description: "Designing and implementing multi-tenant systems with complete data isolation using Row-Level Security and tenant-aware application logic.",
+    icon: "🏢",
+    description: "Multi-tenant systems with data isolation.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   },
   {
     name: "Infrastructure Monitoring",
-    description: "Building comprehensive monitoring solutions for infrastructure, services, and applications with real-time dashboards and alerting.",
+    icon: "📊",
+    description: "Monitoring solutions and alerting.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   },
   {
     name: "Security Scanning & Assessment",
-    description: "Implementing automated security scanning for SSL/TLS, security headers, secrets detection, and vulnerability assessment.",
+    icon: "🔍",
+    description: "Automated security scanning and analysis.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   },
   {
     name: "Two-Factor Authentication (2FA)",
-    description: "Implementing two-factor authentication using TOTP for enhanced security in web applications.",
+    icon: "🔒",
+    description: "TOTP-based two-factor authentication.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   },
   {
     name: "Background Job Processing",
-    description: "Designing and implementing background job processing systems for asynchronous task execution and queue management.",
+    icon: "⏱️",
+    description: "Asynchronous task execution systems.",
     learnedFrom: "Personal Project - Monitoring Platform",
     usedIn: ["Monitoring Platform"]
   }
@@ -202,6 +229,9 @@ export default function MySkills(): JSX.Element {
               aria-label={`${skill.name} - Click to see details`}
             >
               <div className={styles.skillCardFront}>
+                <div className={styles.skillIcon}>
+                  {skill.icon || skill.name.charAt(0).toUpperCase()}
+                </div>
                 <h3 className={styles.skillName}>{skill.name}</h3>
                 <p className={styles.skillDescription}>{skill.description}</p>
               </div>

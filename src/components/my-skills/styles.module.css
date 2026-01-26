@@ -1,23 +1,31 @@
 .skillsSection {
   padding: var(--portfolio-section-padding) 0;
-  background-color: var(--ifm-background-surface-color);
+  background-color: #1E293B; /* Dark charcoal background like Figma */
   margin-top: 0;
   margin-bottom: 0;
 }
 
+[data-theme='light'] .skillsSection {
+  background-color: #0F172A; /* Even darker for light mode */
+}
+
 .sectionTitle {
-  text-align: center;
+  text-align: left;
   font-size: var(--portfolio-h2-size);
   margin-bottom: 3rem;
-  color: var(--ifm-color-primary);
+  color: #FFFFFF;
   font-weight: 700;
   letter-spacing: var(--portfolio-letter-spacing);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
 }
 
 .skillsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
@@ -40,7 +48,7 @@
   backface-visibility: hidden;
   transition: transform var(--portfolio-transition-base) var(--portfolio-transition-timing);
   border-radius: var(--portfolio-border-radius-lg);
-  padding: 1rem;
+  padding: 1.5rem;
   box-shadow: var(--portfolio-shadow-sm);
   display: flex;
   flex-direction: column;
@@ -48,21 +56,11 @@
 }
 
 .skillCardFront {
-  background-color: var(--ifm-card-background-color);
-  border: 1px solid var(--ifm-border-color);
-  justify-content: flex-start;
-}
-
-/* Light mode: Cards are lighter than background */
-[data-theme='light'] .skillCardFront {
-  background-color: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-/* Dark mode: Cards are lighter than background */
-[data-theme='dark'] .skillCardFront {
   background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .skillCard:hover .skillCardFront {
@@ -105,10 +103,25 @@
   transform: rotateY(0);
 }
 
+.skillIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--portfolio-border-radius);
+  font-weight: 700;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
 .skillName {
   font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: var(--ifm-color-primary);
+  margin-bottom: 0.75rem;
+  color: #FFFFFF;
   font-weight: 600;
   line-height: 1.3;
   flex-shrink: 0;
@@ -118,10 +131,10 @@
 }
 
 .skillDescription {
-  color: var(--ifm-color-content-secondary);
+  color: rgba(255, 255, 255, 0.8);
   line-height: 1.4;
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
