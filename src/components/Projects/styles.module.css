@@ -151,7 +151,10 @@
   flex: 1;
   min-width: 120px;
   min-height: 44px;
-  text-align: center;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   touch-action: manipulation;
   font-weight: 500;
   border-radius: var(--portfolio-border-radius);

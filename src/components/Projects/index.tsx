@@ -184,14 +184,14 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
             target="_blank"
             rel="noopener noreferrer"
           >
-            Documentation
+            Doc
           </Link>
         ) : (
           <Link
             to={project.docLink}
             className={clsx('button button--outline button--primary', styles.projectLink)}
           >
-            Documentation
+            Doc
           </Link>
         )}
         {project.githubLink && (
