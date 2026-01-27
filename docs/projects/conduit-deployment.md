@@ -413,5 +413,4 @@ graph TB
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
 - [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [DevSecOps Principles](https://www.devsecops.org/)
 - [SSH Deployment Best Practices](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments)

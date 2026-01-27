@@ -184,5 +184,3 @@ python cleanmetadata.py -f document.pdf -o cleaned.pdf --backup
 
 - [OWASP Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
 - [Hash Algorithm Security](https://csrc.nist.gov/projects/hash-functions)
-- [SSH Security Best Practices](https://www.ssh.com/academy/ssh/security)
-- [PDF Metadata Privacy](https://cheatsheetseries.owasp.org/cheatsheets/PDF_Security_Cheat_Sheet.html)

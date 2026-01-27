@@ -293,6 +293,4 @@ graph TB
 
 ## Further References
 
-- [Monitoring Best Practices](https://www.datadoghq.com/learn/monitoring/)
-- [PostgreSQL Row-Level Security](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
 - [Go Fiber Framework](https://docs.gofiber.io/)
