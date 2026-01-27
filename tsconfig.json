@@ -9,7 +9,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@site/*": ["./*"]
+      "@site/*": ["./*"],
+      "@site/src/components/*": ["./src/components/*"]
     }
   },
   "include": ["src/**/*"]
