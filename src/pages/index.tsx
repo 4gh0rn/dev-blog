@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
-import Header from '@site/src/components/header';
-import Hero from '@site/src/components/hero';
-import MySkills from '@site/src/components/my-skills';
-import Projects from '@site/src/components/projects';
-import Contact from '@site/src/components/contact';
-import Footer from '@site/src/components/footer';
-import ScrollToTop from '@site/src/components/scroll-to-top';
+import Header from '../components/header';
+import Hero from '../components/hero';
+import MySkills from '../components/my-skills';
+import Projects from '../components/projects';
+import Contact from '../components/contact';
+import Footer from '../components/footer';
+import ScrollToTop from '../components/scroll-to-top';
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
