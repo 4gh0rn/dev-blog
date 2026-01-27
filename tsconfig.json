@@ -3,7 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "react-jsx",
-    "lib": ["ES2020", "DOM", "DOM.Iterable"]
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "paths": {
+      "@site/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*"]
 }
