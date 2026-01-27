@@ -113,6 +113,15 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
   const imageUrl = useBaseUrl(project.imageUrl || '/img/docusaurus.png');
   const fallbackUrl = useBaseUrl('/img/docusaurus.png');
 
+  const navigateToProject = () => {
+    // Navigate to documentation
+    if (project.docLink.startsWith('http')) {
+      window.open(project.docLink, '_blank');
+    } else {
+      window.location.href = project.docLink;
+    }
+  };
+
   const handleCardClick = (e: React.MouseEvent) => {
     // Don't navigate if clicking on buttons
     const target = e.target as HTMLElement;
@@ -120,11 +129,13 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
       return;
     }
     
-    // Navigate to documentation
-    if (project.docLink.startsWith('http')) {
-      window.open(project.docLink, '_blank');
-    } else {
-      window.location.href = project.docLink;
+    navigateToProject();
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      navigateToProject();
     }
   };
 
@@ -134,12 +145,7 @@ function ProjectCard({ project, featured = false }: { project: Project; featured
       onClick={handleCardClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleCardClick(e as any);
-        }
-      }}
+      onKeyDown={handleKeyDown}
       aria-label={`View ${project.title} project`}
     >
       {project.imageUrl && (

@@ -69,7 +69,7 @@ pnpm start
 # or
 npm start
 ```
-Then open `http://localhost:3000/portfolio` in your browser.
+Then open `http://localhost:3000` in your browser to view the portfolio.
 
 **Option 2: Docker Development Container (Hot-reload)**
 ```bash
@@ -77,7 +77,7 @@ make docker-dev-up
 # or
 docker compose --profile dev up -d docusaurus-dev
 ```
-Then open `http://localhost:3001/portfolio` in your browser.
+Then open `http://localhost:3001` in your browser to view the portfolio.
 
 **Option 3: Production Build with Docker**
 ```bash
@@ -85,7 +85,7 @@ make docker-compose-up
 # or
 docker compose up -d
 ```
-Then open `http://localhost:3000/portfolio` in your browser.
+Then open `http://localhost:3000` in your browser to view the portfolio.
 
 ### Local Development
 
@@ -101,7 +101,7 @@ Then open `http://localhost:3000/portfolio` in your browser.
    npm start
    ```
 
-2. Open your browser and navigate to `http://localhost:3000/portfolio` to view the portfolio page.
+2. Open your browser and navigate to `http://localhost:3000` to view the portfolio page.
 
    The development server supports hot-reload, so most changes are reflected immediately without restarting the server.
 
@@ -133,7 +133,7 @@ Each component is self-contained with its own TypeScript interface and CSS Modul
 
 #### Hero Component
 
-Edit `src/components/Hero/index.tsx` to customize:
+Edit `src/components/hero/index.tsx` to customize:
 
 - Name, title, and description
 - Profile image URL
@@ -150,7 +150,7 @@ Edit `src/components/Hero/index.tsx` to customize:
 
 #### MySkills Component
 
-Edit `src/components/MySkills/index.tsx` to add or modify skills:
+Edit `src/components/my-skills/index.tsx` to add or modify skills:
 
 ```typescript
 const skills: Skill[] = [
@@ -166,7 +166,7 @@ const skills: Skill[] = [
 
 #### Projects Component
 
-Edit `src/components/Projects/index.tsx` to add or modify projects:
+Edit `src/components/projects/index.tsx` to add or modify projects:
 
 ```typescript
 const projects: Project[] = [
@@ -184,7 +184,7 @@ const projects: Project[] = [
 
 #### Contact Component
 
-Edit `src/components/Contact/index.tsx` to update contact information:
+Edit `src/components/contact/index.tsx` to update contact information:
 
 ```typescript
 <Contact
@@ -197,7 +197,7 @@ Edit `src/components/Contact/index.tsx` to update contact information:
 
 #### Footer Component
 
-Edit `src/components/Footer/index.tsx` to update footer information:
+Edit `src/components/footer/index.tsx` to update footer information:
 
 ```typescript
 <Footer
@@ -212,12 +212,12 @@ Edit `src/components/Footer/index.tsx` to update footer information:
 
 1. Add project images to `static/img/projects/`
 2. Add project documentation to `docs/projects/`
-3. Update the `projects` array in `src/components/Projects/index.tsx`
+3. Update the `projects` array in `src/components/projects/index.tsx`
 4. Ensure project images are optimized (recommended: max 1200px width, WebP or JPG format)
 
 ### Adding Your Own Skills
 
-1. Edit the `skills` array in `src/components/MySkills/index.tsx`
+1. Edit the `skills` array in `src/components/my-skills/index.tsx`
 2. Each skill should include:
    - `name`: Skill name
    - `description`: Brief description
@@ -226,7 +226,7 @@ Edit `src/components/Footer/index.tsx` to update footer information:
 
 ### Customizing the Header
 
-The Header component can be customized in `src/components/Header/index.tsx`:
+The Header component can be customized in `src/components/header/index.tsx`:
 
 ```typescript
 <Header
@@ -285,7 +285,7 @@ The project can be deployed in several ways:
    GIT_USER=yourusername pnpm deploy
    ```
 
-4. The portfolio will be available at `https://yourusername.github.io/repository-name/portfolio`
+4. The portfolio will be available at `https://yourusername.github.io/repository-name/` (main page)
 
 #### Deploying with Docker and NGINX
 
@@ -371,37 +371,37 @@ The Docker image uses a multi-stage build:
 
 ## Component Overview
 
-### Header Component (`src/components/Header/`)
+### Header Component (`src/components/header/`)
 
 - **Purpose**: Fixed navigation header with smooth scrolling
 - **Features**: Responsive mobile menu, theme support, scroll effects
 - **Props**: `logo`, `logoAlt`, `navItems`
 
-### Hero Component (`src/components/Hero/`)
+### Hero Component (`src/components/hero/`)
 
 - **Purpose**: Introduction section with profile and call-to-action
 - **Features**: Responsive layout, gradient background, smooth scroll to contact
 - **Props**: `name`, `title`, `description`, `imageUrl`
 
-### MySkills Component (`src/components/MySkills/`)
+### MySkills Component (`src/components/my-skills/`)
 
 - **Purpose**: Display skills with interactive flip cards
 - **Features**: Hover/touch animations, detailed information on back
 - **Data**: Array of `Skill` objects with name, description, learnedFrom, usedIn
 
-### Projects Component (`src/components/Projects/`)
+### Projects Component (`src/components/projects/`)
 
 - **Purpose**: Showcase projects with images and links
 - **Features**: Responsive grid, skill tags, documentation and GitHub links
 - **Data**: Array of `Project` objects with title, description, links, skills, image
 
-### Contact Component (`src/components/Contact/`)
+### Contact Component (`src/components/contact/`)
 
 - **Purpose**: Contact information and social links
 - **Features**: Gradient background, responsive button layout
 - **Props**: `email`, `github`, `linkedin`, `message`
 
-### Footer Component (`src/components/Footer/`)
+### Footer Component (`src/components/footer/`)
 
 - **Purpose**: Footer section with copyright and social links
 - **Features**: Responsive layout, theme support
@@ -418,17 +418,17 @@ The Docker image uses a multi-stage build:
 dev-blog/
 ├── src/
 │   ├── components/          # React components
-│   │   ├── Header/          # Navigation header
-│   │   ├── Hero/            # Hero section
-│   │   ├── MySkills/        # Skills section
-│   │   ├── Projects/        # Projects section
-│   │   ├── Contact/         # Contact section
-│   │   ├── Footer/          # Footer section
-│   │   └── ScrollToTop/     # Scroll to top button
+│   │   ├── header/          # Navigation header
+│   │   ├── hero/            # Hero section
+│   │   ├── my-skills/       # Skills section
+│   │   ├── projects/        # Projects section
+│   │   ├── contact/         # Contact section
+│   │   ├── footer/          # Footer section
+│   │   └── scroll-to-top/   # Scroll to top button
 │   ├── css/
 │   │   └── custom.css       # Global styles and theme
 │   └── pages/
-│       └── portfolio.tsx    # Portfolio page
+│       └── index.tsx         # Portfolio page (main page)
 ├── docs/                    # Documentation files
 ├── static/                  # Static assets (images, etc.)
 ├── docusaurus.config.ts     # Docusaurus configuration
