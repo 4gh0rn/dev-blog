@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import Layout from '@theme/Layout';
-import Header from '../components/header/index';
-import Hero from '../components/hero/index';
+import Header from '../components/Header/index';
+import Hero from '../components/Hero/index';
 import MySkills from '../components/my-skills/index';
-import Projects from '../components/projects/index';
-import Contact from '../components/contact/index';
-import Footer from '../components/footer/index';
+import Projects from '../components/Projects/index';
+import Contact from '../components/Contact/index';
+import Footer from '../components/Footer/index';
 import ScrollToTop from '../components/scroll-to-top/index';
 import styles from './index.module.css';
 
