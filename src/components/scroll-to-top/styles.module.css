@@ -1,7 +1,8 @@
 /* Figma: scroll-to-top border-radius 20px, blue #266AD9 */
+/* Über dem Footer, damit Links nicht überdeckt werden */
 .scrollToTop {
   position: fixed;
-  bottom: 2rem;
+  bottom: 5.5rem;
   left: 50%;
   transform: translateX(-50%);
   width: 50px;
@@ -38,7 +39,7 @@
 
 @media (max-width: 996px) {
   .scrollToTop {
-    bottom: 1rem;
+    bottom: 6rem;
     width: 48px;
     height: 48px;
     min-width: 48px;
@@ -53,6 +54,6 @@
     height: 44px;
     min-width: 44px;
     min-height: 44px;
-    bottom: 0.75rem;
+    bottom: 5.5rem;
   }
 }
