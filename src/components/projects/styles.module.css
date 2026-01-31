@@ -1,33 +1,231 @@
+/* Figma: full width, blue #266AD9, padding 120px horizontal */
 .projectsSection {
   padding: var(--portfolio-section-padding) 0;
-  background: #2563EB; /* Blue background like Figma */
+  background: var(--portfolio-blue);
   margin-bottom: 0;
-}
-
-[data-theme='dark'] .projectsSection {
-  background: #1E40AF; /* Darker blue for dark mode */
+  width: 100%;
 }
 
 .sectionTitle {
+  font-family: var(--portfolio-font-primary);
   text-align: left;
   font-size: var(--portfolio-h2-size);
+  line-height: 120%;
   margin-bottom: 3rem;
-  color: #FFFFFF;
+  color: var(--portfolio-white);
   font-weight: 700;
   letter-spacing: var(--portfolio-letter-spacing);
-  max-width: 1200px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 1.5rem;
+  padding: 0 120px;
 }
 
-.projectsGrid {
+/* Two-column layout: list left, white detail card right (desktop) */
+.projectsTwoCol {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto 3rem auto;
-  padding: 0 1.5rem;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: 2.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 120px 3rem;
+  align-items: start;
+}
+
+.projectListCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.projectList {
+  list-style: decimal;
+  margin: 0;
+  padding-left: 2.5rem;
+  min-width: 0;
+}
+
+.projectListItem {
+  margin-bottom: 0.35rem;
+}
+
+.projectListItem::marker {
+  color: var(--portfolio-white);
+  font-family: var(--portfolio-font-primary);
+  font-weight: 500;
+}
+
+.projectListItemActive::marker {
+  color: var(--portfolio-white);
+  font-weight: 700;
+}
+
+.projectListButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: var(--portfolio-white);
+  font-family: var(--portfolio-font-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 120%;
+  cursor: pointer;
+  transition: color var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+}
+
+.projectListButton:hover {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Gewähltes Projekt: weiß + fett, gut lesbar auf blauem Hintergrund */
+.projectListButtonActive {
+  color: var(--portfolio-white);
+  font-weight: 700;
+}
+
+.seeMoreLink {
+  margin-top: 1rem;
+  flex-shrink: 0;
+  color: var(--portfolio-blue);
+  font-family: var(--portfolio-font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 120%;
+  text-decoration: none;
+  transition: opacity var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+}
+
+.seeMoreLink:hover {
+  opacity: 0.9;
+  color: var(--portfolio-blue);
+}
+
+.projectDetailCol {
+  min-width: 0;
+}
+
+/* Dark detail card (right side) – Figma: project card #2F4563, light text */
+.projectDetailCard {
+  background: var(--portfolio-card);
+  border-radius: var(--portfolio-border-radius-lg);
+  padding: 2rem 2.5rem;
+  box-shadow: var(--portfolio-shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.projectDetailTitle {
+  font-family: var(--portfolio-font-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 120%;
+  color: var(--portfolio-white);
+  margin: 0 0 1rem 0;
+}
+
+.projectDetailSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.projectDetailTag {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--portfolio-white);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--portfolio-border-radius);
+  font-family: var(--portfolio-font-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.projectDetailImageWrap {
+  width: 100%;
+  border-radius: var(--portfolio-border-radius);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.projectDetailImage {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.projectDetailDescription {
+  font-family: var(--portfolio-font-primary);
+  font-size: 0.95rem;
+  line-height: 160%;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.5rem 0;
+}
+
+.projectDetailLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* Documentation: outline white/blue on dark card */
+.projectDetailLinkDoc:global(.button--outline.button--primary),
+.projectDetailLinkDoc:global(.button.button--outline.button--primary) {
+  background: transparent !important;
+  color: var(--portfolio-white) !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  font-family: var(--portfolio-font-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  line-height: 120% !important;
+}
+
+.projectDetailLinkDoc:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--portfolio-white) !important;
+}
+
+/* GitHub: blue filled on dark card */
+.projectDetailLinkGit:global(.button--secondary),
+.projectDetailLinkGit:global(.button.button--secondary) {
+  background: var(--portfolio-blue) !important;
+  color: var(--portfolio-white) !important;
+  border: 2px solid var(--portfolio-blue) !important;
+  font-family: var(--portfolio-font-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  line-height: 120% !important;
+}
+
+.projectDetailLinkGit:hover {
+  background: #1d5ab8 !important;
+  border-color: #1d5ab8 !important;
+}
+
+/* Mobile: stacked list + card (no dots – list contains all projects) */
+.projectsMobile {
+  display: none;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px 2rem;
+}
+
+.projectListColMobile {
+  margin-bottom: 1rem;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.projectDetailColMobile {
+  margin-bottom: 1rem;
 }
 
 .featuredProjectContainer {
@@ -37,7 +235,7 @@
 }
 
 .projectCard {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: var(--portfolio-card, #2F4563);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--portfolio-border-radius-lg);
   padding: 0;
@@ -79,7 +277,7 @@
 .projectCard:hover {
   transform: translateY(-4px);
   box-shadow: var(--portfolio-shadow-md);
-  border-color: var(--ifm-color-primary);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .projectImageContainer {
@@ -161,11 +359,11 @@
   transition: all var(--portfolio-transition-fast) var(--portfolio-transition-timing);
 }
 
-/* Documentation button - white background, blue text (high contrast, good visibility) */
+/* Figma: Doc button white/blue, GitHub button card color */
 .projectLink:global(.button--outline.button--primary),
 .projectLink:global(.button.button--outline.button--primary) {
   background: #FFFFFF !important;
-  color: #2563EB !important;
+  color: var(--portfolio-blue, #266AD9) !important;
   border: 2px solid #FFFFFF !important;
   font-weight: 600 !important;
 }
@@ -173,15 +371,14 @@
 .projectLink:global(.button--outline.button--primary):hover,
 .projectLink:global(.button.button--outline.button--primary):hover {
   background: #F0F4F8 !important;
-  color: #1D4ED8 !important;
+  color: #1d5ab8 !important;
   border-color: #FFFFFF !important;
   transform: translateY(-1px);
 }
 
-/* GitHub button - darker blue background, white text (different style, also high contrast) */
 .projectLink:global(.button--outline.button--secondary),
 .projectLink:global(.button.button--outline.button--secondary) {
-  background: #1E40AF !important;
+  background: var(--portfolio-card, #2F4563) !important;
   color: #FFFFFF !important;
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
   font-weight: 600 !important;
@@ -189,7 +386,7 @@
 
 .projectLink:global(.button--outline.button--secondary):hover,
 .projectLink:global(.button.button--outline.button--secondary):hover {
-  background: #1E3A8A !important;
+  background: #263a52 !important;
   color: #FFFFFF !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
   transform: translateY(-1px);
@@ -201,29 +398,23 @@
 }
 
 @media (max-width: 996px) {
-  .projectsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
   .sectionTitle {
-    font-size: 2rem;
+    padding: 0 48px;
+    font-size: 2.5rem;
   }
 
-  .projectImageContainer {
-    height: 180px;
+  .projectsTwoCol {
+    padding: 0 48px 2rem;
+    grid-template-columns: minmax(180px, 220px) 1fr;
+    gap: 2rem;
   }
 
-  .projectCardContent {
-    padding: 1.5rem;
+  .projectDetailCard {
+    padding: 1.5rem 2rem;
   }
 
-  .featuredCard .projectImageContainer {
-    height: 250px;
-  }
-
-  .featuredCard .projectCardContent {
-    padding: 2rem;
+  .projectDetailTitle {
+    font-size: 1.35rem;
   }
 }
 
@@ -232,58 +423,42 @@
     padding: 3rem 0;
   }
 
-  .projectsGrid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+  .sectionTitle {
+    padding: 0 24px;
+    font-size: 40px;
+    margin-bottom: 1.5rem;
   }
 
-  .projectImageContainer {
-    height: 160px;
+  .projectsTwoCol {
+    display: none;
   }
 
-  .projectCardContent {
-    padding: 1rem;
+  .projectsMobile {
+    display: block;
   }
 
-  .projectTitle {
+  .projectDetailCard {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .projectDetailTitle {
     font-size: 1.25rem;
   }
 
-  .projectDescription {
-    font-size: 0.85rem;
-    line-height: 1.5;
+  .projectDetailDescription {
+    font-size: 0.9rem;
   }
 
-  .projectLinks {
+  .projectDetailLinks {
     flex-direction: column;
-    gap: 0.75rem;
+    justify-content: stretch;
   }
 
-  .projectLink {
+  .projectDetailLinkDoc,
+  .projectDetailLinkGit {
     width: 100%;
-    min-height: 48px;
-  }
-
-  .featuredCard .projectImageContainer {
-    height: 200px;
-  }
-
-  .featuredCard .projectCardContent {
-    padding: 1.5rem;
-  }
-
-  .featuredCard .projectTitle {
-    font-size: 1.25rem;
-  }
-
-  .featuredCard .projectDescription {
-    font-size: 0.95rem;
-  }
-
-  .skillTag {
-    font-size: 0.8rem;
-    padding: 0.2rem 0.6rem;
+    text-align: center;
+    justify-content: center;
   }
 }
 
@@ -293,19 +468,16 @@
   }
 
   .sectionTitle {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
+    font-size: 32px;
+    padding: 0 24px;
+    margin-bottom: 1rem;
   }
 
-  .projectImageContainer {
-    height: 140px;
+  .projectsMobile {
+    padding: 0 24px 1.5rem;
   }
 
-  .projectTitle {
-    font-size: 1.1rem;
-  }
-
-  .projectDescription {
-    font-size: 0.9rem;
+  .projectDetailImage {
+    max-height: 200px;
   }
 }

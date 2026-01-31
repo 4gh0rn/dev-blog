@@ -1,3 +1,4 @@
+/* Figma: scroll-to-top border-radius 20px, blue #266AD9 */
 .scrollToTop {
   position: fixed;
   bottom: 2rem;
@@ -5,10 +6,10 @@
   transform: translateX(-50%);
   width: 50px;
   height: 50px;
-  min-width: 44px; /* Touch target minimum */
+  min-width: 44px;
   min-height: 44px;
-  border-radius: 50%;
-  background-color: var(--ifm-color-primary);
+  border-radius: 20px;
+  background-color: var(--portfolio-blue, #266AD9);
   color: white;
   border: none;
   font-size: 1.5rem;
@@ -27,7 +28,7 @@
 .scrollToTop:hover {
   transform: translateX(-50%) translateY(-3px);
   box-shadow: var(--portfolio-shadow-lg);
-  background-color: var(--ifm-color-primary-dark);
+  background-color: #1d5ab8;
 }
 
 .scrollToTop.visible {

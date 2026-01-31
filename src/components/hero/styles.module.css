@@ -1,19 +1,15 @@
 .hero {
   padding: var(--portfolio-section-padding) 0;
-  background: #2563EB; /* Solid blue background like Figma */
+  background: var(--portfolio-blue, #266AD9);
   color: #FFFFFF;
-  min-height: calc(100vh - 70px); /* Full viewport minus header */
+  min-height: calc(100vh - 70px);
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
   margin-top: 0;
   margin-bottom: 0;
-  padding-top: calc(var(--portfolio-section-padding) + 70px); /* Add header height to top padding */
-}
-
-[data-theme='dark'] .hero {
-  background: #1E40AF; /* Darker blue for dark mode */
+  padding-top: calc(var(--portfolio-section-padding) + 70px);
 }
 
 .heroRow {
@@ -31,19 +27,17 @@
 }
 
 .profileImageWrapper {
-  background: #FFFFFF;
-  padding: 1rem;
-  border-radius: var(--portfolio-border-radius-lg);
-  box-shadow: var(--portfolio-shadow-lg);
   display: inline-block;
+  line-height: 0;
 }
 
 .profileImage {
   width: 350px;
   height: 350px;
-  border-radius: var(--portfolio-border-radius);
+  border-radius: var(--portfolio-border-radius-lg);
   object-fit: cover;
   display: block;
+  box-shadow: var(--portfolio-shadow-lg);
 }
 
 .heroContent {
@@ -58,6 +52,7 @@
 }
 
 .heroTitle {
+  font-family: var(--portfolio-font-primary);
   font-size: var(--portfolio-h1-size);
   margin-bottom: 1rem;
   color: #FFFFFF;
@@ -127,6 +122,7 @@
 }
 
 .contactButton {
+  font-family: var(--portfolio-font-primary);
   margin-top: 1rem;
   min-height: 48px;
   min-width: 140px;
@@ -134,16 +130,16 @@
   font-weight: 600;
   box-shadow: var(--portfolio-shadow-md);
   background: #FFFFFF;
-  color: #2563EB;
+  color: var(--portfolio-blue, #266AD9);
   border: none;
-  border-radius: var(--portfolio-border-radius);
+  border-radius: var(--portfolio-border-radius-lg);
 }
 
 .contactButton:hover {
   transform: translateY(-2px);
   box-shadow: var(--portfolio-shadow-lg);
-  opacity: 0.95;
-  background: #F8FAFC;
+  color: #1d5ab8;
+  background: #FFFFFF;
 }
 
 .contactButton:active {

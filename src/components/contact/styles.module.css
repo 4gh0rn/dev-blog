@@ -1,13 +1,9 @@
 .contactSection {
   padding: var(--portfolio-section-padding) 0;
-  background-color: #1E293B; /* Dark charcoal background like Figma */
+  background-color: var(--portfolio-bg-dark, #262E34);
   color: #FFFFFF;
   margin-top: 0;
   margin-bottom: 0;
-}
-
-[data-theme='light'] .contactSection {
-  background-color: #0F172A; /* Even darker for light mode */
 }
 
 .contactLayout {
@@ -31,6 +27,7 @@
 }
 
 .sectionTitle {
+  font-family: var(--portfolio-font-primary);
   text-align: left;
   font-size: var(--portfolio-h2-size);
   margin-bottom: 2rem;

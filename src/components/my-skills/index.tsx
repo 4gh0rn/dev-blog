@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -202,53 +202,154 @@ const skills: Skill[] = [
   }
 ];
 
+const SKILLS_PER_PAGE_DESKTOP = 9;
+
 export default function MySkills(): JSX.Element {
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
+  const [desktopPage, setDesktopPage] = useState(0);
+  const [mobileIndex, setMobileIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const desktopPageCount = Math.ceil(skills.length / SKILLS_PER_PAGE_DESKTOP);
+  const desktopSkills = skills.slice(
+    desktopPage * SKILLS_PER_PAGE_DESKTOP,
+    desktopPage * SKILLS_PER_PAGE_DESKTOP + SKILLS_PER_PAGE_DESKTOP
+  );
+  const globalStartIndex = desktopPage * SKILLS_PER_PAGE_DESKTOP;
 
   const handleSkillInteraction = (index: number) => {
     setHoveredSkill(hoveredSkill === index ? null : index);
   };
 
+  const scrollToIndex = (index: number) => {
+    setMobileIndex(index);
+    const el = scrollRef.current;
+    if (el) {
+      const slideWidth = el.offsetWidth;
+      el.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const index = Math.round(el.scrollLeft / el.offsetWidth);
+      setMobileIndex(Math.min(index, skills.length - 1));
+    };
+    el.addEventListener('scroll', onScroll);
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <section id="my-skills" className={styles.skillsSection}>
-      <div className="container">
-        <h2 className={styles.sectionTitle}>My Skills</h2>
+      <h2 className={styles.sectionTitle}>My Skills</h2>
+      {/* Desktop: 3x3 pro Seite, Dots für Seiten */}
+      <div className={styles.skillsDesktopWrapper}>
         <div className={styles.skillsGrid}>
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className={clsx(styles.skillCard, {
-                [styles.skillCardHovered]: hoveredSkill === index
-              })}
-              onMouseEnter={() => setHoveredSkill(index)}
-              onMouseLeave={() => setHoveredSkill(null)}
-              onClick={() => handleSkillInteraction(index)}
-              onTouchStart={() => handleSkillInteraction(index)}
-              role="button"
-              tabIndex={0}
-              aria-label={`${skill.name} - Click to see details`}
-            >
-              <div className={styles.skillCardFront}>
-                <div className={styles.skillIcon}>
-                  {skill.icon || skill.name.charAt(0).toUpperCase()}
+          {desktopSkills.map((skill, index) => {
+            const globalIndex = globalStartIndex + index;
+            return (
+              <div
+                key={globalIndex}
+                className={clsx(styles.skillCard, {
+                  [styles.skillCardHovered]: hoveredSkill === globalIndex
+                })}
+                onMouseEnter={() => setHoveredSkill(globalIndex)}
+                onMouseLeave={() => setHoveredSkill(null)}
+                onClick={() => handleSkillInteraction(globalIndex)}
+                onTouchStart={() => handleSkillInteraction(globalIndex)}
+                role="button"
+                tabIndex={0}
+                aria-label={`${skill.name} - Click to see details`}
+              >
+                <div className={styles.skillCardFront}>
+                  <div className={styles.skillIcon}>
+                    {skill.icon || skill.name.charAt(0).toUpperCase()}
+                  </div>
+                  <h3 className={styles.skillName}>{skill.name}</h3>
+                  <p className={styles.skillDescription}>{skill.description}</p>
                 </div>
-                <h3 className={styles.skillName}>{skill.name}</h3>
-                <p className={styles.skillDescription}>{skill.description}</p>
+                <div className={styles.skillCardBack}>
+                  <h4 className={styles.skillBackTitle}>Learned from:</h4>
+                  <p className={styles.skillLearnedFrom}>{skill.learnedFrom}</p>
+                  <h4 className={styles.skillBackTitle}>Used in:</h4>
+                  <ul className={styles.skillUsedIn}>
+                    {skill.usedIn.map((project, idx) => (
+                      <li key={idx}>{project}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className={styles.skillCardBack}>
-                <h4 className={styles.skillBackTitle}>Learned from:</h4>
-                <p className={styles.skillLearnedFrom}>{skill.learnedFrom}</p>
-                <h4 className={styles.skillBackTitle}>Used in:</h4>
-                <ul className={styles.skillUsedIn}>
-                  {skill.usedIn.map((project, idx) => (
-                    <li key={idx}>{project}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
+            );
+          })}
+        </div>
+        <div className={styles.skillsDesktopDots}>
+          {Array.from({ length: desktopPageCount }, (_, i) => (
+            <button
+              key={i}
+              type="button"
+              className={clsx(styles.skillsDesktopDot, {
+                [styles.skillsDesktopDotActive]: i === desktopPage,
+              })}
+              onClick={() => setDesktopPage(i)}
+              aria-label={`Skills page ${i + 1} of ${desktopPageCount}`}
+            />
           ))}
         </div>
       </div>
+        {/* Mobile: horizontal scroll + dots */}
+        <div className={styles.skillsCarouselWrapper}>
+          <div className={styles.skillsCarousel} ref={scrollRef}>
+            {skills.map((skill, index) => (
+              <div key={index} className={styles.skillsCarouselSlide}>
+                <div
+                  className={clsx(styles.skillCard, styles.skillCardMobile, {
+                    [styles.skillCardHovered]: hoveredSkill === index
+                  })}
+                  onMouseEnter={() => setHoveredSkill(index)}
+                  onMouseLeave={() => setHoveredSkill(null)}
+                  onClick={() => handleSkillInteraction(index)}
+                  onTouchStart={() => handleSkillInteraction(index)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${skill.name} - Click to see details`}
+                >
+                  <div className={styles.skillCardFront}>
+                    <div className={styles.skillIcon}>
+                      {skill.icon || skill.name.charAt(0).toUpperCase()}
+                    </div>
+                    <h3 className={styles.skillName}>{skill.name}</h3>
+                    <p className={styles.skillDescription}>{skill.description}</p>
+                  </div>
+                  <div className={styles.skillCardBack}>
+                    <h4 className={styles.skillBackTitle}>Learned from:</h4>
+                    <p className={styles.skillLearnedFrom}>{skill.learnedFrom}</p>
+                    <h4 className={styles.skillBackTitle}>Used in:</h4>
+                    <ul className={styles.skillUsedIn}>
+                      {skill.usedIn.map((project, idx) => (
+                        <li key={idx}>{project}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className={styles.skillsCarouselDots}>
+            {skills.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                className={clsx(styles.skillsCarouselDot, {
+                  [styles.skillsCarouselDotActive]: index === mobileIndex,
+                })}
+                onClick={() => scrollToIndex(index)}
+                aria-label={`Go to skill ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
     </section>
   );
 }

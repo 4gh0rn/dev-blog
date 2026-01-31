@@ -31,13 +31,24 @@ export default function Header({
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  // Handle scroll effect for header background
+  // Figma: hide header on scroll down, show on scroll up
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down' | null>(null);
+  const lastScrollYRef = React.useRef(0);
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 20);
+      const last = lastScrollYRef.current;
+      if (currentScrollY > last && currentScrollY > 80) {
+        setScrollDirection('down');
+      } else if (currentScrollY < last) {
+        setScrollDirection('up');
+      }
+      lastScrollYRef.current = currentScrollY;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -91,8 +102,16 @@ export default function Header({
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const headerVisible = scrollDirection !== 'down';
+
   return (
-    <header className={clsx(styles.header, { [styles.scrolled]: isScrolled })}>
+    <header
+      className={clsx(styles.header, {
+        [styles.scrolled]: isScrolled,
+        [styles.headerHidden]: !headerVisible && scrollDirection !== null,
+        [styles.menuOpen]: isMenuOpen,
+      })}
+    >
       <div className={styles.headerContainer}>
         <div className={styles.headerContent}>
           {/* Logo/Brand */}
@@ -139,7 +158,7 @@ export default function Header({
         </div>
       </div>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Overlay - Figma: white bg, blue links, X close */}
       {isMenuOpen && (
         <div
           className={styles.menuOverlay}
@@ -148,26 +167,30 @@ export default function Header({
         />
       )}
 
-      {/* Mobile Menu Sidebar */}
-      <nav
-        className={clsx(styles.mobileNav, { [styles.mobileNavOpen]: isMenuOpen })}
-        aria-label="Mobile navigation"
+      {/* Mobile Menu - weißes Overlay, ein X nur im Header (Burger wird zu X) */}
+      <div
+        className={clsx(styles.mobileMenuOverlay, { [styles.mobileMenuOverlayOpen]: isMenuOpen })}
+        aria-hidden={!isMenuOpen}
       >
-        <ul className={styles.mobileNavList}>
-          {navItems.map((item, index) => (
-            <li key={index} className={styles.mobileNavItem}>
-              <a
-                href={item.href}
-                className={styles.mobileNavLink}
-                onClick={(e) => handleNavClick(e, item)}
-                aria-label={`Navigate to ${item.label}`}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+        <div className={styles.mobileMenuInner} onClick={(e) => e.stopPropagation()}>
+          <nav className={styles.mobileMenuNav} aria-label="Mobile navigation">
+            <ul className={styles.mobileNavList}>
+              {navItems.map((item, index) => (
+                <li key={index} className={styles.mobileNavItem}>
+                  <a
+                    href={item.href}
+                    className={styles.mobileNavLink}
+                    onClick={(e) => handleNavClick(e, item)}
+                    aria-label={`Navigate to ${item.label}`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
     </header>
   );
 }

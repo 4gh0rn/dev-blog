@@ -28,7 +28,6 @@ This repository contains a React-based portfolio website that displays various s
       - [Deploying with Docker and NGINX](#deploying-with-docker-and-nginx)
   - [Component Overview](#component-overview)
   - [Repository Structure](#repository-structure)
-  - [Technologies Used](#technologies-used)
 
 ## Quickstart
 
@@ -371,46 +370,15 @@ The Docker image uses a multi-stage build:
 
 ## Component Overview
 
-### Header Component (`src/components/header/`)
+The portfolio consists of the following React components, each located in `src/components/`:
 
-- **Purpose**: Fixed navigation header with smooth scrolling
-- **Features**: Responsive mobile menu, theme support, scroll effects
-- **Props**: `logo`, `logoAlt`, `navItems`
-
-### Hero Component (`src/components/hero/`)
-
-- **Purpose**: Introduction section with profile and call-to-action
-- **Features**: Responsive layout, gradient background, smooth scroll to contact
-- **Props**: `name`, `title`, `description`, `imageUrl`
-
-### MySkills Component (`src/components/my-skills/`)
-
-- **Purpose**: Display skills with interactive flip cards
-- **Features**: Hover/touch animations, detailed information on back
-- **Data**: Array of `Skill` objects with name, description, learnedFrom, usedIn
-
-### Projects Component (`src/components/projects/`)
-
-- **Purpose**: Showcase projects with images and links
-- **Features**: Responsive grid, skill tags, documentation and GitHub links
-- **Data**: Array of `Project` objects with title, description, links, skills, image
-
-### Contact Component (`src/components/contact/`)
-
-- **Purpose**: Contact information and social links
-- **Features**: Gradient background, responsive button layout
-- **Props**: `email`, `github`, `linkedin`, `message`
-
-### Footer Component (`src/components/footer/`)
-
-- **Purpose**: Footer section with copyright and social links
-- **Features**: Responsive layout, theme support
-- **Props**: `copyright`, `github`, `linkedin`, `email`
-
-### ScrollToTop Component (`src/components/ScrollToTop/`)
-
-- **Purpose**: Utility button to scroll back to top
-- **Features**: Appears on scroll, smooth animation
+- **Header** (`src/components/header/`): Fixed navigation header with smooth scrolling
+- **Hero** (`src/components/hero/`): Introduction section with profile image and call-to-action
+- **MySkills** (`src/components/my-skills/`): Interactive skill cards with flip animations
+- **Projects** (`src/components/projects/`): Project showcase with images, descriptions, and links
+- **Contact** (`src/components/contact/`): Contact information section with social links
+- **Footer** (`src/components/footer/`): Footer section with copyright and social links
+- **ScrollToTop** (`src/components/scroll-to-top/`): Utility button to scroll back to top
 
 ## Repository Structure
 
@@ -435,17 +403,3 @@ dev-blog/
 └── package.json             # Dependencies
 ```
 
-## Technologies Used
-
-- **React**: UI framework for building components
-- **TypeScript**: Type-safe development
-- **Docusaurus**: Static site generator and framework
-- **CSS Modules**: Scoped component styling
-- **GitHub Pages**: Hosting platform
-
-## Additional Resources
-
-- [Docusaurus Documentation](https://docusaurus.io/docs)
-- [React Documentation](https://react.dev)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs)
-- [Project FAQ](https://developer-akademie-devsecopskurs.github.io/dso-faq-site/docs/projects/docusaurus-portfolio/description)

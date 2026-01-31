@@ -1,10 +1,10 @@
 /* Portfolio Page Styles */
 
 .portfolioLayout {
-  /* Remove any padding/margin from Docusaurus layout */
+  /* Remove any padding/margin from Docusaurus layout - Figma dark #262E34 */
   padding-top: 0 !important;
   margin-top: 0 !important;
-  background-color: #1E293B !important;
+  background-color: #262E34 !important;
   min-height: 100vh;
 }
 

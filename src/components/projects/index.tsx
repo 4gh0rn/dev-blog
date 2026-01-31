@@ -109,118 +109,144 @@ const projects: Project[] = [
   }
 ];
 
-function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }): JSX.Element {
+function ProjectDetailCard({ project }: { project: Project }): JSX.Element {
   const imageUrl = useBaseUrl(project.imageUrl || '/img/docusaurus.png');
   const fallbackUrl = useBaseUrl('/img/docusaurus.png');
 
-  const navigateToProject = () => {
-    // Navigate to documentation
-    if (project.docLink.startsWith('http')) {
-      window.open(project.docLink, '_blank');
-    } else {
-      window.location.href = project.docLink;
-    }
-  };
-
-  const handleCardClick = (e: React.MouseEvent) => {
-    // Don't navigate if clicking on buttons
-    const target = e.target as HTMLElement;
-    if (target.closest('a') || target.closest('button')) {
-      return;
-    }
-    
-    navigateToProject();
-  };
-
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      navigateToProject();
-    }
-  };
-
   return (
-    <div 
-      className={clsx(styles.projectCard, { [styles.featuredCard]: featured })}
-      onClick={handleCardClick}
-      role="button"
-      tabIndex={0}
-      onKeyDown={handleKeyDown}
-      aria-label={`View ${project.title} project`}
-    >
+    <div className={styles.projectDetailCard}>
+      <h3 className={styles.projectDetailTitle}>{project.title}</h3>
+      <div className={styles.projectDetailSkills}>
+        {project.skills.slice(0, 4).map((skill, idx) => (
+          <span key={idx} className={styles.projectDetailTag}>
+            {skill}
+          </span>
+        ))}
+        {project.skills.length > 4 && (
+          <span className={styles.projectDetailTag}>+{project.skills.length - 4}</span>
+        )}
+      </div>
       {project.imageUrl && (
-        <div className={styles.projectImageContainer}>
-          <img 
-            src={imageUrl} 
+        <div className={styles.projectDetailImageWrap}>
+          <img
+            src={imageUrl}
             alt={project.title}
-            className={styles.projectImage}
+            className={styles.projectDetailImage}
             loading="lazy"
             onError={(e) => {
-              // Fallback to placeholder if image fails to load
               const target = e.target as HTMLImageElement;
               target.src = fallbackUrl;
             }}
           />
         </div>
       )}
-      <div className={styles.projectCardContent}>
-        <h3 className={styles.projectTitle}>{project.title}</h3>
-        <p className={styles.projectDescription}>{project.description}</p>
-        <div className={styles.projectSkills}>
-          {project.skills.slice(0, 4).map((skill, idx) => (
-            <span key={idx} className={styles.skillTag}>
-              {skill}
-            </span>
-          ))}
-          {project.skills.length > 4 && (
-            <span className={styles.skillTag}>+{project.skills.length - 4}</span>
-          )}
-        </div>
-        <div className={styles.projectLinks} onClick={(e) => e.stopPropagation()}>
+      <p className={styles.projectDetailDescription}>{project.description}</p>
+      <div className={styles.projectDetailLinks}>
         {project.docLink.startsWith('http') ? (
           <Link
             href={project.docLink}
-            className={clsx('button button--outline button--primary', styles.projectLink)}
+            className={clsx('button button--outline button--primary', styles.projectDetailLinkDoc)}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Doc
+            Documentation
           </Link>
         ) : (
           <Link
             to={project.docLink}
-            className={clsx('button button--outline button--primary', styles.projectLink)}
+            className={clsx('button button--outline button--primary', styles.projectDetailLinkDoc)}
           >
-            Doc
+            Documentation
           </Link>
         )}
         {project.githubLink && (
           <Link
             href={project.githubLink}
-            className={clsx('button button--outline button--secondary', styles.projectLink)}
+            className={clsx('button button--secondary', styles.projectDetailLinkGit)}
             target="_blank"
             rel="noopener noreferrer"
           >
             GitHub
           </Link>
         )}
-        </div>
       </div>
     </div>
   );
 }
 
 export default function Projects(): JSX.Element {
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+
   return (
     <section id="projects" className={styles.projectsSection}>
-      <div className="container">
-        <h2 className={styles.sectionTitle}>My Project Highlights</h2>
-        
-        {/* Grid with all projects */}
-        <div className={styles.projectsGrid}>
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} />
-          ))}
+      <h2 className={styles.sectionTitle}>My Project Highlights</h2>
+
+      <div className={styles.projectsTwoCol}>
+        {/* Left: vertical list of ALL projects, selected in blue */}
+        <div className={styles.projectListCol}>
+          <ol className={styles.projectList}>
+            {projects.map((project, index) => (
+              <li
+                key={index}
+                className={clsx(styles.projectListItem, {
+                  [styles.projectListItemActive]: index === currentIndex,
+                })}
+              >
+                <button
+                  type="button"
+                  className={clsx(styles.projectListButton, {
+                    [styles.projectListButtonActive]: index === currentIndex,
+                  })}
+                  onClick={() => setCurrentIndex(index)}
+                  aria-label={`Show ${project.title}`}
+                  aria-pressed={index === currentIndex}
+                >
+                  {project.title}
+                </button>
+              </li>
+            ))}
+          </ol>
+          <Link to="/docs/projects/overview" className={styles.seeMoreLink}>
+            → see more projects
+          </Link>
+        </div>
+
+        {/* Right: one white detail card */}
+        <div className={styles.projectDetailCol}>
+          <ProjectDetailCard project={projects[currentIndex]} />
+        </div>
+      </div>
+
+      {/* Mobile: same list + card stacked */}
+      <div className={styles.projectsMobile}>
+        <div className={styles.projectListColMobile}>
+          <ol className={styles.projectList}>
+            {projects.map((project, index) => (
+              <li
+                key={index}
+                className={clsx(styles.projectListItem, {
+                  [styles.projectListItemActive]: index === currentIndex,
+                })}
+              >
+                <button
+                  type="button"
+                  className={clsx(styles.projectListButton, {
+                    [styles.projectListButtonActive]: index === currentIndex,
+                  })}
+                  onClick={() => setCurrentIndex(index)}
+                  aria-pressed={index === currentIndex}
+                >
+                  {project.title}
+                </button>
+              </li>
+            ))}
+          </ol>
+          <Link to="/docs/projects/overview" className={styles.seeMoreLink}>
+            → see more projects
+          </Link>
+        </div>
+        <div className={styles.projectDetailColMobile}>
+          <ProjectDetailCard project={projects[currentIndex]} />
         </div>
       </div>
     </section>

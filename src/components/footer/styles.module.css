@@ -2,7 +2,7 @@
 
 .footer {
   padding: 2rem 0;
-  background-color: #1E293B; /* Always dark mode */
+  background-color: var(--portfolio-bg-dark, #262E34);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   margin-top: 0;
 }
@@ -16,7 +16,7 @@
 }
 
 .footerCopyright {
-  color: rgba(255, 255, 255, 0.7); /* Light gray for dark mode */
+  color: var(--portfolio-legal, #F8F5EC);
   font-size: 0.9rem;
   margin: 0;
 }
@@ -32,7 +32,7 @@
 }
 
 .footerLink {
-  color: rgba(255, 255, 255, 0.7); /* Light gray for dark mode */
+  color: var(--portfolio-legal, #F8F5EC);
   text-decoration: none;
   font-size: 0.9rem;
   transition: color var(--portfolio-transition-base) var(--portfolio-transition-timing);
@@ -40,12 +40,12 @@
 }
 
 .footerLink:hover {
-  color: #60A5FA; /* Light blue on hover */
+  color: var(--portfolio-blue, #266AD9);
   text-decoration: none;
 }
 
 .footerLink:focus {
-  outline: 2px solid #60A5FA; /* Light blue for dark mode */
+  outline: 2px solid var(--portfolio-blue, #266AD9);
   outline-offset: 2px;
   border-radius: 2px;
 }

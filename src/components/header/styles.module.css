@@ -1,24 +1,36 @@
 /* Header Component - Professional Portfolio Navigation */
 
+/* Figma: at top header is blue (#266AD9), when scrolled dark (#262E34) */
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  background-color: #1E293B; /* Always dark mode */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--portfolio-blue, #266AD9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  transition: all var(--portfolio-transition-base) var(--portfolio-transition-timing);
+  transition: transform var(--portfolio-transition-base) var(--portfolio-transition-timing),
+              box-shadow var(--portfolio-transition-base) var(--portfolio-transition-timing),
+              background-color var(--portfolio-transition-base) var(--portfolio-transition-timing);
   box-shadow: none;
-  /* Ensure fully opaque */
   opacity: 1 !important;
 }
 
 .header.scrolled {
   box-shadow: var(--portfolio-shadow-sm);
-  background-color: #1E293B; /* Always dark mode */
+  background-color: var(--portfolio-bg-dark, #262E34);
+}
+
+/* Figma: hide on scroll down, show on scroll up */
+.header.headerHidden {
+  transform: translateY(-100%);
+}
+
+/* When menu is open: header (and burger/X) must sit above overlay */
+.header.menuOpen {
+  z-index: 1002;
 }
 
 .headerContainer {
@@ -50,15 +62,21 @@
 }
 
 .logoText {
+  font-family: var(--portfolio-font-primary);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #FFFFFF; /* Always white for dark mode */
+  color: #FFFFFF;
   text-decoration: none;
   transition: color var(--portfolio-transition-fast) var(--portfolio-transition-timing);
 }
 
+/* Hover sichtbar: oben (blauer Header) dunkles Blau, unten (dunkler Header) Blau */
 .logoText:hover {
-  color: #60A5FA; /* Light blue on hover */
+  color: #1d5ab8;
+}
+
+.header.scrolled .logoText:hover {
+  color: var(--portfolio-blue, #266AD9);
 }
 
 /* Desktop Navigation */
@@ -87,33 +105,19 @@
   }
 
   .navLink {
-    color: #FFFFFF; /* Always white for dark mode */
+    color: #FFFFFF;
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
+    font-family: var(--portfolio-font-primary);
+    font-size: 24px;
+    font-weight: 600;
     padding: 0.5rem 0;
-    position: relative;
     transition: color var(--portfolio-transition-fast) var(--portfolio-transition-timing);
     display: block;
   }
 
-  .navLink::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #60A5FA; /* Light blue */
-    transition: width var(--portfolio-transition-base) var(--portfolio-transition-timing);
-  }
-
+  /* Hover: dunkles Blau, keine Unterstreichung */
   .navLink:hover {
-    color: #60A5FA; /* Light blue on hover */
-  }
-
-  .navLink:hover::after {
-    width: 100%;
+    color: #1d5ab8;
   }
 }
 
@@ -142,7 +146,7 @@
 
 .menuToggle:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  border-color: #60A5FA;
+  border-color: var(--portfolio-blue, #266AD9);
 }
 
 .menuToggle:focus {
@@ -169,7 +173,13 @@
   transform-origin: center;
 }
 
+/* Overlay weiß – X blau, damit auf weißem Hintergrund sichtbar */
+.menuToggle.menuOpen {
+  border-color: var(--portfolio-blue, #266AD9);
+}
+
 .menuOpen .menuLine:nth-child(1) {
+  background-color: var(--portfolio-blue, #266AD9);
   transform: translateY(7px) rotate(45deg);
 }
 
@@ -179,6 +189,7 @@
 }
 
 .menuOpen .menuLine:nth-child(3) {
+  background-color: var(--portfolio-blue, #266AD9);
   transform: translateY(-7px) rotate(-45deg);
 }
 
@@ -206,63 +217,88 @@
   visibility: visible;
 }
 
-/* Mobile Navigation Sidebar */
-.mobileNav {
+/* Figma: mobile overlay weiß #FFFFFF, padding 24px 32px 48px, gap 24px */
+.mobileMenuOverlay {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 280px;
-  max-width: 85vw;
-  height: 100vh;
-  background-color: #1E293B; /* Always dark mode */
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--portfolio-shadow-lg);
-  z-index: 1001; /* Above header and overlay, below menuToggle */
-  transition: right var(--portfolio-transition-base) var(--portfolio-transition-timing);
-  overflow-y: auto;
-  padding-top: 70px;
-  /* Ensure fully opaque */
-  opacity: 1 !important;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  z-index: 1001;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--portfolio-transition-base) var(--portfolio-transition-timing),
+              visibility var(--portfolio-transition-base) var(--portfolio-transition-timing);
 }
 
-.mobileNavOpen {
+.mobileMenuOverlay.mobileMenuOverlayOpen {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobileMenuInner {
+  position: absolute;
+  top: 0;
   right: 0;
+  width: 390px;
+  max-width: 100%;
+  min-height: 304px;
+  background: #FFFFFF;
+  padding: 24px 32px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  box-shadow: var(--portfolio-shadow-lg);
+  border-radius: 0 0 0 20px;
+}
+
+.mobileMenuNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  gap: 24px;
 }
 
 .mobileNavList {
   list-style: none;
   margin: 0;
-  padding: 1.5rem 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .mobileNavItem {
   margin: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Figma: overlay weiß – Menü-Links blau #266AD9, 22px weight 600 */
 .mobileNavLink {
-  display: block;
-  padding: 1rem 1.5rem;
-  color: #FFFFFF; /* Always white for dark mode */
+  padding: 0;
+  color: var(--portfolio-blue, #266AD9);
   text-decoration: none;
-  font-size: 1.125rem;
-  font-weight: 500;
-  transition: all var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+  font-family: var(--portfolio-font-primary);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 120%;
+  transition: opacity var(--portfolio-transition-fast) var(--portfolio-transition-timing);
   min-height: 44px;
   display: flex;
   align-items: center;
 }
 
 .mobileNavLink:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #60A5FA; /* Light blue on hover */
-  padding-left: 2rem;
+  opacity: 0.85;
 }
 
 .mobileNavLink:active {
-  background-color: rgba(255, 255, 255, 0.15);
+  opacity: 0.7;
 }
 
 /* Tablet Adjustments */
@@ -271,7 +307,7 @@
     padding: 0 2rem;
   }
 
-  .mobileNav {
+  .mobileMenuInner {
     width: 320px;
   }
 }
@@ -290,23 +326,18 @@
     font-size: 1.125rem;
   }
 
-  .mobileNav {
+  .mobileMenuInner {
     width: 100%;
     max-width: 100vw;
-    border-left: none;
-  }
-
-  .mobileNavList {
-    padding: 1rem 0;
+    padding: 24px 24px 48px;
   }
 
   .mobileNavLink {
-    padding: 1.25rem 1.5rem;
-    font-size: 1rem;
+    font-size: 20px;
   }
 }
 
 /* Prevent body scroll when menu is open */
-body:has(.mobileNavOpen) {
+body:has(.mobileMenuOverlayOpen) {
   overflow: hidden;
 }

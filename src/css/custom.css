@@ -1,21 +1,37 @@
 /**
- * Portfolio Design Variables
- * Only portfolio-specific CSS variables - all other styles use Docusaurus defaults
+ * Portfolio Design Variables - Figma 1:1
+ * Quicksand (primary), Reddit Sans / system fallback
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600;700&display=swap');
+
 /* ============================================
-   PORTFOLIO DESIGN VARIABLES
+   PORTFOLIO DESIGN VARIABLES (Figma)
    ============================================ */
 
 :root {
+  /* Figma colors */
+  --portfolio-bg-dark: #262E34;
+  --portfolio-blue: #266AD9;
+  --portfolio-card: #2F4563;
+  --portfolio-white: #FFFFFF;
+  --portfolio-legal: #F8F5EC;
+  --portfolio-skill-card-desktop: rgba(145, 201, 243, 0.1);
+  --portfolio-skill-card-mobile: rgba(38, 106, 217, 0.1);
+  --portfolio-dots-inactive: #738398;
+
+  /* Fonts - Figma: Quicksand primary, Red Hat Display for secondary/skills */
+  --portfolio-font-primary: 'Quicksand', sans-serif;
+  --portfolio-font-secondary: 'Red Hat Display', system-ui, sans-serif;
+
   /* Spacing */
   --portfolio-section-padding: 6rem;
   --portfolio-card-padding: 2.5rem;
   --portfolio-gap: 2.5rem;
 
-  /* Border radius */
-  --portfolio-border-radius: 8px;
-  --portfolio-border-radius-lg: 12px;
+  /* Border radius - Figma: 30px cards/buttons, 10px pills, 20px scroll-to-top */
+  --portfolio-border-radius: 10px;
+  --portfolio-border-radius-lg: 30px;
   --portfolio-border-radius-round: 50%;
 
   /* Shadows */
@@ -30,17 +46,17 @@
   --portfolio-transition-slow: 400ms;
   --portfolio-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Typography */
-  --portfolio-h1-size: 3rem;
-  --portfolio-h2-size: 2.25rem;
+  /* Typography - Figma: header 24px/600, hero name 88px/700, section 64px/700 */
+  --portfolio-h1-size: 5.5rem;   /* 88px desktop */
+  --portfolio-h2-size: 4rem;     /* 64px section headlines */
   --portfolio-h3-size: 1.75rem;
   --portfolio-h4-size: 1.375rem;
   --portfolio-body-size: 1rem;
   --portfolio-line-height: 1.6;
   --portfolio-letter-spacing: -0.01em;
 
-  /* Gradients */
-  --portfolio-gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  /* Gradients - Figma blue */
+  --portfolio-gradient-primary: linear-gradient(135deg, #266AD9 0%, #1d5ab8 100%);
   --portfolio-gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
   --portfolio-gradient-hero: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
 
@@ -49,12 +65,12 @@
   --portfolio-text-on-gradient-secondary: rgba(255, 255, 255, 0.95);
 
   /* Hero overlays */
-  --hero-overlay-primary: rgba(37, 99, 235, 0.08);
+  --hero-overlay-primary: rgba(38, 106, 217, 0.08);
   --hero-overlay-secondary: rgba(16, 185, 129, 0.08);
 
-  /* Mermaid Diagram Colors - Light Mode */
-  --mermaid-primary: #2563EB;
-  --mermaid-primary-dark: #1D4ED8;
+  /* Mermaid Diagram Colors - Light Mode (Figma blue) */
+  --mermaid-primary: #266AD9;
+  --mermaid-primary-dark: #1d5ab8;
   --mermaid-secondary: #10B981;
   --mermaid-tertiary: #F8FAFC;
   --mermaid-background: #FFFFFF;
@@ -77,7 +93,7 @@
   --portfolio-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.6);
   --portfolio-shadow-xl: 0 14px 28px rgba(0, 0, 0, 0.6), 0 10px 10px rgba(0, 0, 0, 0.7);
   
-  --portfolio-gradient-primary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  --portfolio-gradient-primary: linear-gradient(135deg, #3B82F6 0%, #266AD9 100%);
   --portfolio-gradient-success: linear-gradient(135deg, #34D399 0%, #10B981 100%);
   --portfolio-gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
   
@@ -109,11 +125,11 @@
   --portfolio-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
   --portfolio-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.25);
 
-  --portfolio-gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --portfolio-gradient-primary: linear-gradient(135deg, #266AD9 0%, #1d5ab8 100%);
   --portfolio-gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
   --portfolio-gradient-hero: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
 
-  --hero-overlay-primary: rgba(37, 99, 235, 0.03);
+  --hero-overlay-primary: rgba(38, 106, 217, 0.03);
   --hero-overlay-secondary: rgba(16, 185, 129, 0.03);
 }
 
@@ -154,7 +170,7 @@
 .projectsSection .projectLink.button--outline.button--primary,
 .projectsSection .projectLink.button.button--outline.button--primary {
   background: #FFFFFF !important;
-  color: #2563EB !important;
+  color: #266AD9 !important;
   border: 2px solid #FFFFFF !important;
   font-weight: 600 !important;
 }
@@ -162,13 +178,13 @@
 .projectsSection .projectLink.button--outline.button--primary:hover,
 .projectsSection .projectLink.button.button--outline.button--primary:hover {
   background: #F0F4F8 !important;
-  color: #1D4ED8 !important;
+  color: #1d5ab8 !important;
   border-color: #FFFFFF !important;
 }
 
 .projectsSection .projectLink.button--outline.button--secondary,
 .projectsSection .projectLink.button.button--outline.button--secondary {
-  background: #1E40AF !important;
+  background: #2F4563 !important;
   color: #FFFFFF !important;
   border: 2px solid rgba(255, 255, 255, 0.3) !important;
   font-weight: 600 !important;
@@ -176,7 +192,7 @@
 
 .projectsSection .projectLink.button--outline.button--secondary:hover,
 .projectsSection .projectLink.button.button--outline.button--secondary:hover {
-  background: #1E3A8A !important;
+  background: #263a52 !important;
   color: #FFFFFF !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
 }
@@ -301,5 +317,27 @@
 [data-theme='dark'] .mermaid .edgeLabel {
   background-color: var(--mermaid-tertiary);
   color: var(--mermaid-text);
+}
+
+/* ============================================
+   PORTFOLIO: Docusaurus-Navbar ausblenden
+   - Layout rendert bei noNavbar={true} die Navbar nicht.
+   - Falls sie doch im DOM ist (z. B. Cache), verstecken wir sie hier,
+     sobald der Portfolio-Wrapper [data-no-navbar="true"] existiert.
+   - So bleibt die Navbar auch beim Wegscrollen des Portfolio-Headers unsichtbar.
+   ============================================ */
+body:has([data-no-navbar="true"]) .navbar,
+body:has([data-no-navbar="true"]) nav.navbar,
+body:has([data-no-navbar="true"]) .navbar--fixed-top {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0) !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
 }
 
