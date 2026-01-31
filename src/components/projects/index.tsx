@@ -182,7 +182,7 @@ export default function Projects(): JSX.Element {
       <h2 className={styles.sectionTitle}>My Project Highlights</h2>
 
       <div className={styles.projectsTwoCol}>
-        {/* Left: vertical list of ALL projects, selected in blue */}
+        {/* Left: vertical list of all projects, selected in blue */}
         <div className={styles.projectListCol}>
           <ol className={styles.projectList}>
             {projects.map((project, index) => (

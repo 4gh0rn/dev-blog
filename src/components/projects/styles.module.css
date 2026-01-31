@@ -176,26 +176,9 @@
   justify-content: flex-end;
 }
 
-/* Documentation: outline white/blue on dark card */
+/* Figma: Documentation = filled blue, GitHub = outline white/blue on dark card */
 .projectDetailLinkDoc:global(.button--outline.button--primary),
 .projectDetailLinkDoc:global(.button.button--outline.button--primary) {
-  background: transparent !important;
-  color: var(--portfolio-white) !important;
-  border: 2px solid rgba(255, 255, 255, 0.5) !important;
-  font-family: var(--portfolio-font-primary) !important;
-  font-weight: 600 !important;
-  font-size: 1rem !important;
-  line-height: 120% !important;
-}
-
-.projectDetailLinkDoc:hover {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: var(--portfolio-white) !important;
-}
-
-/* GitHub: blue filled on dark card */
-.projectDetailLinkGit:global(.button--secondary),
-.projectDetailLinkGit:global(.button.button--secondary) {
   background: var(--portfolio-blue) !important;
   color: var(--portfolio-white) !important;
   border: 2px solid var(--portfolio-blue) !important;
@@ -205,9 +188,25 @@
   line-height: 120% !important;
 }
 
-.projectDetailLinkGit:hover {
+.projectDetailLinkDoc:hover {
   background: #1d5ab8 !important;
   border-color: #1d5ab8 !important;
+}
+
+.projectDetailLinkGit:global(.button--secondary),
+.projectDetailLinkGit:global(.button.button--secondary) {
+  background: transparent !important;
+  color: var(--portfolio-white) !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  font-family: var(--portfolio-font-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  line-height: 120% !important;
+}
+
+.projectDetailLinkGit:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--portfolio-white) !important;
 }
 
 /* Mobile: stacked list + card (no dots – list contains all projects) */

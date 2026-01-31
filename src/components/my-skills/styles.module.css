@@ -85,17 +85,18 @@
   overflow: hidden;
 }
 
-/* Figma: desktop skill card rgba(145, 201, 243, 0.1), mobile rgba(38, 106, 217, 0.1) */
+/* Figma: desktop skill card rgba(145, 201, 243, 0.1), kein Rahmen, nur Schatten */
 .skillCardFront {
   background-color: var(--portfolio-skill-card-desktop, rgba(145, 201, 243, 0.1));
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: none;
   justify-content: flex-start;
   align-items: center;
   text-align: center;
+  box-shadow: var(--portfolio-shadow-md);
 }
 
 .skillCard:hover .skillCardFront {
-  box-shadow: var(--portfolio-shadow-md);
+  box-shadow: var(--portfolio-shadow-lg);
 }
 
 .skillCardBack {

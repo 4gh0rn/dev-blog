@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from '@docusaurus/Link';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 
@@ -23,6 +24,9 @@ export default function Footer({
             <p>{copyright}</p>
           </div>
           <div className={styles.footerLinks}>
+            <Link to="/legal" className={styles.footerLink} aria-label="Legal notice">
+              Legal notice
+            </Link>
             <a 
               href={`mailto:${email}`}
               className={styles.footerLink}
