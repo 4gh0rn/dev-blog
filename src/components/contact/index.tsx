@@ -34,7 +34,7 @@ export default function Contact({
     <section id="contact" className={styles.contactSection}>
       <div className="container">
         <div className={styles.contactLayout}>
-          <h2 className={styles.sectionTitle}>Contact Me</h2>
+          <h2 className={styles.sectionTitle}>Contact me</h2>
           <div className={styles.contactMessageWrap}>
             <div className={styles.contactMessage}>
               <ul className={styles.contactBulletList}>

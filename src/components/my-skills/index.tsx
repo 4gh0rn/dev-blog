@@ -297,7 +297,7 @@ export default function MySkills(): JSX.Element {
 
   return (
     <section id="my-skills" className={styles.skillsSection}>
-      <h2 className={styles.sectionTitle}>My Skills</h2>
+      <h2 className={styles.sectionTitle}>My skills</h2>
       {/* Desktop: 3x3 pro Seite, Dots für Seiten */}
       <div className={styles.skillsDesktopWrapper}>
         <div className={styles.skillsGrid}>
@@ -352,7 +352,7 @@ export default function MySkills(): JSX.Element {
           ))}
         </div>
       </div>
-        {/* Mobile: 3 skills per view, stacked vertically (Figma); dots per group */}
+        {/* Mobile: one card per slide with 3 skill rows inside (like screenshot) */}
         <div className={styles.skillsCarouselWrapper}>
           <div className={styles.skillsCarousel} ref={scrollRef}>
             {skillsChunked.map((chunkSkills, pageIndex) => (
@@ -360,42 +360,18 @@ export default function MySkills(): JSX.Element {
                 {chunkSkills.map((skill, idxInChunk) => {
                   const globalIndex = pageIndex * SKILLS_PER_PAGE_MOBILE + idxInChunk;
                   return (
-                    <div
-                      key={globalIndex}
-                      className={clsx(styles.skillCard, styles.skillCardMobile, {
-                        [styles.skillCardHovered]: hoveredSkill === globalIndex
-                      })}
-                      onMouseEnter={() => setHoveredSkill(globalIndex)}
-                      onMouseLeave={() => setHoveredSkill(null)}
-                      onClick={() => handleSkillInteraction(globalIndex)}
-                      onTouchStart={() => handleSkillInteraction(globalIndex)}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`${skill.name} - Click to see details`}
-                    >
-                      <div className={styles.skillCardFront}>
-                        <div className={styles.skillCardMobileLeft}>
-                          <div className={styles.skillIcon}>
-                            {skill.icon || skill.name.charAt(0).toUpperCase()}
-                          </div>
-                          <h3 className={styles.skillName}>{skill.name}</h3>
+                    <div key={globalIndex} className={styles.skillCardMobileRow}>
+                      <div className={styles.skillCardMobileLeft}>
+                        <div className={styles.skillIcon}>
+                          {skill.icon || skill.name.charAt(0).toUpperCase()}
                         </div>
-                        <ul className={styles.skillCardMobileBullets}>
-                          {getSkillBullets(skill).map((point, idx) => (
-                            <li key={idx}>{point}</li>
-                          ))}
-                        </ul>
+                        <h3 className={styles.skillName}>{skill.name}</h3>
                       </div>
-                      <div className={styles.skillCardBack}>
-                        <h4 className={styles.skillBackTitle}>Learned from:</h4>
-                        <p className={styles.skillLearnedFrom}>{skill.learnedFrom}</p>
-                        <h4 className={styles.skillBackTitle}>Used in:</h4>
-                        <ul className={styles.skillUsedIn}>
-                          {skill.usedIn.map((project, idx) => (
-                            <li key={idx}>{project}</li>
-                          ))}
-                        </ul>
-                      </div>
+                      <ul className={styles.skillCardMobileBullets}>
+                        {getSkillBullets(skill).map((point, idx) => (
+                          <li key={idx}>{point}</li>
+                        ))}
+                      </ul>
                     </div>
                   );
                 })}

@@ -52,7 +52,7 @@ export default function Hero({
               className={clsx('button button--lg', styles.contactButton)}
               onClick={scrollToContact}
             >
-              Contact Me
+              Contact me
             </button>
           </div>
         </div>
