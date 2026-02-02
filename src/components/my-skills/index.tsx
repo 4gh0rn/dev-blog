@@ -19,7 +19,7 @@ const skills: Skill[] = [
     usedIn: ["V-Server Setup"]
   },
   {
-    name: "Infrastructure as Code (Ansible)",
+    name: "IaC",
     icon: "⚙️",
     description: "Automated infrastructure provisioning and configuration.",
     learnedFrom: "DevSecOps Course - V-Server Setup Project",
