@@ -1,29 +1,45 @@
 .contactSection {
-  padding: var(--portfolio-section-padding) 0;
+  padding: var(--portfolio-section-padding) 0 10rem 0;
   background-color: var(--portfolio-bg-dark, #262E34);
   color: #FFFFFF;
   margin-top: 0;
   margin-bottom: 0;
 }
 
+/* Zeile 1 = Titel links; Zeile 2 = Message links | "Looking forward..." + Links rechts (gleiche Höhe wie Text) */
 .contactLayout {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-rows: auto auto;
+  gap: 0 3rem;
+  row-gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
   align-items: start;
 }
 
-.contactLeft {
-  display: flex;
-  flex-direction: column;
+.contactLayout .sectionTitle {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-bottom: 0;
+}
+
+.contactMessageWrap {
+  grid-column: 1;
+  grid-row: 2;
 }
 
 .contactRight {
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactRight .contactGreeting {
+  margin: 0 0 0.25rem 0;
 }
 
 .sectionTitle {
@@ -42,6 +58,21 @@
   color: #FFFFFF;
 }
 
+.contactBulletList {
+  list-style: disc;
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.contactBulletList li {
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.contactBulletList li:last-child {
+  margin-bottom: 0;
+}
+
 .contactMessage p {
   margin-bottom: 1rem;
   opacity: 0.9;
@@ -54,7 +85,6 @@
 .contactGreeting {
   font-size: 1.125rem;
   color: #FFFFFF;
-  margin-bottom: 2rem;
   font-weight: 400;
 }
 
@@ -80,18 +110,42 @@
 }
 
 .contactIcon {
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: inherit;
 }
 
+.contactIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Mobile: Titel → Bullets → "Looking forward..." + Links */
 @media (max-width: 996px) {
   .contactLayout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     gap: 2rem;
+  }
+
+  .contactLayout .sectionTitle {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contactMessageWrap {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .contactRight {
+    grid-column: 1;
+    grid-row: 3;
   }
 }
 
@@ -112,7 +166,7 @@
 
 @media (max-width: 480px) {
   .contactSection {
-    padding: 3rem 0;
+    padding: 3rem 0 6rem 0;
   }
 
   .sectionTitle {

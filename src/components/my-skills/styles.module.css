@@ -272,6 +272,17 @@
   display: none;
 }
 
+/* Figma Mobile: 3 Skills pro View, untereinander */
+.skillsCarouselSlideGroup {
+  flex: 0 0 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-right: 0.5rem;
+}
+
 .skillsCarouselSlide {
   flex: 0 0 85%;
   min-width: 85%;

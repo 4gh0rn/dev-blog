@@ -16,9 +16,9 @@ interface HeaderProps {
 }
 
 const defaultNavItems: NavItem[] = [
-  { label: 'Home', href: '#about-me', anchor: true },
-  { label: 'Skills', href: '#my-skills', anchor: true },
-  { label: 'Projects', href: '#projects', anchor: true },
+  { label: 'About me', href: '#about-me', anchor: true },
+  { label: 'My skills', href: '#my-skills', anchor: true },
+  { label: 'My projects', href: '#projects', anchor: true },
   { label: 'Contact', href: '#contact', anchor: true },
 ];
 
@@ -114,7 +114,7 @@ export default function Header({
     >
       <div className={styles.headerContainer}>
         <div className={styles.headerContent}>
-          {/* Logo/Brand */}
+          {/* Logo/Brand – Figma Desktop: nicht angezeigt, Nav links */}
           <div className={styles.logo}>
             {logo ? (
               <img src={logo} alt={logoAlt} className={styles.logoImage} />
@@ -123,7 +123,7 @@ export default function Header({
             )}
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation – links ausgerichtet */}
           <nav className={styles.nav} aria-label="Main navigation">
             <ul className={styles.navList}>
               {navItems.map((item, index) => (

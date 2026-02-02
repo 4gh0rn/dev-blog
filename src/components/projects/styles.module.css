@@ -40,26 +40,16 @@
   overflow-y: auto;
 }
 
+/* Nummer nur im Button-Text, keine list-style (sonst doppelt) */
 .projectList {
-  list-style: decimal;
+  list-style: none;
   margin: 0;
-  padding-left: 2.5rem;
+  padding-left: 0;
   min-width: 0;
 }
 
 .projectListItem {
   margin-bottom: 0.35rem;
-}
-
-.projectListItem::marker {
-  color: var(--portfolio-white);
-  font-family: var(--portfolio-font-primary);
-  font-weight: 500;
-}
-
-.projectListItemActive::marker {
-  color: var(--portfolio-white);
-  font-weight: 700;
 }
 
 .projectListButton {
@@ -209,12 +199,20 @@
   border-color: var(--portfolio-white) !important;
 }
 
-/* Mobile: stacked list + card (no dots – list contains all projects) */
+/* Mobile: stacked full project cards (Figma: eine untereinander, nummeriert) */
 .projectsMobile {
   display: none;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 24px 2rem;
+  flex-direction: column;
+}
+
+.projectsMobileStack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .projectListColMobile {
@@ -433,7 +431,8 @@
   }
 
   .projectsMobile {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .projectDetailCard {

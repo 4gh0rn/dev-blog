@@ -203,11 +203,20 @@ const skills: Skill[] = [
 ];
 
 const SKILLS_PER_PAGE_DESKTOP = 9;
+const SKILLS_PER_PAGE_MOBILE = 3;
+
+function chunk<T>(arr: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
 
 export default function MySkills(): JSX.Element {
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null);
   const [desktopPage, setDesktopPage] = useState(0);
-  const [mobileIndex, setMobileIndex] = useState(0);
+  const [mobilePage, setMobilePage] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const desktopPageCount = Math.ceil(skills.length / SKILLS_PER_PAGE_DESKTOP);
@@ -217,16 +226,19 @@ export default function MySkills(): JSX.Element {
   );
   const globalStartIndex = desktopPage * SKILLS_PER_PAGE_DESKTOP;
 
+  const skillsChunked = chunk(skills, SKILLS_PER_PAGE_MOBILE);
+  const mobilePageCount = skillsChunked.length;
+
   const handleSkillInteraction = (index: number) => {
     setHoveredSkill(hoveredSkill === index ? null : index);
   };
 
-  const scrollToIndex = (index: number) => {
-    setMobileIndex(index);
+  const scrollToMobilePage = (pageIndex: number) => {
+    setMobilePage(pageIndex);
     const el = scrollRef.current;
     if (el) {
       const slideWidth = el.offsetWidth;
-      el.scrollTo({ left: index * slideWidth, behavior: 'smooth' });
+      el.scrollTo({ left: pageIndex * slideWidth, behavior: 'smooth' });
     }
   };
 
@@ -234,12 +246,12 @@ export default function MySkills(): JSX.Element {
     const el = scrollRef.current;
     if (!el) return;
     const onScroll = () => {
-      const index = Math.round(el.scrollLeft / el.offsetWidth);
-      setMobileIndex(Math.min(index, skills.length - 1));
+      const page = Math.round(el.scrollLeft / el.offsetWidth);
+      setMobilePage(Math.min(page, mobilePageCount - 1));
     };
     el.addEventListener('scroll', onScroll);
     return () => el.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [mobilePageCount]);
 
   return (
     <section id="my-skills" className={styles.skillsSection}>
@@ -298,54 +310,60 @@ export default function MySkills(): JSX.Element {
           ))}
         </div>
       </div>
-        {/* Mobile: horizontal scroll + dots */}
+        {/* Mobile: 3 skills per view, stacked vertically (Figma); dots per group */}
         <div className={styles.skillsCarouselWrapper}>
           <div className={styles.skillsCarousel} ref={scrollRef}>
-            {skills.map((skill, index) => (
-              <div key={index} className={styles.skillsCarouselSlide}>
-                <div
-                  className={clsx(styles.skillCard, styles.skillCardMobile, {
-                    [styles.skillCardHovered]: hoveredSkill === index
-                  })}
-                  onMouseEnter={() => setHoveredSkill(index)}
-                  onMouseLeave={() => setHoveredSkill(null)}
-                  onClick={() => handleSkillInteraction(index)}
-                  onTouchStart={() => handleSkillInteraction(index)}
-                  role="button"
-                  tabIndex={0}
-                  aria-label={`${skill.name} - Click to see details`}
-                >
-                  <div className={styles.skillCardFront}>
-                    <div className={styles.skillIcon}>
-                      {skill.icon || skill.name.charAt(0).toUpperCase()}
+            {skillsChunked.map((chunkSkills, pageIndex) => (
+              <div key={pageIndex} className={styles.skillsCarouselSlideGroup}>
+                {chunkSkills.map((skill, idxInChunk) => {
+                  const globalIndex = pageIndex * SKILLS_PER_PAGE_MOBILE + idxInChunk;
+                  return (
+                    <div
+                      key={globalIndex}
+                      className={clsx(styles.skillCard, styles.skillCardMobile, {
+                        [styles.skillCardHovered]: hoveredSkill === globalIndex
+                      })}
+                      onMouseEnter={() => setHoveredSkill(globalIndex)}
+                      onMouseLeave={() => setHoveredSkill(null)}
+                      onClick={() => handleSkillInteraction(globalIndex)}
+                      onTouchStart={() => handleSkillInteraction(globalIndex)}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`${skill.name} - Click to see details`}
+                    >
+                      <div className={styles.skillCardFront}>
+                        <div className={styles.skillIcon}>
+                          {skill.icon || skill.name.charAt(0).toUpperCase()}
+                        </div>
+                        <h3 className={styles.skillName}>{skill.name}</h3>
+                        <p className={styles.skillDescription}>{skill.description}</p>
+                      </div>
+                      <div className={styles.skillCardBack}>
+                        <h4 className={styles.skillBackTitle}>Learned from:</h4>
+                        <p className={styles.skillLearnedFrom}>{skill.learnedFrom}</p>
+                        <h4 className={styles.skillBackTitle}>Used in:</h4>
+                        <ul className={styles.skillUsedIn}>
+                          {skill.usedIn.map((project, idx) => (
+                            <li key={idx}>{project}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <h3 className={styles.skillName}>{skill.name}</h3>
-                    <p className={styles.skillDescription}>{skill.description}</p>
-                  </div>
-                  <div className={styles.skillCardBack}>
-                    <h4 className={styles.skillBackTitle}>Learned from:</h4>
-                    <p className={styles.skillLearnedFrom}>{skill.learnedFrom}</p>
-                    <h4 className={styles.skillBackTitle}>Used in:</h4>
-                    <ul className={styles.skillUsedIn}>
-                      {skill.usedIn.map((project, idx) => (
-                        <li key={idx}>{project}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                  );
+                })}
               </div>
             ))}
           </div>
           <div className={styles.skillsCarouselDots}>
-            {skills.map((_, index) => (
+            {Array.from({ length: mobilePageCount }, (_, i) => (
               <button
-                key={index}
+                key={i}
                 type="button"
                 className={clsx(styles.skillsCarouselDot, {
-                  [styles.skillsCarouselDotActive]: index === mobileIndex,
+                  [styles.skillsCarouselDotActive]: i === mobilePage,
                 })}
-                onClick={() => scrollToIndex(index)}
-                aria-label={`Go to skill ${index + 1}`}
+                onClick={() => scrollToMobilePage(i)}
+                aria-label={`Skills page ${i + 1} of ${mobilePageCount}`}
               />
             ))}
           </div>

@@ -109,13 +109,14 @@ const projects: Project[] = [
   }
 ];
 
-function ProjectDetailCard({ project }: { project: Project }): JSX.Element {
+function ProjectDetailCard({ project, titleOverride }: { project: Project; titleOverride?: string }): JSX.Element {
   const imageUrl = useBaseUrl(project.imageUrl || '/img/docusaurus.png');
   const fallbackUrl = useBaseUrl('/img/docusaurus.png');
+  const displayTitle = titleOverride ?? project.title;
 
   return (
     <div className={styles.projectDetailCard}>
-      <h3 className={styles.projectDetailTitle}>{project.title}</h3>
+      <h3 className={styles.projectDetailTitle}>{displayTitle}</h3>
       <div className={styles.projectDetailSkills}>
         {project.skills.slice(0, 4).map((skill, idx) => (
           <span key={idx} className={styles.projectDetailTag}>
@@ -179,7 +180,7 @@ export default function Projects(): JSX.Element {
 
   return (
     <section id="projects" className={styles.projectsSection}>
-      <h2 className={styles.sectionTitle}>My Project Highlights</h2>
+      <h2 className={styles.sectionTitle}>My project Highlights</h2>
 
       <div className={styles.projectsTwoCol}>
         {/* Left: vertical list of all projects, selected in blue */}
@@ -201,7 +202,7 @@ export default function Projects(): JSX.Element {
                   aria-label={`Show ${project.title}`}
                   aria-pressed={index === currentIndex}
                 >
-                  {project.title}
+                  {index + 1}. {project.title}
                 </button>
               </li>
             ))}
@@ -211,43 +212,26 @@ export default function Projects(): JSX.Element {
           </Link>
         </div>
 
-        {/* Right: one white detail card */}
+        {/* Right: one detail card (Figma: "Project {title}") */}
         <div className={styles.projectDetailCol}>
-          <ProjectDetailCard project={projects[currentIndex]} />
+          <ProjectDetailCard project={projects[currentIndex]} titleOverride={`Project ${projects[currentIndex].title}`} />
         </div>
       </div>
 
-      {/* Mobile: same list + card stacked */}
+      {/* Mobile: stacked full project cards (Figma: eine untereinander, nummeriert) */}
       <div className={styles.projectsMobile}>
-        <div className={styles.projectListColMobile}>
-          <ol className={styles.projectList}>
-            {projects.map((project, index) => (
-              <li
-                key={index}
-                className={clsx(styles.projectListItem, {
-                  [styles.projectListItemActive]: index === currentIndex,
-                })}
-              >
-                <button
-                  type="button"
-                  className={clsx(styles.projectListButton, {
-                    [styles.projectListButtonActive]: index === currentIndex,
-                  })}
-                  onClick={() => setCurrentIndex(index)}
-                  aria-pressed={index === currentIndex}
-                >
-                  {project.title}
-                </button>
-              </li>
-            ))}
-          </ol>
-          <Link to="/docs/projects/overview" className={styles.seeMoreLink}>
-            → see more projects
-          </Link>
+        <div className={styles.projectsMobileStack}>
+          {projects.map((project, index) => (
+            <ProjectDetailCard
+              key={index}
+              project={project}
+              titleOverride={`${index + 1}. ${project.title}`}
+            />
+          ))}
         </div>
-        <div className={styles.projectDetailColMobile}>
-          <ProjectDetailCard project={projects[currentIndex]} />
-        </div>
+        <Link to="/docs/projects/overview" className={styles.seeMoreLink}>
+          → see more projects
+        </Link>
       </div>
     </section>
   );

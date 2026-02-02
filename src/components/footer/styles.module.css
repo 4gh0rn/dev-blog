@@ -1,18 +1,21 @@
-/* Footer Component - Professional Portfolio Footer */
+/* Footer: mehr Platz nach unten, Links zentriert in der Mitte */
 
 .footer {
-  padding: 2rem 0;
+  padding: 8rem 1.5rem 5rem;
   background-color: var(--portfolio-bg-dark, #262E34);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
   margin-top: 0;
 }
 
 .footerContent {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1.25rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footerCopyright {
@@ -27,8 +30,10 @@
 
 .footerLinks {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
+  justify-content: center;
 }
 
 .footerLink {
@@ -52,24 +57,17 @@
 
 @media (max-width: 768px) {
   .footer {
-    padding: 1.5rem 0;
-  }
-
-  .footerContent {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+    padding: 6rem 1rem 4rem;
   }
 
   .footerLinks {
-    justify-content: center;
     gap: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 1.25rem 0;
+    padding: 5rem 1rem 3.5rem;
   }
 
   .footerCopyright {

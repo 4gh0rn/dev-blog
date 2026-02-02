@@ -13,7 +13,7 @@ interface HeroProps {
 export default function Hero({
   name = "Uwe Wohlleber",
   title = "DevSecOps Engineer",
-  description = "IT professional with over 10 years of experience as a system administrator, recently transitioning into security and DevSecOps. I'm passionate about DevOps practices, building secure systems, and enabling others—primarily fellow sysadmins—through knowledge sharing and mentorship. With my extensive background in IT administration, I've developed a deep understanding of infrastructure, automation, and system design. Over the past few years, I've shifted focus more toward DevSecOps, security practices, and modern infrastructure automation. I enjoy building custom automation workflows and exploring AI technologies.",
+  description = "IT professional with over 10 years in system administration, now focused on DevSecOps and security. I'm passionate about building secure systems, automation, and sharing knowledge with fellow sysadmins.",
   imageUrl = "/img/docusaurus.png"
 }: HeroProps): JSX.Element {
   const profileImage = useBaseUrl(imageUrl);
@@ -35,12 +35,6 @@ export default function Hero({
                 {description}
               </p>
             </div>
-            <button 
-              className={clsx('button button--lg', styles.contactButton)}
-              onClick={scrollToContact}
-            >
-              Contact Me
-            </button>
           </div>
           <div className={clsx('col col--6', styles.heroImage)}>
             <div className={styles.profileImageWrapper}>
@@ -50,6 +44,14 @@ export default function Hero({
                 className={styles.profileImage}
               />
             </div>
+          </div>
+          <div className={styles.heroButtonWrap}>
+            <button 
+              className={clsx('button button--lg', styles.contactButton)}
+              onClick={scrollToContact}
+            >
+              Contact Me
+            </button>
           </div>
         </div>
       </div>
