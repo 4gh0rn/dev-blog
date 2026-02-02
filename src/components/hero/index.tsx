@@ -33,11 +33,9 @@ export default function Hero({
           </div>
           <div className={clsx('col col--6', styles.heroImage)}>
             <div className={styles.profileImageWrapper}>
-              <img 
-                src={profileImage} 
-                alt={name}
-                className={styles.profileImage}
-              />
+              <div className={styles.profileImageInner}>
+                <img src={profileImage} alt={name} className={styles.profileImage} />
+              </div>
             </div>
           </div>
           <div className={clsx('col col--6', styles.heroDescriptionWrap)}>

@@ -308,7 +308,7 @@
 /* Tablet Adjustments */
 @media (min-width: 768px) and (max-width: 996px) {
   .headerContainer {
-    padding: 0 2rem;
+    padding: 0 2rem 0 2.25rem;
   }
 
   .mobileMenuInner {
@@ -319,7 +319,7 @@
 /* Small Mobile Adjustments */
 @media (max-width: 480px) {
   .headerContainer {
-    padding: 0 1rem;
+    padding: 0 1rem 0 1.25rem;
   }
 
   .headerContent {
