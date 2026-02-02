@@ -293,6 +293,72 @@
   background-color: var(--portfolio-skill-card-mobile, rgba(38, 106, 217, 0.1));
 }
 
+/* Mobile card: two-column layout (icon+name left, 4 bullet points right), alles bündig */
+.skillCardMobile .skillCardFront {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1rem 1rem;
+  align-items: start;
+  text-align: left;
+  padding: 1.25rem 1.5rem;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.skillCardMobile .skillCardMobileLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  grid-column: 1;
+  min-width: 72px;
+}
+
+.skillCardMobile .skillCardMobileLeft .skillIcon {
+  margin-bottom: 0;
+  width: 48px;
+  height: 48px;
+  font-size: 2rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skillCardMobile .skillCardMobileLeft .skillName {
+  margin: 0;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.skillCardMobileBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  grid-column: 2;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  min-width: 0;
+}
+
+.skillCardMobileBullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.skillCardMobileBullets li::before {
+  content: "•";
+  flex-shrink: 0;
+  width: 0.5em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .skillsCarouselDots {
   display: flex;
   justify-content: center;
@@ -316,7 +382,9 @@
 }
 
 .skillsCarouselDotActive {
-  background: var(--portfolio-blue, #266AD9);
+  width: 24px;
+  border-radius: 5px;
+  background: #FFFFFF;
 }
 
 @media (max-width: 768px) {
@@ -336,6 +404,27 @@
 
   .skillCard {
     height: 220px;
+  }
+
+  /* Mobile carousel: single face, no flip; card height adapts to content */
+  .skillCardMobile {
+    height: auto;
+    min-height: 140px;
+    perspective: none;
+  }
+
+  .skillCardMobile .skillCardFront {
+    position: relative;
+    transform: none;
+  }
+
+  .skillCardMobile .skillCardBack {
+    display: none;
+  }
+
+  .skillCardMobile:hover .skillCardFront,
+  .skillCardMobile.skillCardHovered .skillCardFront {
+    transform: none;
   }
 
   .skillName {
