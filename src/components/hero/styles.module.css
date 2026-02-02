@@ -1,3 +1,12 @@
+/* Einheitliche Breite, Hero-Inhalt etwas weiter rechts */
+.hero :global(.container) {
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2.5rem;
+  padding-right: var(--portfolio-content-padding, 1.5rem);
+}
+
 .hero {
   padding: 3rem 0 4rem 0;
   padding-top: calc(3rem + 70px);
@@ -67,8 +76,9 @@
   display: block;
 }
 
+/* Links bündig mit restlichen Sektionen (kein extra padding-left) */
 .heroContent {
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 2rem 2rem 2rem 0;
   padding-right: 0.75rem;
 }
 
@@ -79,10 +89,10 @@
   font-weight: 400;
 }
 
-/* Name in eine Zeile, skaliert damit es neben dem Bild passt */
+/* Name in eine Zeile, Überschrift leicht kleiner */
 .heroTitle {
   font-family: var(--portfolio-font-primary);
-  font-size: clamp(2.25rem, 4.5vw + 1.5rem, 5.5rem);
+  font-size: clamp(2rem, 4vw + 1.25rem, 4.75rem);
   margin-bottom: 1rem;
   color: #FFFFFF;
   font-weight: 700;

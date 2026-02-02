@@ -15,10 +15,10 @@
   color: var(--portfolio-white);
   font-weight: 700;
   letter-spacing: var(--portfolio-letter-spacing);
-  max-width: 1440px;
+  max-width: var(--portfolio-content-max-width, 1200px);
   margin-left: auto;
   margin-right: auto;
-  padding: 0 120px;
+  padding: 0 var(--portfolio-content-padding, 1.5rem);
 }
 
 /* Two-column layout: list left, white detail card right (desktop) */
@@ -26,9 +26,9 @@
   display: grid;
   grid-template-columns: minmax(200px, 300px) 1fr;
   gap: 2.5rem;
-  max-width: 1440px;
+  max-width: var(--portfolio-content-max-width, 1200px);
   margin: 0 auto;
-  padding: 0 120px 3rem;
+  padding: 0 var(--portfolio-content-padding, 1.5rem) 3rem;
   align-items: start;
 }
 
@@ -202,9 +202,9 @@
 /* Mobile: stacked full project cards (Figma: eine untereinander, nummeriert) */
 .projectsMobile {
   display: none;
-  max-width: 1440px;
+  max-width: var(--portfolio-content-max-width, 1200px);
   margin: 0 auto;
-  padding: 0 24px 2rem;
+  padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
   flex-direction: column;
 }
 
@@ -226,9 +226,9 @@
 }
 
 .featuredProjectContainer {
-  max-width: 1200px;
+  max-width: var(--portfolio-content-max-width, 1200px);
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--portfolio-content-padding, 1.5rem);
 }
 
 .projectCard {
@@ -396,12 +396,12 @@
 
 @media (max-width: 996px) {
   .sectionTitle {
-    padding: 0 48px;
+    padding: 0 var(--portfolio-content-padding, 1.5rem);
     font-size: 2.5rem;
   }
 
   .projectsTwoCol {
-    padding: 0 48px 2rem;
+    padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
     grid-template-columns: minmax(180px, 220px) 1fr;
     gap: 2rem;
   }

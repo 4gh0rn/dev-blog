@@ -28,6 +28,9 @@
   --portfolio-section-padding: 6rem;
   --portfolio-card-padding: 2.5rem;
   --portfolio-gap: 2.5rem;
+  /* Einheitliche Content-Breite: Hero, Skills, Projects, Contact, Footer */
+  --portfolio-content-max-width: 1200px;
+  --portfolio-content-padding: 1.5rem;
 
   /* Border radius - Figma: 30px cards/buttons, 10px pills, 20px scroll-to-top */
   --portfolio-border-radius: 10px;

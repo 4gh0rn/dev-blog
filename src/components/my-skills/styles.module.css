@@ -15,17 +15,17 @@
   color: #FFFFFF;
   font-weight: 700;
   letter-spacing: var(--portfolio-letter-spacing);
-  max-width: 1440px;
+  max-width: var(--portfolio-content-max-width, 1200px);
   margin-left: auto;
   margin-right: auto;
-  padding: 0 120px;
+  padding: 0 var(--portfolio-content-padding, 1.5rem);
 }
 
 /* Desktop: 3x3 pro Seite, Dots darunter */
 .skillsDesktopWrapper {
-  max-width: 1440px;
+  max-width: var(--portfolio-content-max-width, 1200px);
   margin: 0 auto;
-  padding: 0 120px 2rem;
+  padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
 }
 
 .skillsGrid {
@@ -234,11 +234,11 @@
 
 @media (max-width: 996px) {
   .sectionTitle {
-    padding: 0 48px;
+    padding: 0 var(--portfolio-content-padding, 1.5rem);
   }
 
   .skillsDesktopWrapper {
-    padding: 0 48px 2rem;
+    padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
   }
 
   .skillsGrid {

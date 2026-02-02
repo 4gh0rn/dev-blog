@@ -1,7 +1,7 @@
 /* Footer: mehr Platz nach unten, Links zentriert in der Mitte */
 
 .footer {
-  padding: 8rem 1.5rem 5rem;
+  padding: 8rem var(--portfolio-content-padding, 1.5rem) 5rem;
   background-color: var(--portfolio-bg-dark, #262E34);
   border-top: none;
   margin-top: 0;
