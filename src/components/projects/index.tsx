@@ -180,7 +180,7 @@ export default function Projects(): JSX.Element {
 
   return (
     <section id="projects" className={styles.projectsSection}>
-      <h2 className={styles.sectionTitle}>My project Highlights</h2>
+      <h2 className={styles.sectionTitle}>My project highlights</h2>
 
       <div className={styles.projectsTwoCol}>
         {/* Left: vertical list of all projects, selected in blue */}

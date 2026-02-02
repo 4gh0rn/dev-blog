@@ -72,10 +72,10 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* Gewähltes Projekt: weiß + fett, gut lesbar auf blauem Hintergrund */
+/* Gewähltes Projekt: dunkles Blau + extra fett (Kontrast zum hellen Blau des Bereichs) */
 .projectListButtonActive {
-  color: var(--portfolio-white);
-  font-weight: 700;
+  color: #243a4d;
+  font-weight: 800;
 }
 
 .seeMoreLink {

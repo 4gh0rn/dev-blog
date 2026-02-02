@@ -6,7 +6,7 @@
   margin-bottom: 0;
 }
 
-/* Zeile 1 = Titel links; Zeile 2 = Message links | "Looking forward..." + Links rechts (gleiche Höhe wie Text) */
+/* Zeile 1 = Titel; Zeile 2 = Bullets. "Looking forward..." + Links absolut auf Höhe des Titels, ohne Bullets zu verschieben */
 .contactLayout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -17,6 +17,7 @@
   margin: 0 auto;
   padding: 0 var(--portfolio-content-padding, 1.5rem);
   align-items: start;
+  position: relative;
 }
 
 .contactLayout .sectionTitle {
@@ -31,8 +32,10 @@
 }
 
 .contactRight {
-  grid-column: 2;
-  grid-row: 2;
+  position: absolute;
+  top: 2.25rem;
+  left: calc(50% + 1.5rem);
+  right: 0;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -144,6 +147,9 @@
   }
 
   .contactRight {
+    position: static;
+    left: auto;
+    right: auto;
     grid-column: 1;
     grid-row: 3;
   }
