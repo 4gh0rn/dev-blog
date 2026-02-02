@@ -243,7 +243,7 @@
   /* Mobile: innerer Wrapper mit border-radius + overflow schneidet Bild zuverlässig ab */
   .profileImageWrapper {
     width: 100%;
-    max-width: 88%;
+    max-width: 95%;
     border: none;
     box-shadow: none;
   }
@@ -255,8 +255,11 @@
   }
 
   .profileImage {
+    width: 100%;
     max-width: 100%;
     height: auto;
+    min-height: 320px;
+    max-height: 82vmin;
     border: none;
     border-radius: var(--portfolio-border-radius-lg, 20px);
     display: block;
@@ -324,12 +327,12 @@
   }
 
   .profileImage {
-    min-height: 220px;
-    max-height: 60vmin;
+    min-height: 300px;
+    max-height: 78vmin;
   }
 
   .profileImageWrapper {
-    max-width: 85%;
+    max-width: 92%;
   }
 
   .profileImageInner {
@@ -357,12 +360,12 @@
   }
 
   .profileImage {
-    min-height: 200px;
-    max-height: 55vmin;
+    min-height: 280px;
+    max-height: 72vmin;
   }
 
   .profileImageWrapper {
-    max-width: 82%;
+    max-width: 90%;
   }
 
   .profileImageInner {
