@@ -148,10 +148,7 @@ function ProjectDetailCard({ project, titleOverride }: { project: Project; title
           </span>
         ))}
         {project.skills.length > 3 && (
-          <span className={styles.projectDetailTag}>
-            <span className={styles.projectDetailTagIcon} aria-hidden>➕</span>
-            +{project.skills.length - 3}
-          </span>
+          <span className={styles.projectDetailTag}>+{project.skills.length - 3}</span>
         )}
       </div>
       {project.imageUrl && (
