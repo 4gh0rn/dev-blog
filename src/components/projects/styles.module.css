@@ -319,7 +319,7 @@
   }
 }
 
-/* Mobile: dunkle Karte, Standard-Buttons */
+/* Basis: Buttons auf der Detail-Card überall stark abgerundet wie Desktop */
 .projectDetailLinkDoc:global(.button--outline.button--primary),
 .projectDetailLinkDoc:global(.button.button--outline.button--primary) {
   background: var(--portfolio-blue) !important;
@@ -329,6 +329,8 @@
   font-weight: 600 !important;
   font-size: 1rem !important;
   line-height: 120% !important;
+  border-radius: 30px;
+  padding: 0.6rem 1.25rem;
 }
 
 .projectDetailLinkDoc:hover {
@@ -345,6 +347,8 @@
   font-weight: 600 !important;
   font-size: 1rem !important;
   line-height: 120% !important;
+  border-radius: 30px;
+  padding: 0.6rem 1.25rem;
 }
 
 .projectDetailLinkGit:hover {
@@ -505,7 +509,7 @@
   justify-content: center !important;
   touch-action: manipulation;
   font-weight: 500;
-  border-radius: var(--portfolio-border-radius);
+  border-radius: 30px;
   transition: all var(--portfolio-transition-fast) var(--portfolio-transition-timing);
 }
 
@@ -592,6 +596,23 @@
     padding: 1.25rem 1.5rem;
   }
 
+  /* Mobile: Skill-Tags mit weißem Hintergrund wie auf Desktop */
+  .projectDetailTag {
+    background: #FFFFFF;
+    color: #1e293b;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.4rem 0.75rem;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .projectDetailTagIcon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
   .projectDetailTitle {
     font-size: 1.25rem;
   }
@@ -601,15 +622,19 @@
   }
 
   .projectDetailLinks {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: stretch;
   }
 
   .projectDetailLinkDoc,
   .projectDetailLinkGit {
-    width: 100%;
+    flex: 1;
+    min-width: 120px;
     text-align: center;
     justify-content: center;
+    border-radius: 30px;
   }
 }
 
