@@ -26,15 +26,10 @@ export default function Hero({
     <section id="about-me" className={styles.hero}>
       <div className="container">
         <div className={clsx('row', styles.heroRow)}>
-          <div className={clsx('col col--6', styles.heroContent)}>
+          <div className={clsx('col col--6', styles.heroHeading)}>
             <p className={styles.heroGreeting}>Hey there. 👋 I am</p>
             <h1 className={styles.heroTitle}>{name}</h1>
             <h2 className={styles.heroSubtitle}>{title}</h2>
-            <div className={styles.heroDescription}>
-              <p>
-                {description}
-              </p>
-            </div>
           </div>
           <div className={clsx('col col--6', styles.heroImage)}>
             <div className={styles.profileImageWrapper}>
@@ -43,6 +38,13 @@ export default function Hero({
                 alt={name}
                 className={styles.profileImage}
               />
+            </div>
+          </div>
+          <div className={clsx('col col--6', styles.heroDescriptionWrap)}>
+            <div className={styles.heroDescription}>
+              <p>
+                {description}
+              </p>
             </div>
           </div>
           <div className={styles.heroButtonWrap}>

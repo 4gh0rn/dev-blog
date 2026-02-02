@@ -21,37 +21,49 @@
   margin-bottom: 0;
 }
 
-/* Desktop: Textblock breit, Bild rechts schmaler */
+/* Desktop: Text näher zum Bild, Button linksbündig zum Text */
 .heroRow {
   display: grid;
   grid-template-columns: 2.2fr 0.45fr;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
   align-items: start;
   position: relative;
   z-index: 1;
-  gap: 0 2rem;
+  gap: 0 1.25rem;
 }
 
-.heroContent {
+.heroHeading {
   grid-column: 1;
   grid-row: 1;
   min-width: 0;
+  padding: 2rem 0.5rem 0 0;
 }
 
 .heroImage {
   grid-column: 2;
-  grid-row: 1 / -1;
+  grid-row: 1 / 3;
   align-self: center;
   text-align: center;
-  padding: 2rem 1.5rem 2rem 0.5rem;
+  padding: 2rem 0.75rem 2rem 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.heroButtonWrap {
+.heroDescriptionWrap {
   grid-column: 1;
   grid-row: 2;
+  min-width: 0;
+  padding: 0 0.5rem 0 0;
+}
+
+.heroButtonWrap {
+  grid-column: 1;
+  grid-row: 3;
+  padding: 0 0 2rem 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 /* Screenshot: Bild ohne Rahmen, direkt auf blauem Hintergrund, nur weiche Ecken */
@@ -76,11 +88,6 @@
   display: block;
 }
 
-/* Links bündig mit restlichen Sektionen (kein extra padding-left) */
-.heroContent {
-  padding: 2rem 2rem 2rem 0;
-  padding-right: 0.75rem;
-}
 
 .heroGreeting {
   font-size: 1.125rem;
@@ -187,8 +194,9 @@
   transform: translateY(0);
 }
 
+/* Desktop: linksbündig; Mobile: zentriert (weiter unten überschrieben) */
 .heroButtonWrap {
-  padding: 0 2rem 2rem;
+  padding: 0 0 2rem 0;
 }
 
 /* Mobile: eine Spalte – Reihenfolge Text, Bild, Button (Figma); linksbündig */
@@ -206,10 +214,17 @@
     gap: 0;
   }
 
-  .heroContent {
+  .heroHeading {
     grid-column: unset;
     grid-row: unset;
     padding: 2rem 1rem 0;
+  }
+
+  .heroDescriptionWrap {
+    grid-column: unset;
+    grid-row: unset;
+    padding: 0 1rem;
+    margin-top: 0;
   }
 
   .heroImage {
@@ -271,7 +286,8 @@
     max-width: 100%;
   }
 
-  .heroContent {
+  .heroHeading,
+  .heroDescriptionWrap {
     text-align: left;
   }
 
