@@ -33,7 +33,7 @@
 
 .contactRight {
   position: absolute;
-  top: 2.25rem;
+  top: 0;
   left: calc(50% + 1.5rem);
   right: 0;
   display: flex;
@@ -98,7 +98,7 @@
     left: auto;
     right: var(--portfolio-content-padding, 1.5rem);
     max-width: fit-content;
-    top: 3.5rem;
+    top: 2.5rem;
   }
   
   .contactGreeting {
