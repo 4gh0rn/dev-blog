@@ -12,7 +12,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   gap: 0 3rem;
-  row-gap: 2rem;
+  row-gap: 1rem;
   max-width: var(--portfolio-content-max-width, 1200px);
   margin: 0 auto;
   padding: 0 var(--portfolio-content-padding, 1.5rem);
@@ -89,6 +89,25 @@
   font-size: 1.125rem;
   color: #FFFFFF;
   font-weight: 400;
+}
+
+/* Desktop: Container rechtsbündig, aber Text bleibt linksbündig */
+@media (min-width: 997px) {
+  .contactRight {
+    align-items: flex-start;
+    left: auto;
+    right: var(--portfolio-content-padding, 1.5rem);
+    max-width: fit-content;
+    top: 3.5rem;
+  }
+  
+  .contactGreeting {
+    text-align: left;
+  }
+  
+  .contactInfo {
+    text-align: left;
+  }
 }
 
 .contactInfo {
