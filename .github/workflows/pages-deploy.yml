@@ -3,10 +3,10 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - feat/ag/documentation_updates
+      - feat/ag/main
   pull_request:
     branches:
-      - feat/ag/documentation_updates
+      - feat/ag/main
   workflow_dispatch:
 
 permissions:
