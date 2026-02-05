@@ -1,0 +1,209 @@
+.contactSection {
+  padding: var(--portfolio-section-padding) 0 10rem 0;
+  background-color: var(--portfolio-bg-dark, #262E34);
+  color: #FFFFFF;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Zeile 1 = Titel; Zeile 2 = Bullets. "Looking forward..." + Links absolut auf Höhe des Titels, ohne Bullets zu verschieben */
+.contactLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0 3rem;
+  row-gap: 1rem;
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--portfolio-content-padding, 1.5rem);
+  align-items: start;
+  position: relative;
+}
+
+.contactLayout .sectionTitle {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-bottom: 0;
+}
+
+.contactMessageWrap {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.contactRight {
+  position: absolute;
+  top: 0;
+  left: calc(50% + 1.5rem);
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactRight .contactGreeting {
+  margin: 0 0 0.25rem 0;
+}
+
+.sectionTitle {
+  font-family: var(--portfolio-font-primary);
+  text-align: left;
+  font-size: var(--portfolio-h2-size);
+  margin-bottom: 2rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: var(--portfolio-letter-spacing);
+}
+
+.contactMessage {
+  font-size: var(--portfolio-body-size);
+  line-height: var(--portfolio-line-height);
+  color: #FFFFFF;
+}
+
+.contactBulletList {
+  list-style: disc;
+  margin: 0 0 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.contactBulletList li {
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.contactBulletList li:last-child {
+  margin-bottom: 0;
+}
+
+.contactMessage p {
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+.contactMessage p:last-child {
+  margin-bottom: 0;
+}
+
+.contactGreeting {
+  font-size: 1.125rem;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
+/* Desktop: Container rechtsbündig, aber Text bleibt linksbündig */
+@media (min-width: 997px) {
+  .contactRight {
+    align-items: flex-start;
+    left: auto;
+    right: var(--portfolio-content-padding, 1.5rem);
+    max-width: fit-content;
+    top: 2.5rem;
+  }
+  
+  .contactGreeting {
+    text-align: left;
+  }
+  
+  .contactInfo {
+    text-align: left;
+  }
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: opacity var(--portfolio-transition-base);
+}
+
+.contactLink:hover {
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.contactIcon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Mobile: Titel → Bullets → "Looking forward..." + Links */
+@media (max-width: 996px) {
+  .contactLayout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+  }
+
+  .contactLayout .sectionTitle {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contactMessageWrap {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .contactRight {
+    position: static;
+    left: auto;
+    right: auto;
+    grid-column: 1;
+    grid-row: 3;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .contactMessage {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .contactGreeting {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: 3rem 0 6rem 0;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contactMessage {
+    font-size: 0.95rem;
+  }
+
+  .contactLink {
+    font-size: 0.9rem;
+  }
+}

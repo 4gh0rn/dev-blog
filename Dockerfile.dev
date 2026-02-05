@@ -2,12 +2,11 @@ FROM node:20.16-alpine
 
 WORKDIR /app
 
-# Install dependencies
+# Copy package files first for better layer caching
 COPY package*.json ./
-RUN npm install
 
-# Copy environment file
-COPY example.env .env
+# Install dependencies (use npm install for dev to allow flexibility)
+RUN npm install
 
 # Copy source files
 COPY . .

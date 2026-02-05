@@ -1,0 +1,659 @@
+/* Figma: full width, blue #266AD9, padding 120px horizontal */
+.projectsSection {
+  padding: var(--portfolio-section-padding) 0;
+  background: var(--portfolio-blue);
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-family: var(--portfolio-font-primary);
+  text-align: left;
+  font-size: var(--portfolio-h2-size);
+  line-height: 120%;
+  margin-bottom: 3rem;
+  color: var(--portfolio-white);
+  font-weight: 700;
+  letter-spacing: var(--portfolio-letter-spacing);
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--portfolio-content-padding, 1.5rem);
+}
+
+/* Two-column layout: list left, white detail card right (desktop) */
+.projectsTwoCol {
+  display: grid;
+  grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: 2.5rem;
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--portfolio-content-padding, 1.5rem) 3rem;
+  align-items: start;
+}
+
+.projectListCol {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Nummer nur im Button-Text, keine list-style (sonst doppelt) */
+.projectList {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  min-width: 0;
+}
+
+.projectListItem {
+  margin-bottom: 0.35rem;
+}
+
+.projectListButton {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: var(--portfolio-white);
+  font-family: var(--portfolio-font-primary);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 120%;
+  cursor: pointer;
+  transition: color var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+}
+
+.projectListButton:hover {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+/* Gewähltes Projekt: dunkles Blau + extra fett (Kontrast zum hellen Blau des Bereichs) */
+.projectListButtonActive {
+  color: #243a4d;
+  font-weight: 800;
+}
+
+.seeMoreLink {
+  margin-top: 1rem;
+  flex-shrink: 0;
+  color: var(--portfolio-blue);
+  font-family: var(--portfolio-font-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 120%;
+  text-decoration: none;
+  transition: opacity var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+}
+
+.seeMoreLink:hover {
+  opacity: 0.9;
+  color: var(--portfolio-blue);
+}
+
+.projectDetailCol {
+  min-width: 0;
+}
+
+/* Detail card – Basis für Mobile; Desktop = weiße Karte (siehe Media Query) */
+.projectDetailCard {
+  background: var(--portfolio-card);
+  border-radius: var(--portfolio-border-radius-lg);
+  padding: 2rem 2.5rem;
+  box-shadow: var(--portfolio-shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.projectDetailTitle {
+  font-family: var(--portfolio-font-primary);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 120%;
+  color: var(--portfolio-white);
+  margin: 0 0 1rem 0;
+}
+
+.projectDetailSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.projectDetailTag {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--portfolio-white);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--portfolio-border-radius);
+  font-family: var(--portfolio-font-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 120%;
+}
+
+.projectDetailImageWrap {
+  width: 100%;
+  border-radius: var(--portfolio-border-radius);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.projectDetailImage {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.projectDetailDescription {
+  font-family: var(--portfolio-font-primary);
+  font-size: 0.95rem;
+  line-height: 160%;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 1.5rem 0;
+}
+
+.projectDetailLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* Desktop: dunkelblaue Karte, Überschrift + Skills in einer Zeile (weiße Tags), dann Bild links | Inhalt rechts */
+@media (min-width: 997px) {
+  .projectDetailCard {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 0 2rem;
+    row-gap: 1.25rem;
+    background: #2D3A4B;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .projectDetailTitle {
+    grid-column: 1;
+    grid-row: 1;
+    color: #FFFFFF;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+    align-self: center;
+  }
+
+  .projectDetailSkills {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    align-self: center;
+    justify-content: flex-end;
+  }
+
+  .projectDetailTag {
+    background: #FFFFFF;
+    color: #1e293b;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .projectDetailTagIcon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .projectDetailImageWrap {
+    grid-column: 1;
+    grid-row: 2 / 4;
+    margin-bottom: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+    align-self: stretch;
+    min-height: 200px;
+  }
+
+  .projectDetailImage {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    max-height: 100%;
+    object-fit: cover;
+  }
+
+  .projectDetailDescription {
+    grid-column: 2;
+    grid-row: 2;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .projectDetailLinks {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 0.25rem;
+  }
+
+  .projectDetailLinkDoc:global(.button--outline.button--primary),
+  .projectDetailLinkDoc:global(.button.button--outline.button--primary) {
+    background: var(--portfolio-blue) !important;
+    color: #FFFFFF !important;
+    border: 2px solid var(--portfolio-blue) !important;
+    border-radius: 30px;
+    padding: 0.6rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .projectDetailLinkDoc:hover {
+    background: #1d5ab8 !important;
+    border-color: #1d5ab8 !important;
+  }
+
+  .projectDetailLinkGit:global(.button--secondary),
+  .projectDetailLinkGit:global(.button.button--secondary) {
+    background: transparent !important;
+    color: #FFFFFF !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    border-radius: 30px;
+    padding: 0.6rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .projectDetailLinkGit:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.7) !important;
+    color: #FFFFFF !important;
+  }
+
+  /* Ohne Bild: einspaltig, Inhalt volle Breite */
+  .projectDetailCardNoImage {
+    grid-template-columns: 1fr;
+  }
+
+  .projectDetailCardNoImage {
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  .projectDetailCardNoImage .projectDetailTitle {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .projectDetailCardNoImage .projectDetailSkills {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+  }
+
+  .projectDetailCardNoImage .projectDetailDescription {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .projectDetailCardNoImage .projectDetailLinks {
+    grid-column: 1;
+    grid-row: 4;
+  }
+}
+
+/* Basis: Buttons auf der Detail-Card überall stark abgerundet wie Desktop */
+.projectDetailLinkDoc:global(.button--outline.button--primary),
+.projectDetailLinkDoc:global(.button.button--outline.button--primary) {
+  background: var(--portfolio-blue) !important;
+  color: var(--portfolio-white) !important;
+  border: 2px solid var(--portfolio-blue) !important;
+  font-family: var(--portfolio-font-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  line-height: 120% !important;
+  border-radius: 30px;
+  padding: 0.6rem 1.25rem;
+}
+
+.projectDetailLinkDoc:hover {
+  background: #1d5ab8 !important;
+  border-color: #1d5ab8 !important;
+}
+
+.projectDetailLinkGit:global(.button--secondary),
+.projectDetailLinkGit:global(.button.button--secondary) {
+  background: transparent !important;
+  color: var(--portfolio-white) !important;
+  border: 2px solid rgba(255, 255, 255, 0.5) !important;
+  font-family: var(--portfolio-font-primary) !important;
+  font-weight: 600 !important;
+  font-size: 1rem !important;
+  line-height: 120% !important;
+  border-radius: 30px;
+  padding: 0.6rem 1.25rem;
+}
+
+.projectDetailLinkGit:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: var(--portfolio-white) !important;
+}
+
+/* Mobile: stacked full project cards (Figma: eine untereinander, nummeriert) */
+.projectsMobile {
+  display: none;
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
+  flex-direction: column;
+}
+
+.projectsMobileStack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.projectListColMobile {
+  margin-bottom: 1rem;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.projectDetailColMobile {
+  margin-bottom: 1rem;
+}
+
+.featuredProjectContainer {
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--portfolio-content-padding, 1.5rem);
+}
+
+.projectCard {
+  background-color: var(--portfolio-card, #2F4563);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--portfolio-border-radius-lg);
+  padding: 0;
+  box-shadow: var(--portfolio-shadow-lg);
+  transition: all var(--portfolio-transition-base) var(--portfolio-transition-timing);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--portfolio-shadow-xl);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.featuredCard {
+  max-width: 100%;
+}
+
+.featuredCard .projectImageContainer {
+  height: 300px;
+}
+
+.featuredCard .projectCardContent {
+  padding: 2.5rem;
+}
+
+.featuredCard .projectTitle {
+  font-size: 1.5rem;
+}
+
+.featuredCard .projectDescription {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--portfolio-shadow-md);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.projectImageContainer {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: var(--portfolio-gradient-primary);
+  position: relative;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--portfolio-transition-slow) var(--portfolio-transition-timing);
+}
+
+.projectCard:hover .projectImage {
+  transform: scale(1.1);
+}
+
+.projectCardContent {
+  padding: var(--portfolio-card-padding);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.projectTitle {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.projectDescription {
+  color: #FFFFFF;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+.projectSkills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.skillTag {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  padding: 0.375rem 0.875rem;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.projectLink {
+  flex: 1;
+  min-width: 120px;
+  min-height: 44px;
+  text-align: center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  touch-action: manipulation;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: all var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+}
+
+/* Figma: Doc button white/blue, GitHub button card color */
+.projectLink:global(.button--outline.button--primary),
+.projectLink:global(.button.button--outline.button--primary) {
+  background: #FFFFFF !important;
+  color: var(--portfolio-blue, #266AD9) !important;
+  border: 2px solid #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.projectLink:global(.button--outline.button--primary):hover,
+.projectLink:global(.button.button--outline.button--primary):hover {
+  background: #F0F4F8 !important;
+  color: #1d5ab8 !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-1px);
+}
+
+.projectLink:global(.button--outline.button--secondary),
+.projectLink:global(.button.button--outline.button--secondary) {
+  background: var(--portfolio-card, #2F4563) !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+.projectLink:global(.button--outline.button--secondary):hover,
+.projectLink:global(.button.button--outline.button--secondary):hover {
+  background: #263a52 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-1px);
+}
+
+.projectLink:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+@media (max-width: 996px) {
+  .sectionTitle {
+    padding: 0 var(--portfolio-content-padding, 1.5rem);
+    font-size: 2.5rem;
+  }
+
+  .projectsTwoCol {
+    padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
+    grid-template-columns: minmax(180px, 220px) 1fr;
+    gap: 2rem;
+  }
+
+  .projectDetailCard {
+    padding: 1.5rem 2rem;
+  }
+
+  .projectDetailTitle {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .projectsSection {
+    padding: 3rem 0;
+  }
+
+  .sectionTitle {
+    padding: 0 24px;
+    font-size: 40px;
+    margin-bottom: 1.5rem;
+  }
+
+  .projectsTwoCol {
+    display: none;
+  }
+
+  .projectsMobile {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projectDetailCard {
+    padding: 1.25rem 1.5rem;
+  }
+
+  /* Mobile: Skill-Tags mit weißem Hintergrund wie auf Desktop */
+  .projectDetailTag {
+    background: #FFFFFF;
+    color: #1e293b;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.4rem 0.75rem;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .projectDetailTagIcon {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .projectDetailTitle {
+    font-size: 1.25rem;
+  }
+
+  .projectDetailDescription {
+    font-size: 0.9rem;
+  }
+
+  .projectDetailLinks {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: stretch;
+  }
+
+  .projectDetailLinkDoc,
+  .projectDetailLinkGit {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectsSection {
+    padding: 2rem 0;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+    padding: 0 24px;
+    margin-bottom: 1rem;
+  }
+
+  .projectsMobile {
+    padding: 0 24px 1.5rem;
+  }
+
+  .projectDetailImage {
+    max-height: 200px;
+  }
+}

@@ -1,78 +1,54 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
+/* Portfolio Page Styles */
 
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.portfolioLayout {
+  /* Remove any padding/margin from Docusaurus layout - Figma dark #262E34 */
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: #262E34 !important;
+  min-height: 100vh;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.portfolioLayout :global(.navbar) {
+  /* Hide Docusaurus navbar completely on portfolio page */
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.heroDescription {
-  font-size: 1.2rem;
-  margin: 1.5rem 0 2rem;
-  opacity: 0.9;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.portfolioLayout :global(.main-wrapper) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: transparent !important;
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+.portfolioLayout :global(.main-wrapper > main) {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: transparent !important;
 }
 
-.projectsPreview {
-  padding: 4rem 0;
-  text-align: center;
-  background-color: var(--ifm-color-emphasis-100);
+/* Remove any white space at the top */
+.portfolioLayout :global(> *) {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
-.sectionTitle {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.portfolioMain {
+  /* No padding-top - header is at the very top */
+  padding-top: 0;
+  margin-top: 0;
 }
 
-.sectionDescription {
-  font-size: 1.1rem;
-  color: var(--ifm-color-emphasis-700);
-  margin-bottom: 2rem;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+/* Hero section should start right after header */
+.portfolioMain :global(#about-me) {
+  margin-top: 0;
+  padding-top: 90px; /* Space for fixed header + some breathing room */
 }
 
-.ctaContainer {
-  margin-top: 2rem;
-}
-
-@media screen and (max-width: 996px) {
-  .sectionTitle {
-    font-size: 2rem;
-  }
-  
-  .heroDescription {
-    font-size: 1rem;
-  }
-  
-  .buttons {
-    flex-direction: column;
-  }
-  
-  .buttons > * {
-    margin-left: 0 !important;
-    width: 100%;
-    max-width: 300px;
+@media (max-width: 480px) {
+  .portfolioMain :global(#about-me) {
+    padding-top: 80px;
   }
 }

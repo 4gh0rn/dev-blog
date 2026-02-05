@@ -1,0 +1,453 @@
+/* Figma: full width, dark bg #262E34, desktop padding 120px horizontal */
+.skillsSection {
+  padding: var(--portfolio-section-padding) 0;
+  background-color: var(--portfolio-bg-dark, #262E34);
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-family: var(--portfolio-font-primary);
+  text-align: left;
+  font-size: var(--portfolio-h2-size);
+  margin-bottom: 3rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: var(--portfolio-letter-spacing);
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--portfolio-content-padding, 1.5rem);
+}
+
+/* Desktop: 3x3 pro Seite, Dots darunter */
+.skillsDesktopWrapper {
+  max-width: var(--portfolio-content-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.skillsDesktopDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.skillsDesktopDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: var(--portfolio-dots-inactive, #738398);
+  transition: background var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+}
+
+.skillsDesktopDot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.skillsDesktopDotActive {
+  background: var(--portfolio-blue, #266AD9);
+}
+
+.skillCard {
+  position: relative;
+  height: 240px;
+  perspective: 1000px;
+  cursor: pointer;
+  touch-action: manipulation;
+  min-height: 44px; /* Touch target minimum */
+}
+
+.skillCardFront,
+.skillCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  transition: transform var(--portfolio-transition-base) var(--portfolio-transition-timing);
+  border-radius: var(--portfolio-border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--portfolio-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Figma: desktop skill card rgba(145, 201, 243, 0.1), kein Rahmen, nur Schatten */
+.skillCardFront {
+  background-color: var(--portfolio-skill-card-desktop, rgba(145, 201, 243, 0.1));
+  border: none;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--portfolio-shadow-md);
+}
+
+.skillCard:hover .skillCardFront {
+  box-shadow: var(--portfolio-shadow-lg);
+}
+
+.skillCardBack {
+  background: var(--portfolio-gradient-primary);
+  color: var(--portfolio-text-on-gradient);
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.skillCardBack::-webkit-scrollbar {
+  width: 4px;
+}
+
+.skillCardBack::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.skillCardBack::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+}
+
+.skillCardBack::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.skillCard:hover .skillCardFront,
+.skillCard.skillCardHovered .skillCardFront {
+  transform: rotateY(180deg);
+}
+
+.skillCard:hover .skillCardBack,
+.skillCard.skillCardHovered .skillCardBack {
+  transform: rotateY(0);
+}
+
+.skillIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--portfolio-border-radius);
+  font-weight: 700;
+  color: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.skillName {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  color: #FFFFFF;
+  font-weight: 600;
+  line-height: 1.3;
+  flex-shrink: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.skillDescription {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin: 0;
+  font-size: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-height: 0;
+}
+
+.skillBackTitle {
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+  color: var(--portfolio-text-on-gradient);
+  flex-shrink: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.skillBackTitle:first-child {
+  margin-top: 0;
+}
+
+.skillLearnedFrom {
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  color: var(--portfolio-text-on-gradient-secondary);
+  flex-shrink: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.skillUsedIn {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.skillUsedIn li {
+  font-size: 0.75rem;
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+  position: relative;
+  color: var(--portfolio-text-on-gradient-secondary);
+  line-height: 1.3;
+  flex-shrink: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.skillUsedIn li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary-lightest);
+}
+
+@media (max-width: 996px) {
+  .sectionTitle {
+    padding: 0 var(--portfolio-content-padding, 1.5rem);
+  }
+
+  .skillsDesktopWrapper {
+    padding: 0 var(--portfolio-content-padding, 1.5rem) 2rem;
+  }
+
+  .skillsGrid {
+    gap: 1rem;
+  }
+
+  .skillCard {
+    height: 230px;
+  }
+}
+
+/* Mobile: horizontal carousel with dots - hidden on desktop. Figma: padding 24px horizontal */
+.skillsCarouselWrapper {
+  display: none;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 24px 2rem;
+}
+
+.skillsCarousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.5rem;
+}
+
+.skillsCarousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile: one card per slide, 3 skill rows inside (like screenshot) */
+.skillsCarouselSlideGroup {
+  flex: 0 0 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-right: 0.5rem;
+  background-color: #2D3A4B;
+  border-radius: 20px;
+  padding: 1.25rem 1.5rem;
+  overflow: hidden;
+  border: none;
+}
+
+.skillsCarouselSlide {
+  flex: 0 0 85%;
+  min-width: 85%;
+  scroll-snap-align: center;
+}
+
+/* One row per skill inside the combined card – no lines between rows */
+.skillCardMobileRow {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1rem;
+  align-items: start;
+  text-align: left;
+  padding: 1rem 0;
+  border: none;
+}
+
+.skillCardMobileRow:first-child {
+  padding-top: 0;
+}
+
+.skillCardMobileRow:last-child {
+  padding-bottom: 0;
+}
+
+.skillCardMobileRow .skillCardMobileLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  grid-column: 1;
+  min-width: 72px;
+}
+
+.skillCardMobileRow .skillCardMobileLeft .skillIcon {
+  margin-bottom: 0;
+  width: 48px;
+  height: 48px;
+  font-size: 2rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skillCardMobileRow .skillCardMobileLeft .skillName {
+  margin: 0;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.skillCardMobileRow .skillCardMobileBullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  grid-column: 2;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  min-width: 0;
+}
+
+.skillCardMobileRow .skillCardMobileBullets li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.skillCardMobileRow .skillCardMobileBullets li::before {
+  content: "•";
+  flex-shrink: 0;
+  width: 0.5em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.skillsCarouselDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.skillsCarouselDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: var(--portfolio-dots-inactive, #738398);
+  transition: background var(--portfolio-transition-fast) var(--portfolio-transition-timing);
+}
+
+.skillsCarouselDot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.skillsCarouselDotActive {
+  width: 24px;
+  border-radius: 5px;
+  background: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .skillsDesktopWrapper {
+    display: none;
+  }
+
+  .skillsCarouselWrapper {
+    display: block;
+  }
+
+  .sectionTitle {
+    font-size: 40px;
+    padding: 0 24px;
+    margin-bottom: 2rem;
+  }
+
+  .skillCard {
+    height: 220px;
+  }
+
+  .skillName {
+    font-size: 0.9rem;
+  }
+
+  .skillDescription {
+    font-size: 0.75rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .skillBackTitle {
+    font-size: 0.7rem;
+  }
+
+  .skillLearnedFrom {
+    font-size: 0.7rem;
+  }
+
+  .skillUsedIn li {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillsSection {
+    padding: 2rem 0;
+  }
+
+  .sectionTitle {
+    font-size: 32px;
+    padding: 0 24px;
+    margin-bottom: 1.5rem;
+  }
+
+  .skillCard {
+    height: 220px;
+  }
+}

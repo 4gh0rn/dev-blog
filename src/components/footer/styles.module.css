@@ -1,0 +1,84 @@
+/* Footer: mehr Platz nach unten, Links zentriert in der Mitte */
+
+.footer {
+  padding: 8rem var(--portfolio-content-padding, 1.5rem) 5rem;
+  background-color: var(--portfolio-bg-dark, #262E34);
+  border-top: none;
+  margin-top: 0;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerCopyright {
+  color: var(--portfolio-legal, #F8F5EC);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.footerCopyright p {
+  margin: 0;
+}
+
+.footerLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.footerLink {
+  color: var(--portfolio-legal, #F8F5EC);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--portfolio-transition-base) var(--portfolio-transition-timing);
+  position: relative;
+}
+
+.footerLink:hover {
+  color: var(--portfolio-blue, #266AD9);
+  text-decoration: none;
+}
+
+.footerLink:focus {
+  outline: 2px solid var(--portfolio-blue, #266AD9);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 6rem 1rem 4rem;
+  }
+
+  .footerLinks {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 5rem 1rem 3.5rem;
+  }
+
+  .footerCopyright {
+    font-size: 0.85rem;
+  }
+
+  .footerLink {
+    font-size: 0.85rem;
+  }
+
+  .footerLinks {
+    gap: 1rem;
+  }
+}

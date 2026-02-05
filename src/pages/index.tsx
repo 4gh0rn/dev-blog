@@ -1,75 +1,48 @@
-import React from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import React, { useLayoutEffect } from 'react';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Header from '../components/header';
+import Hero from '../components/hero';
+import MySkills from '../components/my-skills';
+import Projects from '../components/projects';
+import Contact from '../components/contact';
+import Footer from '../components/footer';
+import ScrollToTop from '../components/scroll-to-top';
 import styles from './index.module.css';
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">
-          DevSecOps Engineer | Infrastructure as Code | Cloud Automation
-        </p>
-        <p className={styles.heroDescription}>
-          Documentation, guides, and projects on DevOps, Security, and modern infrastructure
-        </p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/projects/overview">
-            Documentation 📚
-          </Link>
-          <Link
-            className="button button--outline button--secondary button--lg"
-            to="/portfolio"
-            style={{marginLeft: '1rem'}}>
-            Portfolio 🚀
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
-
-function ProjectsPreview() {
-  return (
-    <section className={styles.projectsPreview}>
-      <div className="container">
-        <div className="row">
-          <div className="col col--12">
-            <h2 className={styles.sectionTitle}>Featured Projects</h2>
-            <p className={styles.sectionDescription}>
-              A selection of my projects from the DevSecOps domain
-            </p>
-            <div className={styles.ctaContainer}>
-              <Link
-                className="button button--primary button--lg"
-                to="/portfolio">
-                View All Projects →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+const PORTFOLIO_PAGE_CLASS = 'portfolio-page';
 
 export default function Home(): JSX.Element {
-  const {siteConfig} = useDocusaurusContext();
+  useLayoutEffect(() => {
+    // Portfolio page: dark background + hide Docusaurus navbar (sofort vor Paint)
+    document.body.style.backgroundColor = '#262E34';
+    document.documentElement.style.backgroundColor = '#262E34';
+    document.body.classList.add(PORTFOLIO_PAGE_CLASS);
+    document.documentElement.classList.add(PORTFOLIO_PAGE_CLASS);
+
+    return () => {
+      document.body.style.backgroundColor = '';
+      document.documentElement.style.backgroundColor = '';
+      document.body.classList.remove(PORTFOLIO_PAGE_CLASS);
+      document.documentElement.classList.remove(PORTFOLIO_PAGE_CLASS);
+    };
+  }, []);
+
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Documentation and portfolio of Uwe Wohlleber - DevSecOps Engineer">
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
-        <ProjectsPreview />
+      title="Portfolio"
+      description="My Portfolio - Projects and skills from the DevSecOps course"
+      wrapperClassName={styles.portfolioLayout}
+      noFooter={true}
+      noNavbar={true}
+    >
+      <Header />
+      <main className={styles.portfolioMain}>
+        <Hero />
+        <MySkills />
+        <Projects />
+        <Contact />
+        <Footer />
+        <ScrollToTop />
       </main>
     </Layout>
   );

@@ -1,21 +1,40 @@
 /**
- * Portfolio Design Variables
- * Only portfolio-specific CSS variables - all other styles use Docusaurus defaults
+ * Portfolio Design Variables - Figma 1:1
+ * Quicksand (primary), Reddit Sans / system fallback
  */
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Red+Hat+Display:wght@400;500;600;700&display=swap');
+
 /* ============================================
-   PORTFOLIO DESIGN VARIABLES
+   PORTFOLIO DESIGN VARIABLES (Figma)
    ============================================ */
 
 :root {
+  /* Figma colors */
+  --portfolio-bg-dark: #262E34;
+  --portfolio-blue: #266AD9;
+  --portfolio-card: #2F4563;
+  --portfolio-white: #FFFFFF;
+  --portfolio-legal: #F8F5EC;
+  --portfolio-skill-card-desktop: rgba(145, 201, 243, 0.1);
+  --portfolio-skill-card-mobile: rgba(38, 106, 217, 0.1);
+  --portfolio-dots-inactive: #738398;
+
+  /* Fonts - Figma: Quicksand primary, Red Hat Display for secondary/skills */
+  --portfolio-font-primary: 'Quicksand', sans-serif;
+  --portfolio-font-secondary: 'Red Hat Display', system-ui, sans-serif;
+
   /* Spacing */
   --portfolio-section-padding: 6rem;
   --portfolio-card-padding: 2.5rem;
   --portfolio-gap: 2.5rem;
+  /* Einheitliche Content-Breite: Hero, Skills, Projects, Contact, Footer */
+  --portfolio-content-max-width: 1200px;
+  --portfolio-content-padding: 1.5rem;
 
-  /* Border radius */
-  --portfolio-border-radius: 8px;
-  --portfolio-border-radius-lg: 12px;
+  /* Border radius - Figma: 30px cards/buttons, 10px pills, 20px scroll-to-top */
+  --portfolio-border-radius: 10px;
+  --portfolio-border-radius-lg: 30px;
   --portfolio-border-radius-round: 50%;
 
   /* Shadows */
@@ -30,17 +49,17 @@
   --portfolio-transition-slow: 400ms;
   --portfolio-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Typography */
-  --portfolio-h1-size: 3rem;
-  --portfolio-h2-size: 2.25rem;
+  /* Typography - Figma: header 24px/600, hero name 88px/700, section 64px/700 */
+  --portfolio-h1-size: 5.5rem;   /* 88px desktop */
+  --portfolio-h2-size: 4rem;     /* 64px section headlines */
   --portfolio-h3-size: 1.75rem;
   --portfolio-h4-size: 1.375rem;
   --portfolio-body-size: 1rem;
   --portfolio-line-height: 1.6;
   --portfolio-letter-spacing: -0.01em;
 
-  /* Gradients */
-  --portfolio-gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  /* Gradients - Figma blue */
+  --portfolio-gradient-primary: linear-gradient(135deg, #266AD9 0%, #1d5ab8 100%);
   --portfolio-gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
   --portfolio-gradient-hero: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
 
@@ -49,8 +68,26 @@
   --portfolio-text-on-gradient-secondary: rgba(255, 255, 255, 0.95);
 
   /* Hero overlays */
-  --hero-overlay-primary: rgba(37, 99, 235, 0.08);
+  --hero-overlay-primary: rgba(38, 106, 217, 0.08);
   --hero-overlay-secondary: rgba(16, 185, 129, 0.08);
+
+  /* Mermaid Diagram Colors - Light Mode (Figma blue) */
+  --mermaid-primary: #266AD9;
+  --mermaid-primary-dark: #1d5ab8;
+  --mermaid-secondary: #10B981;
+  --mermaid-tertiary: #F8FAFC;
+  --mermaid-background: #FFFFFF;
+  --mermaid-text: #1E293B;
+  --mermaid-border: #E2E8F0;
+  --mermaid-node-fill: #DBEAFE;
+  --mermaid-node-stroke: #1D4ED8;
+  --mermaid-edge: #2563EB;
+  
+  /* Mermaid explicit style colors (light mode) */
+  --mermaid-fill-green: #90EE90;
+  --mermaid-fill-beige: #FFE4B5;
+  --mermaid-fill-blue: #87CEEB;
+  --mermaid-fill-pink: #FFB6C1;
 }
 
 [data-theme='dark'] {
@@ -59,12 +96,30 @@
   --portfolio-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.5), 0 6px 6px rgba(0, 0, 0, 0.6);
   --portfolio-shadow-xl: 0 14px 28px rgba(0, 0, 0, 0.6), 0 10px 10px rgba(0, 0, 0, 0.7);
   
-  --portfolio-gradient-primary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  --portfolio-gradient-primary: linear-gradient(135deg, #3B82F6 0%, #266AD9 100%);
   --portfolio-gradient-success: linear-gradient(135deg, #34D399 0%, #10B981 100%);
   --portfolio-gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
   
   --hero-overlay-primary: rgba(59, 130, 246, 0.1);
   --hero-overlay-secondary: rgba(52, 211, 153, 0.1);
+
+  /* Mermaid Diagram Colors - Dark Mode */
+  --mermaid-primary: #3B82F6;
+  --mermaid-primary-dark: #60A5FA;
+  --mermaid-secondary: #34D399;
+  --mermaid-tertiary: #1E293B;
+  --mermaid-background: #0F172A;
+  --mermaid-text: #E2E8F0;
+  --mermaid-border: #475569;
+  --mermaid-node-fill: #1E3A8A;
+  --mermaid-node-stroke: #3B82F6;
+  --mermaid-edge: #60A5FA;
+  
+  /* Mermaid explicit style colors (dark mode - darker versions) */
+  --mermaid-fill-green: #1E3A8A;
+  --mermaid-fill-beige: #7C2D12;
+  --mermaid-fill-blue: #1E40AF;
+  --mermaid-fill-pink: #7F1D1D;
 }
 
 [data-theme='light'] {
@@ -73,11 +128,11 @@
   --portfolio-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
   --portfolio-shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.25);
 
-  --portfolio-gradient-primary: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  --portfolio-gradient-primary: linear-gradient(135deg, #266AD9 0%, #1d5ab8 100%);
   --portfolio-gradient-success: linear-gradient(135deg, #10B981 0%, #059669 100%);
   --portfolio-gradient-hero: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
 
-  --hero-overlay-primary: rgba(37, 99, 235, 0.03);
+  --hero-overlay-primary: rgba(38, 106, 217, 0.03);
   --hero-overlay-secondary: rgba(16, 185, 129, 0.03);
 }
 
@@ -113,3 +168,179 @@
     --portfolio-h2-size: 1.5rem;
   }
 }
+
+/* Project Link Buttons - Different styles for Documentation and GitHub buttons */
+.projectsSection .projectLink.button--outline.button--primary,
+.projectsSection .projectLink.button.button--outline.button--primary {
+  background: #FFFFFF !important;
+  color: #266AD9 !important;
+  border: 2px solid #FFFFFF !important;
+  font-weight: 600 !important;
+}
+
+.projectsSection .projectLink.button--outline.button--primary:hover,
+.projectsSection .projectLink.button.button--outline.button--primary:hover {
+  background: #F0F4F8 !important;
+  color: #1d5ab8 !important;
+  border-color: #FFFFFF !important;
+}
+
+.projectsSection .projectLink.button--outline.button--secondary,
+.projectsSection .projectLink.button.button--outline.button--secondary {
+  background: #2F4563 !important;
+  color: #FFFFFF !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  font-weight: 600 !important;
+}
+
+.projectsSection .projectLink.button--outline.button--secondary:hover,
+.projectsSection .projectLink.button.button--outline.button--secondary:hover {
+  background: #263a52 !important;
+  color: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ============================================
+   MERMAID DIAGRAM STYLING
+   ============================================ */
+
+/* Ensure Mermaid diagrams are readable in both themes */
+.mermaid {
+  background-color: transparent;
+}
+
+[data-theme='light'] .mermaid {
+  background-color: var(--mermaid-background);
+}
+
+[data-theme='dark'] .mermaid {
+  background-color: var(--mermaid-tertiary);
+}
+
+/* Improve text contrast in Mermaid diagrams */
+[data-theme='light'] .mermaid text {
+  fill: var(--mermaid-text);
+}
+
+[data-theme='dark'] .mermaid text {
+  fill: var(--mermaid-text);
+}
+
+/* Style Mermaid node backgrounds for better visibility */
+[data-theme='light'] .mermaid .node rect,
+[data-theme='light'] .mermaid .node circle,
+[data-theme='light'] .mermaid .node ellipse,
+[data-theme='light'] .mermaid .node polygon {
+  fill: var(--mermaid-node-fill);
+  stroke: var(--mermaid-node-stroke);
+}
+
+[data-theme='dark'] .mermaid .node rect,
+[data-theme='dark'] .mermaid .node circle,
+[data-theme='dark'] .mermaid .node ellipse,
+[data-theme='dark'] .mermaid .node polygon {
+  fill: var(--mermaid-node-fill);
+  stroke: var(--mermaid-node-stroke);
+  opacity: 0.9;
+}
+
+/* Style Mermaid edges/arrows */
+[data-theme='light'] .mermaid .edgePath .path {
+  stroke: var(--mermaid-edge);
+}
+
+[data-theme='dark'] .mermaid .edgePath .path {
+  stroke: var(--mermaid-edge);
+}
+
+[data-theme='light'] .mermaid .arrowheadPath {
+  fill: var(--mermaid-edge);
+}
+
+[data-theme='dark'] .mermaid .arrowheadPath {
+  fill: var(--mermaid-edge);
+}
+
+/* Override bright fills in dark mode using CSS variables */
+/* Target all node shapes first */
+[data-theme='dark'] .mermaid .node rect,
+[data-theme='dark'] .mermaid .node circle,
+[data-theme='dark'] .mermaid .node ellipse,
+[data-theme='dark'] .mermaid .node polygon {
+  fill: var(--mermaid-node-fill) !important;
+}
+
+/* Override specific bright colors used in explicit style definitions */
+/* These colors are set via style="fill:#90EE90" etc. in markdown */
+[data-theme='dark'] .mermaid svg rect[fill="#90EE90"],
+[data-theme='dark'] .mermaid svg circle[fill="#90EE90"],
+[data-theme='dark'] .mermaid svg ellipse[fill="#90EE90"],
+[data-theme='dark'] .mermaid svg polygon[fill="#90EE90"],
+[data-theme='dark'] .mermaid svg path[fill="#90EE90"] {
+  fill: var(--mermaid-fill-green) !important;
+}
+
+[data-theme='dark'] .mermaid svg rect[fill="#FFE4B5"],
+[data-theme='dark'] .mermaid svg circle[fill="#FFE4B5"],
+[data-theme='dark'] .mermaid svg ellipse[fill="#FFE4B5"],
+[data-theme='dark'] .mermaid svg polygon[fill="#FFE4B5"],
+[data-theme='dark'] .mermaid svg path[fill="#FFE4B5"] {
+  fill: var(--mermaid-fill-beige) !important;
+}
+
+[data-theme='dark'] .mermaid svg rect[fill="#87CEEB"],
+[data-theme='dark'] .mermaid svg circle[fill="#87CEEB"],
+[data-theme='dark'] .mermaid svg ellipse[fill="#87CEEB"],
+[data-theme='dark'] .mermaid svg polygon[fill="#87CEEB"],
+[data-theme='dark'] .mermaid svg path[fill="#87CEEB"] {
+  fill: var(--mermaid-fill-blue) !important;
+}
+
+[data-theme='dark'] .mermaid svg rect[fill="#FFB6C1"],
+[data-theme='dark'] .mermaid svg circle[fill="#FFB6C1"],
+[data-theme='dark'] .mermaid svg ellipse[fill="#FFB6C1"],
+[data-theme='dark'] .mermaid svg polygon[fill="#FFB6C1"],
+[data-theme='dark'] .mermaid svg path[fill="#FFB6C1"] {
+  fill: var(--mermaid-fill-pink) !important;
+}
+
+/* Style for different node types */
+[data-theme='dark'] .mermaid .flowchart-label text,
+[data-theme='dark'] .mermaid .nodeLabel {
+  fill: var(--mermaid-text) !important;
+  color: var(--mermaid-text);
+}
+
+/* Style Mermaid labels */
+[data-theme='light'] .mermaid .edgeLabel {
+  background-color: var(--mermaid-background);
+  color: var(--mermaid-text);
+}
+
+[data-theme='dark'] .mermaid .edgeLabel {
+  background-color: var(--mermaid-tertiary);
+  color: var(--mermaid-text);
+}
+
+/* ============================================
+   PORTFOLIO: Docusaurus-Navbar ausblenden
+   - Layout rendert bei noNavbar={true} die Navbar nicht.
+   - Falls sie doch im DOM ist (z. B. Cache), verstecken wir sie hier,
+     sobald der Portfolio-Wrapper [data-no-navbar="true"] existiert.
+   - So bleibt die Navbar auch beim Wegscrollen des Portfolio-Headers unsichtbar.
+   ============================================ */
+body:has([data-no-navbar="true"]) .navbar,
+body:has([data-no-navbar="true"]) nav.navbar,
+body:has([data-no-navbar="true"]) .navbar--fixed-top {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0) !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
